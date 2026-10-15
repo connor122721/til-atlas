@@ -5,6 +5,8 @@
     ["trials.html", "Trial tracker"],
     ["simulator.html", "Clone simulator"],
     ["lab.html", "Replication lab"],
+    ["spatial.html", "Spatial"],
+    ["datasets.html", "Datasets"],
     ["learn.html", "Learn"],
   ];
   const here = location.pathname.split("/").pop() || "index.html";

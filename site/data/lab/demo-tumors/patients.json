@@ -1,0 +1,120 @@
+{
+ "meta": {
+  "synthetic": true,
+  "source": "analysis/make_synthetic_demo.py (invented data)",
+  "dataset": "demo-tumors",
+  "study": "Synthetic demo",
+  "therapy": "\u2014",
+  "sample": "tumor biopsy, CD8+ T cells",
+  "clusters": [
+   "Stem-like (TCF7+ DN)",
+   "Effector memory",
+   "Proliferating",
+   "Effector (GZMB+)",
+   "Terminal exhausted (CD39+ DP)",
+   "Tissue-resident-like"
+  ],
+  "signatures": {
+   "stem": "signatures/stem_like.txt",
+   "term": "signatures/terminal.txt"
+  }
+ },
+ "patients": [
+  {
+   "patient": "B01",
+   "response": "Responder",
+   "nCells": 307,
+   "stemFrac": 0.208,
+   "termFrac": 0.235,
+   "persistence30": null
+  },
+  {
+   "patient": "B02",
+   "response": "Responder",
+   "nCells": 300,
+   "stemFrac": 0.127,
+   "termFrac": 0.3,
+   "persistence30": null
+  },
+  {
+   "patient": "B03",
+   "response": "Responder",
+   "nCells": 300,
+   "stemFrac": 0.147,
+   "termFrac": 0.29,
+   "persistence30": null
+  },
+  {
+   "patient": "B04",
+   "response": "Responder",
+   "nCells": 495,
+   "stemFrac": 0.186,
+   "termFrac": 0.222,
+   "persistence30": null
+  },
+  {
+   "patient": "B05",
+   "response": "Responder",
+   "nCells": 476,
+   "stemFrac": 0.254,
+   "termFrac": 0.212,
+   "persistence30": null
+  },
+  {
+   "patient": "B06",
+   "response": "Non-responder",
+   "nCells": 407,
+   "stemFrac": 0.133,
+   "termFrac": 0.302,
+   "persistence30": null
+  },
+  {
+   "patient": "B07",
+   "response": "Non-responder",
+   "nCells": 302,
+   "stemFrac": 0.01,
+   "termFrac": 0.308,
+   "persistence30": null
+  },
+  {
+   "patient": "B08",
+   "response": "Non-responder",
+   "nCells": 490,
+   "stemFrac": 0.116,
+   "termFrac": 0.282,
+   "persistence30": null
+  },
+  {
+   "patient": "B09",
+   "response": "Non-responder",
+   "nCells": 325,
+   "stemFrac": 0.068,
+   "termFrac": 0.298,
+   "persistence30": null
+  },
+  {
+   "patient": "B10",
+   "response": "Non-responder",
+   "nCells": 468,
+   "stemFrac": 0.079,
+   "termFrac": 0.269,
+   "persistence30": null
+  },
+  {
+   "patient": "B11",
+   "response": "Non-responder",
+   "nCells": 479,
+   "stemFrac": 0.102,
+   "termFrac": 0.284,
+   "persistence30": null
+  },
+  {
+   "patient": "B12",
+   "response": "Non-responder",
+   "nCells": 415,
+   "stemFrac": 0.125,
+   "termFrac": 0.323,
+   "persistence30": null
+  }
+ ]
+}

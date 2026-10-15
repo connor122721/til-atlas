@@ -6,8 +6,10 @@ A static GitHub Pages site about tumor-infiltrating lymphocyte (TIL) therapy, bu
 |---|---|---|
 | **Trial tracker** (`trials.html`) | Every TIL / neoantigen TCR-T trial on ClinicalTrials.gov, auto-tagged, mapped, filterable, CSV export, weekly changelog | `site/data/trials.json`, refreshed weekly by GitHub Actions |
 | **Clone simulator** (`simulator.html`) | Stochastic model of 80 infused clones (stem-like → effector → exhausted) vs a tumor; 40-patient virtual trials with waterfall plots | runs in the browser (`site/assets/sim-model.js`) |
-| **Replication lab** (`lab.html`) | Krishna et al. 2020 stem-like CD39⁻CD69⁻ comparison, UMAP explorer, clone tracking tumor → product → blood | `site/data/lab/*.json`, exported by `analysis/` |
-| **Learn** (`learn.html`) | Dataset guide and exercises: APIs, signature scoring, clonotype metrics, spatial platforms, model fitting | — |
+| **Replication lab** (`lab.html`) | Krishna et al. 2020 stem-like CD39⁻CD69⁻ comparison per dataset and across datasets, UMAP explorer, clone tracking tumor → product → blood | `site/data/lab/<dataset>/`, exported by `analysis/datasets/*/run.sh` |
+| **Spatial** (`spatial.html`) | Tissue maps, neighborhood enrichment (label-permutation z-scores), CD8→tumor distance, comparison by response | `site/data/spatial/<dataset>/`, exported by `analysis/spatial/` |
+| **Datasets** (`datasets.html`) | Curated catalog of public TIL / checkpoint single-cell and spatial cohorts + weekly "new on GEO" watch | `site/data/catalog.json` (hand-curated), `site/data/geo_watch.json` (weekly) |
+| **Learn** (`learn.html`) | Exercises: APIs, signature scoring, clonotype metrics, spatial statistics, model fitting | — |
 
 No build step, no server, no framework: plain HTML + D3 from a CDN. Everything heavy happens on your cluster and lands here as small JSON.
 
@@ -28,7 +30,9 @@ Preview locally any time:
 python -m http.server -d site 8000      # open http://localhost:8000
 ```
 
-Until the first scrape runs, the tracker shows a **synthetic fixture** (IDs `NCT9…`, titles start with `[FIXTURE]`) with a banner saying so. The lab shows **synthetic** cells/clones with a banner until you export real data.
+Until the first scrape runs, the tracker and GEO feed show **synthetic fixtures** (IDs `NCT9…` / `GSE9000…`, titles start with `[FIXTURE]`) with a banner saying so. The lab and spatial tabs ship **synthetic demo datasets**, flagged on the page, until you export real ones; real exports become the default view automatically.
+
+Optional: add repository secrets `NCBI_EMAIL` (and `NCBI_API_KEY`) so the GEO watch identifies itself to NCBI.
 
 ## Repository layout
 
@@ -38,7 +42,11 @@ scraper/
   config.json          search topics (Essie query syntax) — add a topic here
   tags.json            regex rules for indication / combination / engineering tags
   tests/               offline unittest suite + synthetic fixture generator
+scraper/fetch_geo.py   weekly NCBI E-utilities search for new GEO series (queries in config.json → "geo")
 analysis/
+  datasets/<id>/run.sh  one script per public cohort: download → prepare → export (sadefeldman2018, chiffelle2024, huang2022)
+  lib/geo_10x.R        find 10x matrices/V(D)J files in GEO downloads, sample-sheet template, Seurat + AIRR builders
+  spatial/             export_spatial.py, adapters (Xenium, CosMx, R objects), synthetic tissue, tests, README with recipes
   00_download_geo.sh   pull GEO supplementary files (e.g. GSE222750, GSE221253)
   01_score_signatures.R  CD8 subset → UCell scores → UMAP → cells.json, patients.json
   02_clonotypes.R      AIRR TCR tables → frequencies, persistence, Morisita-Horn → clones.json
@@ -67,18 +75,37 @@ Useful commands:
 
 ```bash
 python scraper/fetch_trials.py --dry-run                 # live fetch, print counts, write nothing
-python -m unittest discover -s scraper/tests -v          # offline tests
+python -m unittest discover -s scraper/tests -v          # offline tests (trials + GEO watch)
+python -m unittest discover -s analysis/spatial/tests -v # spatial adapters + exporter (needs h5py)
 python scraper/tests/make_fixture.py /tmp/fx && \
   python scraper/fetch_trials.py --fixture /tmp/fx --out /tmp/out   # full offline run
 ```
 
-## Replacing the synthetic lab data
+## Loading real data
+
+Single-cell (replication lab):
 
 ```bash
-conda env create -f analysis/environment.yml
-mkdir -p logs && sbatch analysis/slurm/run_lab.sbatch    # edit input paths first
-git add site/data/lab/*.json && git commit -m "lab: real exports" && git push
+conda env create -f analysis/environment.yml && conda activate til-atlas
+sbatch --mem=64G --wrap "bash analysis/datasets/sadefeldman2018/run.sh"   # public, no manual step
+bash analysis/datasets/chiffelle2024/run.sh   # 1st run writes data/processed/chiffelle2024/samples.csv
+#   fill patient / compartment / response, then run again
+bash analysis/datasets/huang2022/run.sh       # same pattern
+git add site/data/lab && git commit -m "lab: real exports" && git push
 ```
+
+Spatial: follow `analysis/spatial/README.md` (Xenium melanoma, melanoma IMC anti-PD-1, cSCC and HNSCC spatial cohorts).
+
+| Dataset | Access | Status of the pipeline |
+|---|---|---|
+| Sade-Feldman 2018, GSE120575 | open | ready; reads GEO's per-cell patient/response table |
+| Chiffelle 2024 / Barras 2024, GSE229861 + GSE222750 | check GSE229861 is released | ready; needs the sample sheet filled |
+| Huang 2022 cervical TIL, GSE190075 | check release | ready; needs the sample sheet filled |
+| Xenium melanoma (10x) | open, CC BY 4.0 | ready; tested on mock bundles |
+| Melanoma IMC anti-PD-1, Zenodo 6838169 | open | inspect the object, then export (column names unknown in advance) |
+| cSCC spatial, Dryad s4mw6m9jh | open | inspect the Seurat object, then export |
+| HNSCC CosMx, Dryad n2z34tn7x | open | needs a FOV → core/response map from the deposit README |
+| Krishna 2020, Moffitt GeoMx | accession not confirmed | catalog only |
 
 Inputs the R scripts expect (details at the top of each script):
 

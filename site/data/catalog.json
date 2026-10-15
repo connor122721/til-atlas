@@ -1,0 +1,285 @@
+{
+  "_comment": "Curated public datasets. Only facts confirmed from the repository page or paper go in; anything unconfirmed says so in `status`/`notes`. `use` says which site tab the dataset feeds; `pipeline` points at the scripts that download and convert it.",
+  "updated": "2026-10-14",
+  "datasets": [
+    {
+      "id": "chiffelle2024",
+      "short": "Lausanne TIL-ACT clonotypes",
+      "paper": "Chiffelle et al., Immunity 2024 — Tumor-reactive T cell clonotype dynamics underlying clinical response to TIL therapy in melanoma",
+      "doi": "10.1016/j.immuni.2024.08.014",
+      "cancer": "Melanoma",
+      "therapy": "TIL-ACT",
+      "trial": "NCT03475134",
+      "modalities": [
+        "scRNA-seq",
+        "scTCR-seq",
+        "bulk RNA-seq",
+        "bulk TCR-seq"
+      ],
+      "samples": "13 patients (6 responders, 7 non-responders); scRNA-seq of 15 baseline tumors, 13 TIL products, 7 post-ACT tumors; bulk TCR-seq of blood before and 30 days after",
+      "access": "check",
+      "accessions": [
+        {
+          "label": "GEO GSE229861",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE229861"
+        }
+      ],
+      "status": "Accession from the preprint's data statement (to be released at publication); confirm it is public",
+      "use": [
+        "lab"
+      ],
+      "pipeline": "analysis/datasets/chiffelle2024/"
+    },
+    {
+      "id": "barras2024",
+      "short": "Lausanne TIL-ACT tumor microenvironment",
+      "paper": "Barras et al., Sci Immunol 2024 — Response to TIL adoptive therapy is associated with preexisting CD8+ T-myeloid cell networks in melanoma",
+      "cancer": "Melanoma",
+      "therapy": "TIL-ACT",
+      "trial": "NCT03475134",
+      "modalities": [
+        "scTCR-seq",
+        "bulk RNA-seq",
+        "multiplex IF"
+      ],
+      "samples": "13 patients, longitudinal pre- and post-ACT tumors",
+      "access": "open",
+      "accessions": [
+        {
+          "label": "GEO GSE222750 (scTCR-seq)",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE222750"
+        },
+        {
+          "label": "GEO GSE221253 (bulk RNA-seq)",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221253"
+        }
+      ],
+      "status": "GEO series confirmed; the multiplex IF images are not confirmed public",
+      "use": [
+        "lab"
+      ],
+      "pipeline": "analysis/datasets/chiffelle2024/"
+    },
+    {
+      "id": "huang2022",
+      "short": "Cervical cancer TIL phase I",
+      "paper": "Huang et al., J Clin Invest 2022 — Phase I study of adjuvant immunotherapy with autologous TILs in locally advanced cervical cancer",
+      "doi": "10.1172/JCI157726",
+      "cancer": "Cervical",
+      "therapy": "TIL-ACT",
+      "modalities": [
+        "scRNA-seq"
+      ],
+      "samples": "13 patients infused; scRNA-seq of 8 TIL infusion products",
+      "access": "check",
+      "accessions": [
+        {
+          "label": "GEO GSE190075 (scRNA-seq)",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE190075"
+        },
+        {
+          "label": "Research Data Deposit RDDA2022500226 (clinical)",
+          "url": null
+        }
+      ],
+      "status": "Accessions from the paper's data statement; GEO page not checked (NCBI browser check)",
+      "use": [
+        "lab"
+      ],
+      "pipeline": "analysis/datasets/huang2022/"
+    },
+    {
+      "id": "sadefeldman2018",
+      "short": "Melanoma checkpoint T cell states",
+      "paper": "Sade-Feldman et al., Cell 2018 — Defining T cell states associated with response to checkpoint immunotherapy in melanoma",
+      "cancer": "Melanoma",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "scRNA-seq (Smart-seq2)"
+      ],
+      "samples": "16,291 CD45+ immune cells from 48 tumor samples, pre- and on-treatment",
+      "access": "open",
+      "accessions": [
+        {
+          "label": "GEO GSE120575",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120575"
+        },
+        {
+          "label": "Single Cell Portal SCP398",
+          "url": "https://singlecell.broadinstitute.org/single_cell/study/SCP398"
+        }
+      ],
+      "status": "Public since Oct 2018; files: TPM matrix (121 MB) and per-cell patient/response table",
+      "use": [
+        "lab"
+      ],
+      "pipeline": "analysis/datasets/sadefeldman2018/"
+    },
+    {
+      "id": "pozniak2024",
+      "short": "Melanoma ecosystem under immunotherapy",
+      "paper": "Pozniak et al., Cell 2024 — melanoma single-cell atlas during immunotherapy",
+      "cancer": "Melanoma",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "scRNA-seq",
+        "Visium (images only)"
+      ],
+      "samples": "Count matrices for malignant and microenvironment cells; clinical metadata in the paper's Table S1",
+      "access": "open",
+      "accessions": [
+        {
+          "label": "KU Leuven RDR doi:10.48804/gsaxbn (CC BY-NC-SA 4.0)",
+          "url": "https://doi.org/10.48804/gsaxbn"
+        }
+      ],
+      "status": "Open; Visium deposit holds images only, not spot counts",
+      "use": [
+        "lab"
+      ],
+      "pipeline": null
+    },
+    {
+      "id": "krishna2020",
+      "short": "Stem-like TIL in infusion products",
+      "paper": "Krishna et al., Science 2020 — Stem-like CD8 T cells mediate response of adoptive cell immunotherapy against human cancer",
+      "cancer": "Melanoma",
+      "therapy": "TIL-ACT",
+      "modalities": [
+        "scRNA-seq",
+        "flow cytometry"
+      ],
+      "samples": "18,624 CD8+ TILs from 10 infusion products (scRNA-seq); flow on products from a larger cohort",
+      "access": "unknown",
+      "accessions": [
+        {
+          "label": "Paper (PMC8883579)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8883579"
+        }
+      ],
+      "status": "Data accession not confirmed; check the paper's data availability statement",
+      "use": [
+        "lab"
+      ],
+      "pipeline": null
+    },
+    {
+      "id": "xenium_melanoma",
+      "short": "Xenium 5K melanoma section",
+      "paper": "10x Genomics public dataset — Xenium Prime FFPE human skin (primary dermal melanoma)",
+      "cancer": "Melanoma",
+      "therapy": "Untreated",
+      "modalities": [
+        "Xenium in situ (5,006 genes)"
+      ],
+      "samples": "1 section, 112,551 cells; two smaller Xenium v1 melanoma sections also public",
+      "access": "open",
+      "accessions": [
+        {
+          "label": "10x dataset page (CC BY 4.0)",
+          "url": "https://www.10xgenomics.com/datasets/xenium-prime-ffpe-human-skin"
+        },
+        {
+          "label": "Zenodo 17429142 (all three sections, 114 GB with images)",
+          "url": "https://zenodo.org/records/17429142"
+        }
+      ],
+      "status": "Open; no treatment or outcome",
+      "use": [
+        "spatial"
+      ],
+      "pipeline": "analysis/spatial/README.md (Xenium)"
+    },
+    {
+      "id": "imc_melanoma_pd1",
+      "short": "Melanoma IMC, anti-PD-1",
+      "paper": "Multiplexed imaging mass cytometry reveals distinct tumor-immune microenvironments linked to immunotherapy responses in melanoma (bioRxiv 2022.01.15.476480; PMC9587266)",
+      "cancer": "Melanoma",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "Imaging mass cytometry (35-protein panel)"
+      ],
+      "samples": "26 patients on anti-PD-1 monotherapy (14 responders, 12 non-responders)",
+      "access": "open",
+      "accessions": [
+        {
+          "label": "Zenodo 6838169 (3.6 GB: images, masks, processed data, clinical response)",
+          "url": "https://zenodo.org/record/6838169"
+        }
+      ],
+      "status": "Open; response and survival tables included",
+      "use": [
+        "spatial"
+      ],
+      "pipeline": "analysis/spatial/README.md (IMC)"
+    },
+    {
+      "id": "cscc_spatial_pd1",
+      "short": "cSCC spatial, neoadjuvant PD-1",
+      "paper": "Lee et al. — Single-cell spatial transcriptomics uncovers niches that govern response to PD-1/PD-L1 blockade in cutaneous squamous cell carcinoma",
+      "cancer": "Cutaneous SCC",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "Single-cell spatial molecular imaging (RNA)"
+      ],
+      "samples": "27 patients from two phase II trials, >250,000 cells, before/during/after treatment; response by major pathological response",
+      "access": "open",
+      "accessions": [
+        {
+          "label": "Dryad doi:10.5061/dryad.s4mw6m9jh (Seurat RDS, 2.5 GB)",
+          "url": "https://doi.org/10.5061/dryad.s4mw6m9jh"
+        }
+      ],
+      "status": "Open; whether response labels are inside the Seurat object is unconfirmed",
+      "use": [
+        "spatial"
+      ],
+      "pipeline": "analysis/spatial/README.md (cSCC)"
+    },
+    {
+      "id": "hnscc_cosmx_icb",
+      "short": "HNSCC CosMx, checkpoint blockade",
+      "paper": "Integrated single-cell and spatial analysis reveals context-dependent myeloid-T cell interactions in the response to immune checkpoint blockade in HNSCC",
+      "cancer": "Head & neck SCC",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "CosMx RNA (1,000-plex)",
+        "CosMx protein (64-plex)"
+      ],
+      "samples": "23 patients, 522,399 cells on tissue microarrays",
+      "access": "open",
+      "accessions": [
+        {
+          "label": "Dryad doi:10.5061/dryad.n2z34tn7x (2.5 GB)",
+          "url": "https://doi.org/10.5061/dryad.n2z34tn7x"
+        }
+      ],
+      "status": "Open; the Visium part of the study is not in this deposit",
+      "use": [
+        "spatial"
+      ],
+      "pipeline": "analysis/spatial/README.md (CosMx)"
+    },
+    {
+      "id": "moffitt_til_geomx",
+      "short": "Moffitt TIL cohort, GeoMx",
+      "paper": "Immunologic determinants of infusion products and the tumor microenvironment govern response to TIL therapy in advanced melanoma (Med)",
+      "cancer": "Melanoma",
+      "therapy": "TIL-ACT",
+      "modalities": [
+        "GeoMx whole transcriptome",
+        "multiplex IF",
+        "TCRβ-seq",
+        "flow"
+      ],
+      "samples": "60 patients enrolled 2009–2018; tumor, immune and TLS regions",
+      "access": "unknown",
+      "accessions": [],
+      "status": "Data availability not confirmed — the closest TIL-specific spatial dataset if released",
+      "use": [
+        "spatial"
+      ],
+      "pipeline": null
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "_comment": "Marker panels for quick cell typing of in situ RNA panels (Xenium, CosMx). Genes missing from a panel are skipped; a type with fewer than 2 detected markers is dropped. Cells whose best z-scored module is below the threshold are called 'Other'. This is a first pass for a website, not a substitute for clustering + manual annotation.",
+  "threshold": 0.5,
+  "types": {
+    "Tumor": ["PMEL", "MLANA", "TYR", "DCT", "SOX10", "MITF", "S100B", "KRT5", "KRT14", "KRT17", "EPCAM"],
+    "CD8 T": ["CD8A", "CD8B", "CD3E", "CD3D", "GZMK", "NKG7"],
+    "CD4 T": ["CD4", "CD3E", "CD3D", "IL7R", "CD40LG"],
+    "Treg": ["FOXP3", "IL2RA", "CTLA4", "TNFRSF18"],
+    "Myeloid": ["CD68", "CD163", "LYZ", "CD14", "ITGAX", "C1QA", "C1QB", "APOE"],
+    "B cell": ["MS4A1", "CD79A", "CD19", "BANK1"],
+    "Plasma": ["JCHAIN", "MZB1", "IGKC", "XBP1"],
+    "Fibroblast": ["COL1A1", "COL1A2", "DCN", "PDGFRA", "LUM"],
+    "Endothelial": ["PECAM1", "VWF", "CDH5", "PLVAP"]
+  }
+}

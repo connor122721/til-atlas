@@ -1,0 +1,400 @@
+{
+ "meta": {
+  "dataset": "demo-cores",
+  "label": "Demo \u00b7 tissue cores",
+  "platform": "synthetic",
+  "study": "Synthetic demo",
+  "therapy": "",
+  "synthetic": true,
+  "cellTypes": [
+   "B cell",
+   "CD4 T",
+   "CD8 T",
+   "Endothelial",
+   "Fibroblast",
+   "Myeloid",
+   "Treg",
+   "Tumor"
+  ],
+  "radiusUm": 30.0,
+  "perms": 200,
+  "focal": "CD8 T",
+  "target": "Tumor",
+  "units": "\u00b5m",
+  "source": "syn_cells.csv.gz"
+ },
+ "samples": [
+  {
+   "sample": "core01",
+   "patient": "P01",
+   "response": "Responder",
+   "nCells": 3071,
+   "areaMm2": 0.7738,
+   "fraction": {
+    "B cell": 0.0589,
+    "CD4 T": 0.1035,
+    "CD8 T": 0.1364,
+    "Endothelial": 0.0811,
+    "Fibroblast": 0.2612,
+    "Myeloid": 0.1609,
+    "Treg": 0.0361,
+    "Tumor": 0.1618
+   },
+   "density": {
+    "B cell": 233.9,
+    "CD4 T": 410.9,
+    "CD8 T": 541.5,
+    "Endothelial": 321.8,
+    "Fibroblast": 1036.4,
+    "Myeloid": 638.4,
+    "Treg": 143.4,
+    "Tumor": 642.3
+   },
+   "focalToTarget": {
+    "median": 19.4,
+    "within20": 0.5131
+   }
+  },
+  {
+   "sample": "core02",
+   "patient": "P02",
+   "response": "Responder",
+   "nCells": 3072,
+   "areaMm2": 0.7739,
+   "fraction": {
+    "B cell": 0.0667,
+    "CD4 T": 0.1149,
+    "CD8 T": 0.1058,
+    "Endothelial": 0.0833,
+    "Fibroblast": 0.2738,
+    "Myeloid": 0.1442,
+    "Treg": 0.0332,
+    "Tumor": 0.1781
+   },
+   "density": {
+    "B cell": 264.9,
+    "CD4 T": 456.1,
+    "CD8 T": 419.9,
+    "Endothelial": 330.8,
+    "Fibroblast": 1086.6,
+    "Myeloid": 572.4,
+    "Treg": 131.8,
+    "Tumor": 706.8
+   },
+   "focalToTarget": {
+    "median": 15.6,
+    "within20": 0.6615
+   }
+  },
+  {
+   "sample": "core03",
+   "patient": "P03",
+   "response": "Responder",
+   "nCells": 3076,
+   "areaMm2": 0.7765,
+   "fraction": {
+    "B cell": 0.0575,
+    "CD4 T": 0.1118,
+    "CD8 T": 0.1206,
+    "Endothelial": 0.0787,
+    "Fibroblast": 0.2451,
+    "Myeloid": 0.1612,
+    "Treg": 0.0358,
+    "Tumor": 0.1892
+   },
+   "density": {
+    "B cell": 228.0,
+    "CD4 T": 443.0,
+    "CD8 T": 477.8,
+    "Endothelial": 311.7,
+    "Fibroblast": 971.1,
+    "Myeloid": 638.8,
+    "Treg": 141.7,
+    "Tumor": 749.5
+   },
+   "focalToTarget": {
+    "median": 19.2,
+    "within20": 0.5094
+   }
+  },
+  {
+   "sample": "core04",
+   "patient": "P04",
+   "response": "Responder",
+   "nCells": 3064,
+   "areaMm2": 0.7743,
+   "fraction": {
+    "B cell": 0.0689,
+    "CD4 T": 0.1064,
+    "CD8 T": 0.1283,
+    "Endothelial": 0.0829,
+    "Fibroblast": 0.281,
+    "Myeloid": 0.1544,
+    "Treg": 0.0274,
+    "Tumor": 0.1508
+   },
+   "density": {
+    "B cell": 272.5,
+    "CD4 T": 421.0,
+    "CD8 T": 507.6,
+    "Endothelial": 328.0,
+    "Fibroblast": 1112.0,
+    "Myeloid": 610.9,
+    "Treg": 108.5,
+    "Tumor": 596.7
+   },
+   "focalToTarget": {
+    "median": 18.7,
+    "within20": 0.5344
+   }
+  },
+  {
+   "sample": "core05",
+   "patient": "P05",
+   "response": "Responder",
+   "nCells": 3070,
+   "areaMm2": 0.7735,
+   "fraction": {
+    "B cell": 0.0544,
+    "CD4 T": 0.1212,
+    "CD8 T": 0.1358,
+    "Endothelial": 0.0831,
+    "Fibroblast": 0.2642,
+    "Myeloid": 0.155,
+    "Treg": 0.0309,
+    "Tumor": 0.1554
+   },
+   "density": {
+    "B cell": 215.9,
+    "CD4 T": 481.0,
+    "CD8 T": 539.1,
+    "Endothelial": 329.7,
+    "Fibroblast": 1048.5,
+    "Myeloid": 615.4,
+    "Treg": 122.8,
+    "Tumor": 616.7
+   },
+   "focalToTarget": {
+    "median": 17.7,
+    "within20": 0.5875
+   }
+  },
+  {
+   "sample": "core06",
+   "patient": "P06",
+   "response": "Responder",
+   "nCells": 3072,
+   "areaMm2": 0.7725,
+   "fraction": {
+    "B cell": 0.0628,
+    "CD4 T": 0.113,
+    "CD8 T": 0.1084,
+    "Endothelial": 0.0843,
+    "Fibroblast": 0.2995,
+    "Myeloid": 0.1449,
+    "Treg": 0.0374,
+    "Tumor": 0.1497
+   },
+   "density": {
+    "B cell": 249.8,
+    "CD4 T": 449.2,
+    "CD8 T": 431.1,
+    "Endothelial": 335.3,
+    "Fibroblast": 1190.9,
+    "Myeloid": 576.0,
+    "Treg": 148.9,
+    "Tumor": 595.5
+   },
+   "focalToTarget": {
+    "median": 16.9,
+    "within20": 0.6096
+   }
+  },
+  {
+   "sample": "core07",
+   "patient": "P07",
+   "response": "Non-responder",
+   "nCells": 3071,
+   "areaMm2": 0.7734,
+   "fraction": {
+    "B cell": 0.0658,
+    "CD4 T": 0.1094,
+    "CD8 T": 0.0401,
+    "Endothelial": 0.0661,
+    "Fibroblast": 0.2582,
+    "Myeloid": 0.1469,
+    "Treg": 0.0296,
+    "Tumor": 0.2839
+   },
+   "density": {
+    "B cell": 261.2,
+    "CD4 T": 434.5,
+    "CD8 T": 159.0,
+    "Endothelial": 262.5,
+    "Fibroblast": 1025.4,
+    "Myeloid": 583.2,
+    "Treg": 117.7,
+    "Tumor": 1127.6
+   },
+   "focalToTarget": {
+    "median": 224.8,
+    "within20": 0.0081
+   }
+  },
+  {
+   "sample": "core08",
+   "patient": "P08",
+   "response": "Non-responder",
+   "nCells": 3070,
+   "areaMm2": 0.7742,
+   "fraction": {
+    "B cell": 0.0648,
+    "CD4 T": 0.1137,
+    "CD8 T": 0.0502,
+    "Endothelial": 0.0762,
+    "Fibroblast": 0.255,
+    "Myeloid": 0.1293,
+    "Treg": 0.03,
+    "Tumor": 0.2808
+   },
+   "density": {
+    "B cell": 257.0,
+    "CD4 T": 450.8,
+    "CD8 T": 198.9,
+    "Endothelial": 302.3,
+    "Fibroblast": 1011.4,
+    "Myeloid": 512.8,
+    "Treg": 118.8,
+    "Tumor": 1113.4
+   },
+   "focalToTarget": {
+    "median": 174.4,
+    "within20": 0.0
+   }
+  },
+  {
+   "sample": "core09",
+   "patient": "P09",
+   "response": "Non-responder",
+   "nCells": 3060,
+   "areaMm2": 0.7717,
+   "fraction": {
+    "B cell": 0.0621,
+    "CD4 T": 0.1072,
+    "CD8 T": 0.0618,
+    "Endothelial": 0.0745,
+    "Fibroblast": 0.284,
+    "Myeloid": 0.1641,
+    "Treg": 0.0333,
+    "Tumor": 0.2131
+   },
+   "density": {
+    "B cell": 246.2,
+    "CD4 T": 425.0,
+    "CD8 T": 244.9,
+    "Endothelial": 295.4,
+    "Fibroblast": 1126.0,
+    "Myeloid": 650.5,
+    "Treg": 132.2,
+    "Tumor": 844.8
+   },
+   "focalToTarget": {
+    "median": 148.3,
+    "within20": 0.0053
+   }
+  },
+  {
+   "sample": "core10",
+   "patient": "P10",
+   "response": "Non-responder",
+   "nCells": 3069,
+   "areaMm2": 0.7746,
+   "fraction": {
+    "B cell": 0.0717,
+    "CD4 T": 0.1339,
+    "CD8 T": 0.0495,
+    "Endothelial": 0.0945,
+    "Fibroblast": 0.3092,
+    "Myeloid": 0.1571,
+    "Treg": 0.0336,
+    "Tumor": 0.1505
+   },
+   "density": {
+    "B cell": 284.0,
+    "CD4 T": 530.6,
+    "CD8 T": 196.2,
+    "Endothelial": 374.4,
+    "Fibroblast": 1225.1,
+    "Myeloid": 622.2,
+    "Treg": 133.0,
+    "Tumor": 596.4
+   },
+   "focalToTarget": {
+    "median": 234.8,
+    "within20": 0.0
+   }
+  },
+  {
+   "sample": "core11",
+   "patient": "P11",
+   "response": "Non-responder",
+   "nCells": 3064,
+   "areaMm2": 0.771,
+   "fraction": {
+    "B cell": 0.0584,
+    "CD4 T": 0.108,
+    "CD8 T": 0.0522,
+    "Endothelial": 0.0695,
+    "Fibroblast": 0.2536,
+    "Myeloid": 0.1478,
+    "Treg": 0.0294,
+    "Tumor": 0.281
+   },
+   "density": {
+    "B cell": 232.2,
+    "CD4 T": 429.3,
+    "CD8 T": 207.5,
+    "Endothelial": 276.3,
+    "Fibroblast": 1007.8,
+    "Myeloid": 587.6,
+    "Treg": 116.7,
+    "Tumor": 1116.8
+   },
+   "focalToTarget": {
+    "median": 170.4,
+    "within20": 0.0
+   }
+  },
+  {
+   "sample": "core12",
+   "patient": "P12",
+   "response": "Non-responder",
+   "nCells": 3066,
+   "areaMm2": 0.7732,
+   "fraction": {
+    "B cell": 0.0659,
+    "CD4 T": 0.1057,
+    "CD8 T": 0.0594,
+    "Endothelial": 0.0691,
+    "Fibroblast": 0.2766,
+    "Myeloid": 0.1592,
+    "Treg": 0.0297,
+    "Tumor": 0.2345
+   },
+   "density": {
+    "B cell": 261.3,
+    "CD4 T": 419.0,
+    "CD8 T": 235.4,
+    "Endothelial": 274.2,
+    "Fibroblast": 1096.8,
+    "Myeloid": 631.2,
+    "Treg": 117.7,
+    "Tumor": 929.9
+   },
+   "focalToTarget": {
+    "median": 202.5,
+    "within20": 0.0165
+   }
+  }
+ ]
+}

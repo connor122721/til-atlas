@@ -13,7 +13,7 @@
 # Compartments must use the four names above (missing ones are fine).
 #
 #   Rscript analysis/02_clonotypes.R --samples samples.csv --clinical clinical.csv \
-#     [--phenotype product_phenotype.csv] [--top 25]
+#     --dataset-id chiffelle2024 [--phenotype product_phenotype.csv] [--top 25]
 #
 # --phenotype (optional): clone_id,phenotype,reactive from your scRNA/TCR join
 #   (e.g. majority label of the clone's cells in the product: "stem-like" / "terminal").
@@ -21,8 +21,12 @@ suppressPackageStartupMessages({ library(optparse); library(data.table); library
 
 opt <- parse_args(OptionParser(option_list = list(
   make_option("--samples"), make_option("--clinical"), make_option("--phenotype", default = NA),
-  make_option("--top", type = "integer", default = 25), make_option("--out", default = "site/data/lab")
+  make_option("--top", type = "integer", default = 25), make_option("--out", default = "site/data/lab"),
+  make_option("--dataset-id", dest = "dataset_id", default = NA)
 )))
+stopifnot(!is.na(opt$dataset_id))
+lab_root <- opt$out
+opt$out <- file.path(lab_root, opt$dataset_id); dir.create(opt$out, showWarnings = FALSE, recursive = TRUE)
 COMP <- c("tumor_pre", "product", "blood_d30", "tumor_post")
 ss   <- fread(opt$samples); clin <- fread(opt$clinical)
 stopifnot(all(ss$compartment %in% COMP))
@@ -78,4 +82,11 @@ for (p in unique(rep$patient)) {
 write_json(list(meta = list(synthetic = FALSE, compartments = COMP, freqScale = "log10 clone frequency",
                             generated = format(Sys.Date())), patients = out),
            file.path(opt$out, "clones.json"), auto_unbox = TRUE, null = "null", digits = NA)
+# flag clones in the lab index (01_score_signatures.R creates the entry)
+idx_path <- file.path(lab_root, "index.json")
+if (file.exists(idx_path)) {
+  index <- fromJSON(idx_path, simplifyVector = FALSE)
+  index$datasets <- lapply(index$datasets, function(d) { if (d$id == opt$dataset_id) d$hasClones <- TRUE; d })
+  write_json(index, idx_path, auto_unbox = TRUE, pretty = TRUE, na = "null")
+}
 message("wrote ", file.path(opt$out, "clones.json"))

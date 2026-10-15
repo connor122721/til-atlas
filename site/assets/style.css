@@ -18,6 +18,7 @@
   /* sequential blue */
   --q100: #cde2fb; --q300: #6da7ec; --q500: #256abf; --q700: #0d366b;
   --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  --div-n2: #1c5cab; --div-n1: #86b6ef; --div-0: #f0efec; --div-p1: #f2a09f; --div-p2: #b8302f;
   --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
   --radius: 10px;
@@ -32,6 +33,7 @@
     --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
     --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
     --q100: #104281; --q300: #256abf; --q500: #5598e7; --q700: #cde2fb;
+    --div-n2: #6da7ec; --div-n1: #23456e; --div-0: #383835; --div-p1: #7a2e2e; --div-p2: #f08a89;
   }
 }
 :root[data-theme="dark"] {
@@ -43,6 +45,7 @@
   --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
   --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
   --q100: #104281; --q300: #256abf; --q500: #5598e7; --q700: #cde2fb;
+  --div-n2: #6da7ec; --div-n1: #23456e; --div-0: #383835; --div-p1: #7a2e2e; --div-p2: #f08a89;
 }
 
 * { box-sizing: border-box; }
@@ -214,3 +217,18 @@ footer .inner { max-width: 1240px; margin: 0 auto; padding-block: 18px 40px;
 #map { height: 360px; border-radius: 8px; z-index: 0; }
 .leaflet-container { background: var(--surface-2) !important; font: inherit !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ---------- datasets ---------- */
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 2px 9px 2px 7px;
+  border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text-secondary); white-space: nowrap; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--text-muted); }
+.pill.good::before { background: var(--good); } .pill.warning::before { background: var(--warning); } .pill.critical::before { background: var(--critical); }
+.dataset { display: flex; flex-direction: column; gap: 6px; }
+.dataset p { margin: 0; }
+.ds-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.ds-head h3 { margin: 0; }
+.acc { margin: 4px 0; padding-left: 18px; }
+.ds-foot { margin-top: auto; padding-top: 8px; border-top: 1px solid var(--grid); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 14px; }
+tbody tr.sel { background: color-mix(in srgb, var(--accent) 12%, var(--surface-1)); }
+td.mono { white-space: nowrap; }

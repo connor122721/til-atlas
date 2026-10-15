@@ -29,11 +29,18 @@ jobs:
       - name: Fetch, tag and diff
         run: python scraper/fetch_trials.py
 
+      - name: Watch GEO for new datasets
+        continue-on-error: true      # a GEO hiccup shouldn't block the trial update
+        env:
+          NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+        run: python scraper/fetch_geo.py
+
       - name: Commit if anything changed
         run: |
           git config user.name  "til-atlas-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add site/data/trials.json site/data/history.json site/data/changelog.json
+          git add site/data/trials.json site/data/history.json site/data/changelog.json site/data/geo_watch.json 2>/dev/null || git add site/data/trials.json site/data/history.json site/data/changelog.json
           if git diff --cached --quiet; then
             echo "No changes this week."
           else

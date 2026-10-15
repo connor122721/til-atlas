@@ -1,0 +1,24 @@
+{
+ "datasets": [
+  {
+   "id": "demo-products",
+   "label": "Demo A \u00b7 infusion products",
+   "study": "Synthetic demo",
+   "therapy": "\u2014",
+   "sample": "infusion product",
+   "synthetic": true,
+   "path": "data/lab/demo-products/",
+   "hasClones": true
+  },
+  {
+   "id": "demo-tumors",
+   "label": "Demo B \u00b7 tumor biopsies",
+   "study": "Synthetic demo",
+   "therapy": "\u2014",
+   "sample": "tumor biopsy",
+   "synthetic": true,
+   "path": "data/lab/demo-tumors/",
+   "hasClones": false
+  }
+ ]
+}

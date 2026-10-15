@@ -14,9 +14,19 @@
     track with response — and following clones from tumor to product to blood, as in Chiffelle et al. (<em>Immunity</em> 2024).
     The pages read small JSON files exported by the scripts in <code>analysis/</code>; raw data stays on your cluster.</p>
 
+  <div class="card" style="margin-top:18px">
+    <div class="filters" style="margin:0">
+      <label for="dataset" class="small muted">Dataset</label>
+      <select id="dataset" aria-label="Dataset"></select>
+      <span class="small muted" id="dsNote"></span>
+    </div>
+    <div id="queued" class="small" style="margin-top:10px"></div>
+  </div>
+  <div id="dsBanner" style="margin-top:14px"></div>
+
   <section class="grid g3" style="margin-top:20px">
     <div class="card span2">
-      <h3>CD8⁺ T cells in the infusion products</h3>
+      <h3 id="umapTitle">CD8⁺ T cells</h3>
       <div class="sub" id="umapSub">UMAP of single cells; hover a point</div>
       <div class="filters" style="margin:0 0 8px">
         <select id="colorBy" aria-label="Color cells by">
@@ -44,6 +54,14 @@
   </section>
 
   <section class="card">
+    <h3>Across datasets</h3>
+    <div class="sub">Every loaded dataset side by side, same metric. Each study is tested on its own: pooling patients across studies without
+      stratifying mixes batch, platform and therapy into the comparison.</div>
+    <div class="chart" id="pooled"></div>
+    <p class="small muted" id="pooledStats" style="margin-top:8px"></p>
+  </section>
+
+  <section class="card" id="cloneCard">
     <h3>Follow the clones</h3>
     <div class="sub">Top 25 TCRβ clonotypes for one patient across four samples (log₁₀ frequency). Points at the floor were not detected.</div>
     <div class="filters" style="margin:0 0 8px">
@@ -55,17 +73,20 @@
   </section>
 
   <section class="prose">
-    <h2>Regenerate this page from real data</h2>
-    <div class="step"><div class="n">1</div><div><b>Download.</b> <code>analysis/00_download_geo.sh GSE222750 GSE221253</code> on your cluster pulls GEO supplementary files
-      (Barras et al. 2024 scTCR and bulk RNA from the Lausanne TIL trial NCT03475134). Check each paper's data-availability statement for the rest;
-      some cohorts are controlled-access (dbGaP/EGA).</div></div>
-    <div class="step"><div class="n">2</div><div><b>Score.</b> <code>Rscript analysis/01_score_signatures.R --seurat products.rds --meta clinical.csv</code> subsets CD8⁺ cells,
-      scores the gene sets in <code>analysis/signatures/</code> with UCell, and writes <code>cells.json</code> + <code>patients.json</code>.
-      Replace the starter marker panels with the published DN/DP signature genes from the paper's supplement for a faithful replication.</div></div>
-    <div class="step"><div class="n">3</div><div><b>Track clones.</b> <code>Rscript analysis/02_clonotypes.R --airr tcr/*.tsv</code> reads AIRR-format TCR tables,
-      computes frequencies per sample, persistence, and Morisita-Horn overlap, and writes <code>clones.json</code>.</div></div>
-    <div class="step"><div class="n">4</div><div><b>Publish.</b> Copy the three JSON files into <code>site/data/lab/</code> and push. The synthetic banner disappears
-      because real exports set <code>meta.synthetic = false</code>.</div></div>
+    <h2>Load more datasets</h2>
+    <p>Each dataset gets its own folder under <code>analysis/datasets/</code> with a <code>run.sh</code> that downloads, prepares and exports it;
+      the export registers itself in <code>site/data/lab/index.json</code>, so it appears in the dataset picker after you commit.</p>
+    <div class="step"><div class="n">1</div><div><b>Melanoma checkpoint, ready to run.</b> <code>bash analysis/datasets/sadefeldman2018/run.sh</code>
+      (GSE120575, ~64 GB RAM). Patient and response come with the GEO files, so nothing to fill in. Same question as Krishna in a different therapy:
+      baseline tumors, not infusion products.</div></div>
+    <div class="step"><div class="n">2</div><div><b>Lausanne TIL-ACT and cervical TIL, one sample sheet each.</b>
+      <code>bash analysis/datasets/chiffelle2024/run.sh</code> and <code>…/huang2022/run.sh</code> download the GEO files, find every 10x sample,
+      and write <code>data/processed/&lt;id&gt;/samples.csv</code>. Fill in patient, compartment and response from the GEO sample titles and the
+      papers' tables, then run the script again.</div></div>
+    <div class="step"><div class="n">3</div><div><b>Use the real signatures.</b> Replace the starter marker panels in <code>analysis/signatures/</code> with the
+      CD39⁻CD69⁻ / CD39⁺CD69⁺ genes from the Krishna supplement before you call it a replication.</div></div>
+    <div class="step"><div class="n">4</div><div><b>Publish.</b> <code>git add site/data/lab &amp;&amp; git commit &amp;&amp; git push</code>. Real exports set
+      <code>meta.synthetic = false</code>, and the page opens on the first real dataset.</div></div>
   </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>

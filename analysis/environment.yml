@@ -10,3 +10,9 @@ dependencies:
   - r-dplyr
   - r-optparse
   - wget
+  # spatial pipeline (analysis/spatial)
+  - python=3.11
+  - numpy
+  - scipy
+  - pandas
+  - h5py

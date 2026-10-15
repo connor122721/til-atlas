@@ -1,0 +1,15 @@
+{
+ "datasets": [
+  {
+   "id": "demo-cores",
+   "label": "Demo \u00b7 tissue cores",
+   "platform": "synthetic",
+   "study": "Synthetic demo",
+   "therapy": "",
+   "synthetic": true,
+   "path": "data/spatial/demo-cores/",
+   "samples": 12,
+   "hasResponse": true
+  }
+ ]
+}

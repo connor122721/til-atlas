@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Datasets · TIL Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main id="main">
+  <h1>Public datasets</h1>
+  <p class="lede">Studies with downloadable data that can feed this site, each checked against its repository page. A weekly watch on NCBI GEO
+    lists new series that might belong here.</p>
+  <p class="small muted" id="catMeta"></p>
+
+  <div class="filters" role="group" aria-label="Filter datasets">
+    <select id="fTherapy" aria-label="Therapy"><option value="">All therapies</option></select>
+    <select id="fAccess" aria-label="Access">
+      <option value="">Any access</option><option value="open">Open</option><option value="check">Check release</option><option value="unknown">Not confirmed</option>
+    </select>
+    <select id="fUse" aria-label="Site tab">
+      <option value="">Any tab</option><option value="lab">Feeds the replication lab</option><option value="spatial">Feeds the spatial tab</option>
+    </select>
+  </div>
+  <div class="chips" id="fMod" role="group" aria-label="Data type" style="margin:-6px 0 18px"></div>
+
+  <section class="grid g2" id="cards" style="margin-top:0"></section>
+
+  <section>
+    <h2>New on GEO</h2>
+    <p class="muted small" id="geoMeta"></p>
+    <div id="geo"></div>
+  </section>
+</main>
+<script src="assets/common.js"></script>
+<script src="assets/datasets.js"></script>
+</body>
+</html>

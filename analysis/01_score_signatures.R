@@ -8,11 +8,15 @@
 #   --meta     CSV with one row per patient: patient,response[,persistence30]
 #              response must be "Responder" or "Non-responder" (map CR/PR vs SD/PD yourself).
 #   --signatures  directory of one-gene-per-line .txt files (default analysis/signatures)
-#   --out      output directory (default site/data/lab)
+#   --dataset-id  short id; output goes to <out>/<dataset-id>/ and is registered in <out>/index.json
+#   --label / --study / --therapy / --sample-label   text shown on the lab page
+#   --out      lab data root (default site/data/lab)
 #
 # Usage
 #   Rscript analysis/01_score_signatures.R --seurat products.rds --meta clinical.csv \
-#     --sample-col sample_type --sample-value product
+#     --sample-col sample_type --sample-value product \
+#     --dataset-id chiffelle2024 --label "Lausanne TIL-ACT" --study "Chiffelle et al. 2024" \
+#     --therapy TIL-ACT --sample-label "infusion product"
 #
 # What it does
 #   1. keeps CD8 T cells (CD8A/CD8B > 0, CD4 == 0 unless a `celltype` column says otherwise)
@@ -28,6 +32,10 @@ opt <- parse_args(OptionParser(option_list = list(
   make_option("--seurat"), make_option("--meta"),
   make_option("--signatures", default = "analysis/signatures"),
   make_option("--out", default = "site/data/lab"),
+  make_option("--dataset-id", dest = "dataset_id", default = NA),
+  make_option("--label", default = NA), make_option("--study", default = NA),
+  make_option("--therapy", default = NA),
+  make_option("--sample-label", dest = "sample_label", default = "infusion product"),
   make_option("--patient-col", dest = "patient_col", default = "patient"),
   make_option("--sample-col", dest = "sample_col", default = NA),
   make_option("--sample-value", dest = "sample_value", default = NA),
@@ -35,8 +43,10 @@ opt <- parse_args(OptionParser(option_list = list(
   make_option("--resolution", type = "double", default = 0.6),
   make_option("--seed", type = "integer", default = 2020)
 )))
-stopifnot(!is.null(opt$seurat), !is.null(opt$meta))
+stopifnot(!is.null(opt$seurat), !is.null(opt$meta), !is.na(opt$dataset_id))
 set.seed(opt$seed)
+lab_root <- opt$out
+opt$out <- file.path(lab_root, opt$dataset_id)
 dir.create(opt$out, showWarnings = FALSE, recursive = TRUE)
 
 obj  <- readRDS(opt$seurat)
@@ -97,7 +107,8 @@ idx <- unlist(lapply(split(seq_len(ncol(obj)), obj$patient), function(i)
   if (length(i) > opt$max_cells / length(unique(obj$patient))) sample(i, floor(opt$max_cells / length(unique(obj$patient)))) else i))
 um <- Embeddings(obj, "umap")[idx, ]
 labels <- sort(unique(obj$label))
-meta <- list(synthetic = FALSE, source = basename(opt$seurat), sample = "infusion product, CD8+ T cells",
+meta <- list(synthetic = FALSE, source = basename(opt$seurat), sample = paste0(opt$sample_label, ", CD8+ T cells"),
+             dataset = opt$dataset_id, study = opt$study, therapy = opt$therapy,
              clusters = labels, signatures = list(stem = "signatures/stem_like.txt", term = "signatures/terminal.txt"),
              generated = format(Sys.Date()))
 cells <- list(meta = meta, patients = sort(unique(obj$patient)),
@@ -108,4 +119,13 @@ cells <- list(meta = meta, patients = sort(unique(obj$patient)),
 write_json(cells, file.path(opt$out, "cells.json"), auto_unbox = TRUE, digits = NA)
 write_json(list(meta = meta, patients = pat), file.path(opt$out, "patients.json"), auto_unbox = TRUE, digits = 4, pretty = TRUE)
 saveRDS(obj, sub("\\.rds$", ".scored.rds", opt$seurat))
-message("wrote ", paste(file.path(opt$out, c("cells.json", "patients.json")), collapse = ", "))
+# ---- register in the lab index so the page offers this dataset
+idx_path <- file.path(lab_root, "index.json")
+index <- if (file.exists(idx_path)) fromJSON(idx_path, simplifyVector = FALSE) else list(datasets = list())
+entry <- list(id = opt$dataset_id, label = ifelse(is.na(opt$label), opt$dataset_id, opt$label),
+              study = opt$study, therapy = opt$therapy, sample = opt$sample_label, synthetic = FALSE,
+              path = paste0("data/lab/", opt$dataset_id, "/"),
+              hasClones = file.exists(file.path(opt$out, "clones.json")))
+index$datasets <- c(Filter(function(d) d$id != opt$dataset_id, index$datasets), list(entry))
+write_json(index, idx_path, auto_unbox = TRUE, pretty = TRUE, na = "null")
+message("wrote ", paste(file.path(opt$out, c("cells.json", "patients.json")), collapse = ", "), " and updated ", idx_path)

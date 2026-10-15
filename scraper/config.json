@@ -18,5 +18,27 @@
         "query.cond": "cancer OR tumor OR carcinoma OR melanoma OR neoplasm"
       }
     }
-  ]
+  ],
+  "geo": {
+    "_comment": "Weekly NCBI GEO watch: new human GEO series matching these Entrez queries are listed on the Datasets page. Set the NCBI_EMAIL repo secret so NCBI can contact you if a query misbehaves.",
+    "lookback_days": 120,
+    "max_items": 300,
+    "queries": [
+      {
+        "id": "til_sc",
+        "label": "TIL / adoptive transfer, single-cell or spatial",
+        "term": "(\"tumor infiltrating lymphocytes\" OR \"tumor-infiltrating lymphocytes\" OR \"adoptive cell therapy\" OR \"adoptive cell transfer\") AND (\"single cell\" OR \"single-cell\" OR spatial OR TCR)"
+      },
+      {
+        "id": "mel_spatial",
+        "label": "Melanoma immunotherapy, spatial",
+        "term": "(melanoma) AND (immunotherapy OR \"checkpoint\" OR \"PD-1\") AND (spatial OR Visium OR Xenium OR CosMx OR GeoMx OR \"imaging mass cytometry\")"
+      },
+      {
+        "id": "cd8_stem",
+        "label": "Stem-like CD8 T cells in tumors",
+        "term": "(TCF7 OR \"stem-like\" OR \"progenitor exhausted\") AND (\"CD8\") AND (tumor OR cancer) AND (\"single cell\" OR \"single-cell\")"
+      }
+    ]
+  }
 }

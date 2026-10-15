@@ -13,30 +13,11 @@
   <p class="lede">A path through the data behind this site, from pulling a public API to fitting a model of clonal dynamics.
     Each section ends with an exercise that changes something you can see on the site.</p>
 
-  <section>
-    <h2>Public datasets worth knowing</h2>
-    <p class="muted small">Accessions marked “check paper” weren't confirmed when this page was written; the paper's data-availability statement is the source of truth.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Study</th><th>What was measured</th><th>Question it answers</th><th>Data</th></tr></thead>
-        <tbody>
-          <tr><td><b>Krishna et al.</b>, <i>Science</i> 2020</td><td>Flow cytometry on infusion products; scRNA-seq of 18,624 CD8⁺ TILs from 10 products</td>
-            <td>Which product phenotype predicts complete response and persistence? (stem-like CD39⁻CD69⁻)</td><td>Check paper</td></tr>
-          <tr><td><b>Barras et al.</b>, <i>Sci Immunol</i> 2024</td><td>13 melanoma patients (NCT03475134): bulk + scRNA-seq, scTCR, WES, multiplex IF before/after ACT</td>
-            <td>Does the tumor's baseline T cell–myeloid network predict response?</td><td><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE222750">GSE222750</a> (scTCR), <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221253">GSE221253</a> (bulk)</td></tr>
-          <tr><td><b>Chiffelle et al.</b>, <i>Immunity</i> 2024</td><td>Same trial: ~122,000 T cells by scRNA/TCR-seq; bulk TCR-seq tracking ~2.8 million clonotypes</td>
-            <td>Where do product clones come from, and where do they go after infusion?</td><td>Check paper</td></tr>
-          <tr><td><b>Moffitt pooled analysis</b>, <i>Med</i></td><td>60 patients; product flow + TCRβ-seq; tumor multiplex IF for TLS and GeoMx whole-transcriptome spatial profiling</td>
-            <td>Do product stemness and tumor TLS together explain durable response?</td><td>Check paper</td></tr>
-          <tr><td><b>Glioma TIL expandability</b>, preprint 2025</td><td>Spectral flow, TCR-seq, scRNA-seq, Xenium in situ, CODEX</td>
-            <td>Which tumors yield expandable TILs at all? (spatial single-cell)</td><td>Check paper</td></tr>
-          <tr><td><b>BaseTIL longitudinal profiling</b>, preprint 2025</td><td>Tumor-reactive clones traced through expansion, blood and post-treatment lesions</td>
-            <td>Are tumor-reactive clones reinvigorated by manufacturing?</td><td>Check paper</td></tr>
-          <tr><td><b>TRACE</b>, preprint 2026</td><td>Clonotype-level classifier trained on validated tumor-reactive TCRs pooled across studies</td>
-            <td>Can you label tumor-reactive clones from expression alone?</td><td>Check paper</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <section class="card" style="margin-top:20px">
+    <h3>Where the data come from</h3>
+    <p class="small" style="margin:6px 0 0">The <a href="datasets.html">Datasets</a> page lists every public cohort wired into this site — TIL-ACT single-cell
+      (Lausanne, cervical), checkpoint single-cell (Sade-Feldman, Pozniak), and spatial (Xenium melanoma, melanoma IMC, cSCC and HNSCC CosMx) — with
+      accessions, access status and the script that loads each one. A weekly GEO watch adds candidates as they're released.</p>
   </section>
 
   <div class="prose">
@@ -87,7 +68,9 @@ Morisita–Horn   C = 2 Σ x_i y_i / ((Σx_i² / X² + Σy_i² / Y²) · X · Y)
     </ul>
     <p>For a static site, ship summaries rather than images: per-sample neighborhood enrichment, cell-type densities by region, and a small cell table
       for one showcase section. Full images belong in OME-Zarr on object storage, viewed with Vitessce.</p>
-    <p><b>Exercise.</b> Add a “Spatial” tab to the lab that reads <code>neighborhoods.json</code> (sample × cell-type pair × z-score) and draws a heatmap per response group.</p>
+    <p><b>Exercise.</b> Run the Xenium melanoma recipe in <code>analysis/spatial/README.md</code>, then re-export with <code>--radius 15</code> and
+      <code>--radius 50</code>. Which CD8⁺ contacts on the <a href="spatial.html">Spatial</a> tab survive the change? Then do the same for the IMC
+      anti-PD-1 cohort and compare CD8–myeloid z-scores between responders and non-responders.</p>
 
     <h2>5 · Fitting the model</h2>
     <p>The simulator's parameters are set by hand. To fit them to real trajectories, the simplest honest method is <b>approximate Bayesian computation</b>:</p>

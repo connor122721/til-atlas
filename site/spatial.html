@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Spatial · TIL Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main id="main">
+  <h1>Spatial</h1>
+  <p class="lede">Where T cells sit matters as much as how many there are. Barras et al. found CD8⁺ T cell–myeloid networks in tumors that
+    responded to TIL therapy; checkpoint studies find the same kind of signal. This tab maps single cells in tissue and asks which cell types
+    sit together more often than chance.</p>
+
+  <div class="card" style="margin-top:18px">
+    <div class="filters" style="margin:0">
+      <label for="dataset" class="small muted">Dataset</label>
+      <select id="dataset" aria-label="Dataset"></select>
+      <span class="small muted" id="dsNote"></span>
+    </div>
+    <div id="queued" class="small" style="margin-top:10px"></div>
+  </div>
+  <div id="dsBanner" style="margin-top:14px"></div>
+
+  <section class="grid g3" style="margin-top:6px">
+    <div class="card span2">
+      <h3>Tissue map</h3>
+      <div class="sub" id="mapSub">One dot per cell; two cell types highlighted</div>
+      <div class="filters" style="margin:0 0 8px">
+        <select id="sample" aria-label="Sample"></select>
+        <select id="focal" aria-label="Highlight first cell type"></select>
+        <select id="target" aria-label="Highlight second cell type"></select>
+      </div>
+      <div class="legend" id="mapLegend"></div>
+      <div class="chart" id="map2d" style="aspect-ratio:1.25"></div>
+    </div>
+    <div class="card">
+      <h3>Neighborhood enrichment</h3>
+      <div class="sub" id="hmSub"></div>
+      <select id="hmMode" aria-label="Which samples" style="width:100%;margin-bottom:8px">
+        <option value="sample">This sample</option>
+        <option value="R">Responders, mean z</option>
+        <option value="NR">Non-responders, mean z</option>
+        <option value="diff">Responders minus non-responders</option>
+      </select>
+      <div class="legend" id="hmLegend"></div>
+      <div class="chart" id="heat"></div>
+      <p class="small muted" style="margin-top:8px">z &gt; 0: the two types sit within the contact radius more often than in random relabelings of the same cells; z &lt; 0: they avoid each other.</p>
+    </div>
+  </section>
+
+  <section class="grid g3">
+    <div class="card">
+      <h3>Compare by response</h3>
+      <div class="sub">One dot per sample</div>
+      <select id="metric" aria-label="Metric" style="width:100%;margin-bottom:6px"></select>
+      <div class="filters" id="pairPick" style="margin:0 0 6px">
+        <select id="pairA" aria-label="First cell type"></select><select id="pairB" aria-label="Second cell type"></select>
+      </div>
+      <div class="chart" id="strip"></div>
+      <p class="small muted" id="stats" style="margin-top:8px"></p>
+    </div>
+    <div class="card span2">
+      <h3>Samples</h3>
+      <div class="sub">Click a row to map it</div>
+      <div class="table-wrap" style="max-height:420px;overflow:auto"><table id="sampleTable"><thead></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>How these numbers are made</h2>
+    <p>Each platform (Xenium, CosMx, imaging mass cytometry, multiplex IF) is first reduced to one table with a row per cell:
+      sample, x and y in micrometres, a cell type, and the patient's response. <code>analysis/spatial/export_spatial.py</code> then, for each sample,
+      counts every pair of cells closer than the contact radius, shuffles the cell-type labels a few hundred times to see how many contacts
+      chance alone would give, and reports the difference as a z-score. The same script measures each CD8⁺ cell's distance to the nearest tumor
+      cell, which separates <i>inflamed</i> tumors (T cells among tumor cells) from <i>excluded</i> ones (T cells held in the stroma).</p>
+    <p>Per-dataset recipes are in <code>analysis/spatial/README.md</code>; the <a href="datasets.html">Datasets</a> page lists which public cohorts are wired up.</p>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/stats.js"></script>
+<script src="assets/spatial.js"></script>
+</body>
+</html>
