@@ -1,0 +1,30 @@
+[
+ {
+  "date": "2026-10-14",
+  "new": [
+   "NCT90000099"
+  ],
+  "removed": [
+   "NCT90000011"
+  ],
+  "statusChanges": [
+   {
+    "id": "NCT90000001",
+    "from": "ACTIVE_NOT_RECRUITING",
+    "to": "COMPLETED"
+   },
+   {
+    "id": "NCT90000006",
+    "from": "COMPLETED",
+    "to": "TERMINATED"
+   }
+  ]
+ },
+ {
+  "date": "2026-10-07",
+  "new": [],
+  "removed": [],
+  "statusChanges": [],
+  "initial": true
+ }
+]

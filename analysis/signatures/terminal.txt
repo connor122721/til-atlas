@@ -1,0 +1,14 @@
+# STARTER PANEL — canonical terminally differentiated / exhausted CD8 genes, NOT the published signature.
+# Replace with the CD39+CD69+ (DP) gene list from the Krishna et al. 2020 supplement.
+ENTPD1
+CD69
+HAVCR2
+LAG3
+PDCD1
+TOX
+TIGIT
+CTLA4
+CXCL13
+LAYN
+GZMB
+PRF1

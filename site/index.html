@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>TIL Atlas</title>
+<meta name="description" content="Tracking tumor-infiltrating lymphocyte therapy: a weekly-updated trial tracker, a clonal dynamics simulator, and replications of single-cell and spatial TIL studies.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main id="main">
+  <div class="hero">
+    <div>
+      <p class="small" style="color:var(--accent-ink);font-weight:650;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Tumor-infiltrating lymphocyte therapy, in data</p>
+      <h1>Which T cells actually cure cancer?</h1>
+      <p class="lede">TIL therapy takes T cells out of a tumor, grows billions of them, and puts them back. Some patients are cured; most aren't.
+        This site follows the field three ways: a tracker that re-reads ClinicalTrials.gov every week, a simulator for the clones you infuse,
+        and a lab that re-derives published single-cell results from public data.</p>
+      <div class="grid g3" id="heroStats" style="margin-top:18px"></div>
+    </div>
+    <div class="card" style="padding:12px">
+      <div class="chart hero-art" id="heroArt" role="img" aria-label="Simulated clone sizes in a responding patient over six months"></div>
+      <p class="small muted" style="margin:6px 4px 0">One simulated patient, first six months: band width is each infused clone's size (square-root scale). Blue and green clones are tumor-reactive; orange are bystanders.
+        <a href="simulator.html">Make your own →</a></p>
+    </div>
+  </div>
+
+  <section class="grid g4">
+    <a class="card feature" href="trials.html">
+      <div class="kicker">Updated weekly</div>
+      <h3>Trial tracker</h3>
+      <p class="small muted">Every TIL and TCR-T trial, auto-tagged by indication, combination and engineering, with a weekly changelog of new trials and status flips.</p>
+    </a>
+    <a class="card feature" href="simulator.html">
+      <div class="kicker">Interactive model</div>
+      <h3>Clone simulator</h3>
+      <p class="small muted">Stochastic birth–death model of stem-like, effector and exhausted cells per clone. Run a 40-patient virtual trial in a second.</p>
+    </a>
+    <a class="card feature" href="lab.html">
+      <div class="kicker">Replication</div>
+      <h3>Replication lab</h3>
+      <p class="small muted">Krishna 2020's stem-like CD39⁻CD69⁻ signature, scored per product, compared by response, and followed clone by clone.</p>
+    </a>
+    <a class="card feature" href="learn.html">
+      <div class="kicker">Learning path</div>
+      <h3>Learn the methods</h3>
+      <p class="small muted">Public datasets, what each one can answer, and exercises from API scraping to spatial neighborhoods and model fitting.</p>
+    </a>
+  </section>
+
+  <section class="card">
+    <h3>How the site keeps itself current</h3>
+    <div class="sub">Nothing runs on a server; a scheduled GitHub Action does the work and commits small JSON files</div>
+    <div class="chart" id="flow"></div>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/sim-model.js"></script>
+<script src="assets/home.js"></script>
+</body>
+</html>

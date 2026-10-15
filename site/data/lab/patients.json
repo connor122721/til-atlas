@@ -1,0 +1,133 @@
+{
+ "meta": {
+  "synthetic": true,
+  "source": "analysis/make_synthetic_demo.py (invented data)",
+  "sample": "infusion product, CD8+ T cells",
+  "clusters": [
+   "Stem-like (TCF7+ DN)",
+   "Effector memory",
+   "Proliferating",
+   "Effector (GZMB+)",
+   "Terminal exhausted (CD39+ DP)",
+   "Tissue-resident-like"
+  ],
+  "signatures": {
+   "stem": "signatures/stem_like.txt",
+   "term": "signatures/terminal.txt"
+  }
+ },
+ "patients": [
+  {
+   "patient": "P01",
+   "response": "Responder",
+   "nCells": 364,
+   "stemFrac": 0.31,
+   "termFrac": 0.247,
+   "persistence30": 0.569
+  },
+  {
+   "patient": "P02",
+   "response": "Responder",
+   "nCells": 445,
+   "stemFrac": 0.344,
+   "termFrac": 0.22,
+   "persistence30": 0.451
+  },
+  {
+   "patient": "P03",
+   "response": "Responder",
+   "nCells": 388,
+   "stemFrac": 0.26,
+   "termFrac": 0.209,
+   "persistence30": 0.489
+  },
+  {
+   "patient": "P04",
+   "response": "Responder",
+   "nCells": 403,
+   "stemFrac": 0.243,
+   "termFrac": 0.256,
+   "persistence30": 0.681
+  },
+  {
+   "patient": "P05",
+   "response": "Responder",
+   "nCells": 441,
+   "stemFrac": 0.283,
+   "termFrac": 0.215,
+   "persistence30": 0.512
+  },
+  {
+   "patient": "P06",
+   "response": "Responder",
+   "nCells": 346,
+   "stemFrac": 0.165,
+   "termFrac": 0.28,
+   "persistence30": 0.378
+  },
+  {
+   "patient": "P07",
+   "response": "Responder",
+   "nCells": 357,
+   "stemFrac": 0.174,
+   "termFrac": 0.241,
+   "persistence30": 0.542
+  },
+  {
+   "patient": "P08",
+   "response": "Non-responder",
+   "nCells": 365,
+   "stemFrac": 0.052,
+   "termFrac": 0.315,
+   "persistence30": 0.122
+  },
+  {
+   "patient": "P09",
+   "response": "Non-responder",
+   "nCells": 410,
+   "stemFrac": 0.098,
+   "termFrac": 0.295,
+   "persistence30": 0.321
+  },
+  {
+   "patient": "P10",
+   "response": "Non-responder",
+   "nCells": 498,
+   "stemFrac": 0.088,
+   "termFrac": 0.291,
+   "persistence30": 0.239
+  },
+  {
+   "patient": "P11",
+   "response": "Non-responder",
+   "nCells": 429,
+   "stemFrac": 0.103,
+   "termFrac": 0.305,
+   "persistence30": 0.153
+  },
+  {
+   "patient": "P12",
+   "response": "Non-responder",
+   "nCells": 447,
+   "stemFrac": 0.063,
+   "termFrac": 0.309,
+   "persistence30": 0.076
+  },
+  {
+   "patient": "P13",
+   "response": "Non-responder",
+   "nCells": 516,
+   "stemFrac": 0.12,
+   "termFrac": 0.279,
+   "persistence30": 0.037
+  },
+  {
+   "patient": "P14",
+   "response": "Non-responder",
+   "nCells": 482,
+   "stemFrac": 0.019,
+   "termFrac": 0.305,
+   "persistence30": 0.132
+  }
+ ]
+}

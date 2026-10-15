@@ -1,0 +1,27 @@
+{
+  "_comment": "Case-insensitive regexes matched against title + conditions + interventions + keywords. A trial can carry several tags per group. Edit freely; this is the easiest place to start customizing.",
+  "indication": {
+    "Melanoma": "melanoma",
+    "Cervical": "cervical|cervix",
+    "Lung": "lung|nsclc",
+    "Head & neck": "head and neck|hnscc|oropharyn",
+    "Ovarian": "ovarian|ovary",
+    "Colorectal / GI": "colorectal|colon|rectal|gastrointestinal|pancrea|gastric|biliary|cholangio|hepatocellular",
+    "Breast": "breast",
+    "Sarcoma": "sarcoma",
+    "Kidney / bladder": "renal|kidney|urothelial|bladder",
+    "Brain": "glioma|glioblastoma|brain"
+  },
+  "combination": {
+    "anti-PD-1": "pembrolizumab|nivolumab|cemiplimab|anti-pd-1|pd-1 (antibody|inhibitor|blockade)",
+    "anti-CTLA-4": "ipilimumab|tremelimumab|ctla-4",
+    "IL-2": "aldesleukin|interleukin-2|il-2",
+    "Lymphodepletion": "cyclophosphamide|fludarabine|lymphodeplet"
+  },
+  "engineering": {
+    "Gene-edited": "crispr|knockout|gene[- ]edit|cish|pd-1 (knock|kd|ko)",
+    "Cytokine-armored": "il-12|il-15|membrane-bound|armou?red|il-7",
+    "Neoantigen-selected": "neoantigen|neo-antigen|selected til|pd-1\\+|cd39",
+    "Commercial product": "lifileucel|amtagvi|ln-145|obx-115|itil-168|ksq-001"
+  }
+}

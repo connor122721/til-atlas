@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Replication Lab · TIL Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main id="main">
+  <h1>Replication lab</h1>
+  <p class="lede">Re-deriving the central result of Krishna et al. (<em>Science</em> 2020) — stem-like CD39⁻CD69⁻ CD8⁺ cells in the infusion product
+    track with response — and following clones from tumor to product to blood, as in Chiffelle et al. (<em>Immunity</em> 2024).
+    The pages read small JSON files exported by the scripts in <code>analysis/</code>; raw data stays on your cluster.</p>
+
+  <section class="grid g3" style="margin-top:20px">
+    <div class="card span2">
+      <h3>CD8⁺ T cells in the infusion products</h3>
+      <div class="sub" id="umapSub">UMAP of single cells; hover a point</div>
+      <div class="filters" style="margin:0 0 8px">
+        <select id="colorBy" aria-label="Color cells by">
+          <option value="stem">Color: stem-like signature score</option>
+          <option value="term">Color: terminal (CD39⁺) signature score</option>
+          <option value="response">Color: patient response</option>
+          <option value="cluster">Color: highlight one cluster</option>
+        </select>
+        <select id="clusterPick" aria-label="Cluster to highlight" hidden></select>
+      </div>
+      <div class="legend" id="umapLegend"></div>
+      <div class="chart" id="umap" style="aspect-ratio:1.45"></div>
+    </div>
+    <div class="card">
+      <h3>The Krishna comparison</h3>
+      <div class="sub">One dot per patient's product</div>
+      <select id="metric" aria-label="Metric" style="width:100%;margin-bottom:8px">
+        <option value="stemFrac">Stem-like share of CD8⁺ cells</option>
+        <option value="termFrac">Terminal-exhausted share of CD8⁺ cells</option>
+        <option value="persistence30">Persistence in blood, day 30</option>
+      </select>
+      <div class="chart" id="strip"></div>
+      <p class="small muted" id="stats" style="margin-top:8px"></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Follow the clones</h3>
+    <div class="sub">Top 25 TCRβ clonotypes for one patient across four samples (log₁₀ frequency). Points at the floor were not detected.</div>
+    <div class="filters" style="margin:0 0 8px">
+      <select id="patient" aria-label="Patient"></select>
+      <span class="small muted" id="patientNote"></span>
+    </div>
+    <div class="legend" id="cloneLegend"></div>
+    <div class="chart" id="slope"></div>
+  </section>
+
+  <section class="prose">
+    <h2>Regenerate this page from real data</h2>
+    <div class="step"><div class="n">1</div><div><b>Download.</b> <code>analysis/00_download_geo.sh GSE222750 GSE221253</code> on your cluster pulls GEO supplementary files
+      (Barras et al. 2024 scTCR and bulk RNA from the Lausanne TIL trial NCT03475134). Check each paper's data-availability statement for the rest;
+      some cohorts are controlled-access (dbGaP/EGA).</div></div>
+    <div class="step"><div class="n">2</div><div><b>Score.</b> <code>Rscript analysis/01_score_signatures.R --seurat products.rds --meta clinical.csv</code> subsets CD8⁺ cells,
+      scores the gene sets in <code>analysis/signatures/</code> with UCell, and writes <code>cells.json</code> + <code>patients.json</code>.
+      Replace the starter marker panels with the published DN/DP signature genes from the paper's supplement for a faithful replication.</div></div>
+    <div class="step"><div class="n">3</div><div><b>Track clones.</b> <code>Rscript analysis/02_clonotypes.R --airr tcr/*.tsv</code> reads AIRR-format TCR tables,
+      computes frequencies per sample, persistence, and Morisita-Horn overlap, and writes <code>clones.json</code>.</div></div>
+    <div class="step"><div class="n">4</div><div><b>Publish.</b> Copy the three JSON files into <code>site/data/lab/</code> and push. The synthetic banner disappears
+      because real exports set <code>meta.synthetic = false</code>.</div></div>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/charts.js"></script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

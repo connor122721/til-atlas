@@ -1,0 +1,22 @@
+{
+  "_comment": "Each topic is one search against https://clinicaltrials.gov/api/v2/studies. Parameters use the API's Essie expression syntax (OR, AND, quoted phrases). Add a topic, push, and the next weekly run picks it up.",
+  "user_agent": "til-atlas/0.1 (+https://github.com/connor122721/til-atlas)",
+  "page_size": 200,
+  "topics": [
+    {
+      "id": "til",
+      "label": "TIL therapy",
+      "params": {
+        "query.intr": "\"tumor infiltrating lymphocytes\" OR \"tumor-infiltrating lymphocytes\" OR \"tumor infiltrating lymphocyte\" OR \"tumor-infiltrating lymphocyte\" OR lifileucel OR \"TIL therapy\""
+      }
+    },
+    {
+      "id": "tcrt",
+      "label": "Neoantigen TCR-T",
+      "params": {
+        "query.intr": "\"TCR-T\" OR \"TCR-engineered\" OR \"T cell receptor engineered\" OR \"neoantigen-specific T cells\"",
+        "query.cond": "cancer OR tumor OR carcinoma OR melanoma OR neoplasm"
+      }
+    }
+  ]
+}

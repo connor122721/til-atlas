@@ -1,0 +1,43 @@
+name: Scrape ClinicalTrials.gov
+
+on:
+  schedule:
+    - cron: "17 11 * * 1"   # Mondays 11:17 UTC (07:17 Eastern during DST); off the hour to dodge cron congestion
+  workflow_dispatch: {}     # "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write           # to commit site/data/*.json
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Offline tests
+        run: python -m unittest discover -s scraper/tests -v
+
+      - name: Fetch, tag and diff
+        run: python scraper/fetch_trials.py
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "til-atlas-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/trials.json site/data/history.json site/data/changelog.json
+          if git diff --cached --quiet; then
+            echo "No changes this week."
+          else
+            n=$(python -c "import json;print(json.load(open('site/data/trials.json'))['meta']['count'])")
+            git commit -m "data: weekly trial pull $(date -u +%F) (${n} trials)"
+            git push
+          fi

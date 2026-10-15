@@ -1,0 +1,13 @@
+# STARTER PANEL — canonical stem-like / memory-progenitor CD8 genes, NOT the published signature.
+# For a faithful replication, replace with the CD39-CD69- (DN) gene list from the
+# supplementary tables of Krishna et al., Science 2020.
+TCF7
+LEF1
+SELL
+IL7R
+CCR7
+CD27
+CD28
+GPR183
+MYB
+BACH2

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Clone Simulator · TIL Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main id="main">
+  <h1>Clone simulator</h1>
+  <p class="lede">Build an infusion product, give it to a virtual patient, and watch every clone expand, differentiate, exhaust, or vanish over a year.
+    The question it lets you poke at is the one from Krishna et al.: <em>why do stem-like CD39⁻CD69⁻ cells predict durable response?</em></p>
+
+  <div class="sim">
+    <aside class="card controls" aria-label="Simulation controls">
+      <div class="group">
+        <div class="gl">Presets</div>
+        <div class="chips" id="presets"></div>
+      </div>
+      <div class="group">
+        <div class="gl">Infusion product</div>
+        <div class="slider"><label for="cells">Cells infused <output id="cells-o"></output></label><input id="cells" type="range" min="9" max="11.3" step="0.1" value="10.5"></div>
+        <div class="slider"><label for="stem">Stem-like (CD39⁻CD69⁻) share <output id="stem-o"></output></label><input id="stem" type="range" min="0" max="0.6" step="0.01" value="0.2"></div>
+        <div class="slider"><label for="reactive">Tumor-reactive clones <output id="reactive-o"></output></label><input id="reactive" type="range" min="0" max="0.7" step="0.01" value="0.25"></div>
+        <div class="slider"><label for="avidity">Mean functional avidity <output id="avidity-o"></output></label><input id="avidity" type="range" min="0.2" max="2" step="0.05" value="1"></div>
+        <div class="slider"><label for="clonality">Product clonality (Zipf α) <output id="clonality-o"></output></label><input id="clonality" type="range" min="0.3" max="2" step="0.05" value="1.1"></div>
+      </div>
+      <div class="group">
+        <div class="gl">Patient</div>
+        <div class="slider"><label><span>Lymphodepletion (Cy/Flu)</span><input id="lymphodep" type="checkbox" checked></label></div>
+        <div class="slider"><label for="il2">IL-2 support (days) <output id="il2-o"></output></label><input id="il2" type="range" min="0" max="6" step="1" value="3"></div>
+        <div class="slider"><label for="growth">Tumor doubling time <output id="growth-o"></output></label><input id="growth" type="range" min="8" max="60" step="1" value="20"></div>
+        <div class="slider"><label for="resist">Tumor resistance <output id="resist-o"></output></label><input id="resist" type="range" min="0.3" max="4" step="0.1" value="1"></div>
+      </div>
+      <div class="group" style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn" id="reseed" type="button" title="Same settings, new random draw">New random patient</button>
+        <button class="btn primary" id="cohort" type="button">Run a 40-patient trial</button>
+      </div>
+      <p class="small muted" id="seedNote"></p>
+    </aside>
+
+    <div>
+      <div class="grid g4" id="tiles"></div>
+
+      <div class="card" style="margin-top:14px">
+        <h3>Clonal composition of the infused cells</h3>
+        <div class="sub">Each band is one TCR clone; its height is the clone's share of all surviving infused cells. Hover a band.</div>
+        <div class="legend" id="mullerLegend"></div>
+        <div class="chart" id="muller"></div>
+      </div>
+
+      <div class="grid g2" style="margin-top:14px">
+        <div class="card">
+          <h3>Infused T cells by state</h3>
+          <div class="sub">Cells ×10⁶, log scale; endogenous T cells regrow after lymphodepletion</div>
+          <div class="legend" id="stateLegend"></div>
+          <div class="chart" id="states"></div>
+        </div>
+        <div class="card">
+          <h3>Tumor burden</h3>
+          <div class="sub">Relative to baseline, log scale. Dashed lines are RECIST −30% and +20% in <em>diameter</em></div>
+          <div class="chart" id="tumor"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3>What blood TCRβ-seq would see</h3>
+        <div class="sub">20,000 reads drawn from blood at each visit. Persistence = share of reads from infused clones, the classic ACT biomarker.</div>
+        <div class="table-wrap" style="border:none"><table id="blood"><thead><tr>
+          <th>Day</th><th class="num">Persistence</th><th class="num">Infused clones detected</th><th class="num">Top clone</th><th class="num">True infused share</th>
+        </tr></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="card" id="cohortCard" style="margin-top:14px" hidden>
+        <h3>Virtual trial: best response per patient</h3>
+        <div class="sub" id="cohortSub"></div>
+        <div class="legend" id="cohortLegend"></div>
+        <div class="chart" id="waterfall"></div>
+        <h3 style="margin-top:18px">Does product stemness predict response?</h3>
+        <div class="sub">Each patient's product varies around the sliders, like real manufacturing runs. This is the Krishna analysis, on virtual patients.</div>
+        <div class="chart" id="scatter"></div>
+        <p class="small muted" id="scatterNote" style="margin-top:6px"></p>
+        <p class="small muted">Expect more responses here than in real TIL trials, which report objective responses in roughly a third to a half of patients:
+          the model has no HLA loss, no antigen-negative escape and no manufacturing failures. Adding one of those is a good first modification.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="prose">
+    <h2>What the model is (and isn't)</h2>
+    <p>Each of 80 infused clones has three compartments: <b>S</b> stem-like (TCF7⁺, the CD39⁻CD69⁻ “DN” cells),
+      <b>E</b> effector, and <b>X</b> terminally exhausted (CD39⁺CD69⁺ “DP”). Cells are counted in units of 10⁶ and every
+      event (division, death, differentiation) is a Poisson draw each quarter-day, so small clones can disappear by chance.</p>
+    <pre>
+antigen drive  A_i = r_i · a_i · Tu / (Tu + K_T)
+               r_i ∈ {0,1} tumor-reactive, a_i functional avidity
+homeostatic    H(t) = h0 · e^(−t/7)            (only after lymphodepletion)
+
+S  self-renew  ρ_S (H + IL2 + 0.05 A) · crowd    S → S + S
+   asymmetric  ρ_A · A                         S → S + E
+   lose stem   δ · A        die  μ_S (slow)
+E  divide      ρ_E (H + IL2 + A) · crowd
+   exhaust     ε · A        die  μ_E (fast)    E → X
+X  die         μ_X          kills at 30% of E strength
+
+tumor   dTu/dt = g·Tu·(1 − Tu/Tmax) − k·Tu · K / (K + Kh·resistance)
+        K = Σ_i a_i (E_i + 0.3 X_i)</pre>
+    <p>The behavior that matters: effectors do the killing but die within weeks, so a product's <em>initial</em> effector mass buys a
+      response, while its reactive stem-like pool decides whether new effectors keep coming once the infused ones are gone. Lower the
+      stem-like share with everything else fixed and you'll usually see a partial response followed by relapse.</p>
+    <p class="muted">Parameters are illustrative, set by hand to reproduce qualitative patterns reported in the TIL literature; they are not fitted to patient
+      data. A good exercise: fit them to real clonotype trajectories (see the <a href="learn.html">Learn</a> page).</p>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/charts.js"></script>
+<script src="assets/sim-model.js"></script>
+<script src="assets/simulator.js"></script>
+</body>
+</html>

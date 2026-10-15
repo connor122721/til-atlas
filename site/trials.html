@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Trial Tracker · TIL Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+</head>
+<body>
+<main id="main">
+  <h1>Trial tracker</h1>
+  <p class="lede">Every TIL and neoantigen TCR-T trial registered on ClinicalTrials.gov, re-pulled weekly. Filter, sort, map, and download what you see.</p>
+  <p class="small muted" id="meta">Loading…</p>
+
+  <div class="filters" role="group" aria-label="Filters">
+    <input type="search" id="q" placeholder="Search title, sponsor, NCT ID, intervention…" aria-label="Search">
+    <select id="status" aria-label="Status"><option value="">All statuses</option></select>
+    <select id="phase" aria-label="Phase"><option value="">All phases</option></select>
+    <select id="topic" aria-label="Topic"><option value="">All topics</option></select>
+    <select id="combo" aria-label="Combination or engineering"><option value="">Any design</option></select>
+    <button class="btn" id="reset" type="button">Reset</button>
+    <button class="btn" id="csv" type="button">Download CSV</button>
+  </div>
+  <div class="chips" id="indications" role="group" aria-label="Indication" style="margin:-6px 0 18px"></div>
+
+  <div class="grid g4" id="stats"></div>
+
+  <section class="grid g2">
+    <div class="card">
+      <h3>New registrations per year</h3>
+      <div class="sub">Trials matching the filters, by first-posted date</div>
+      <div class="chart" id="byYear"></div>
+    </div>
+    <div class="card">
+      <h3>Indications</h3>
+      <div class="sub">A basket trial counts once per indication it names</div>
+      <div class="chart" id="byIndication"></div>
+    </div>
+  </section>
+
+  <section class="grid g3">
+    <div class="card span2">
+      <h3>Where trials enroll</h3>
+      <div class="sub">One circle per city, sized by number of matching trials</div>
+      <div id="map" role="img" aria-label="Map of trial sites"></div>
+    </div>
+    <div class="card">
+      <h3>This week</h3>
+      <div class="sub" id="logDate">Changes since the previous weekly pull</div>
+      <div id="changelog" class="small"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 id="tableTitle">Trials</h2>
+    <div class="table-wrap">
+      <table id="table">
+        <thead><tr>
+          <th data-key="id">NCT ID</th><th data-key="title">Title</th><th data-key="status">Status</th>
+          <th data-key="phase">Phase</th><th data-key="indication">Indication</th><th data-key="sponsor">Lead sponsor</th>
+          <th data-key="start">Start</th><th data-key="enrollment" class="num">Enrolled</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p style="margin-top:10px"><button class="btn" id="more" type="button" hidden>Show more</button></p>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/charts.js"></script>
+<script src="assets/trials.js"></script>
+</body>
+</html>

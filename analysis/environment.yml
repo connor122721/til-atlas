@@ -1,0 +1,12 @@
+# conda env create -f analysis/environment.yml   (or mamba)
+name: til-atlas
+channels: [conda-forge, bioconda]
+dependencies:
+  - r-base=4.3
+  - r-seurat>=5
+  - bioconductor-ucell
+  - r-jsonlite
+  - r-data.table
+  - r-dplyr
+  - r-optparse
+  - wget
