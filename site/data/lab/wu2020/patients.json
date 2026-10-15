@@ -1,0 +1,207 @@
+{
+ "meta": {
+  "synthetic": false,
+  "dataset": "wu2020",
+  "study": "Wu et al. 2020",
+  "therapy": "untreated (surgical resection)",
+  "sample": "tumor, normal adjacent tissue and blood",
+  "clusters": [
+   "8.1-Teff",
+   "8.2-Tem",
+   "8.3a-Trm",
+   "8.3b-Trm",
+   "8.3c-Trm",
+   "8.4-Chrom",
+   "8.5-Mitosis",
+   "8.6-KLRB1"
+  ],
+  "groupBy": "cancer",
+  "source": "GSE139555 via scirpy GitHub release d0.1.0 (wu2020.h5ad)",
+  "signatures": {
+   "stem": [
+    "TCF7",
+    "LEF1",
+    "SELL",
+    "IL7R",
+    "CCR7",
+    "CD27",
+    "CD28",
+    "GPR183",
+    "MYB",
+    "BACH2"
+   ],
+   "term": [
+    "ENTPD1",
+    "CD69",
+    "HAVCR2",
+    "LAG3",
+    "PDCD1",
+    "TOX",
+    "TIGIT",
+    "CTLA4",
+    "CXCL13",
+    "LAYN",
+    "GZMB",
+    "PRF1"
+   ],
+   "react": [
+    "CXCL13",
+    "ENTPD1",
+    "ITGAE",
+    "PDCD1",
+    "TNFRSF9",
+    "HAVCR2",
+    "LAYN",
+    "TOX"
+   ]
+  },
+  "scoreNote": "mean z-scored log-normalized expression across CD8 T cells",
+  "compartmentsOfCells": [
+   "Tumor",
+   "NAT",
+   "Blood"
+  ]
+ },
+ "patients": [
+  {
+   "patient": "Colon1",
+   "group": "Colorectal",
+   "response": null,
+   "nCells": 955,
+   "stemFrac": 0.245,
+   "termFrac": 0.277,
+   "persistence30": null,
+   "dualExpanded": 0.22
+  },
+  {
+   "patient": "Colon2",
+   "group": "Colorectal",
+   "response": null,
+   "nCells": 213,
+   "stemFrac": 0.324,
+   "termFrac": 0.249,
+   "persistence30": null,
+   "dualExpanded": 0.0
+  },
+  {
+   "patient": "Endo1",
+   "group": "Endometrial",
+   "response": null,
+   "nCells": 4730,
+   "stemFrac": 0.137,
+   "termFrac": 0.368,
+   "persistence30": null,
+   "dualExpanded": 0.307
+  },
+  {
+   "patient": "Endo2",
+   "group": "Endometrial",
+   "response": null,
+   "nCells": 3848,
+   "stemFrac": 0.101,
+   "termFrac": 0.176,
+   "persistence30": null,
+   "dualExpanded": 0.126
+  },
+  {
+   "patient": "Endo3",
+   "group": "Endometrial",
+   "response": null,
+   "nCells": 2667,
+   "stemFrac": 0.156,
+   "termFrac": 0.53,
+   "persistence30": null,
+   "dualExpanded": 0.054
+  },
+  {
+   "patient": "Renal1",
+   "group": "Kidney",
+   "response": null,
+   "nCells": 1790,
+   "stemFrac": 0.082,
+   "termFrac": 0.06,
+   "persistence30": null,
+   "dualExpanded": 0.598
+  },
+  {
+   "patient": "Renal2",
+   "group": "Kidney",
+   "response": null,
+   "nCells": 1996,
+   "stemFrac": 0.068,
+   "termFrac": 0.072,
+   "persistence30": null,
+   "dualExpanded": 0.749
+  },
+  {
+   "patient": "Renal3",
+   "group": "Kidney",
+   "response": null,
+   "nCells": 591,
+   "stemFrac": 0.245,
+   "termFrac": 0.086,
+   "persistence30": null,
+   "dualExpanded": 0.383
+  },
+  {
+   "patient": "Lung1",
+   "group": "Lung",
+   "response": null,
+   "nCells": 2702,
+   "stemFrac": 0.237,
+   "termFrac": 0.525,
+   "persistence30": null,
+   "dualExpanded": 0.279
+  },
+  {
+   "patient": "Lung2",
+   "group": "Lung",
+   "response": null,
+   "nCells": 3849,
+   "stemFrac": 0.313,
+   "termFrac": 0.487,
+   "persistence30": null,
+   "dualExpanded": 0.452
+  },
+  {
+   "patient": "Lung3",
+   "group": "Lung",
+   "response": null,
+   "nCells": 2783,
+   "stemFrac": 0.117,
+   "termFrac": 0.52,
+   "persistence30": null,
+   "dualExpanded": 0.084
+  },
+  {
+   "patient": "Lung4",
+   "group": "Lung",
+   "response": null,
+   "nCells": 3693,
+   "stemFrac": 0.115,
+   "termFrac": 0.23,
+   "persistence30": null,
+   "dualExpanded": 0.308
+  },
+  {
+   "patient": "Lung5",
+   "group": "Lung",
+   "response": null,
+   "nCells": 1001,
+   "stemFrac": 0.287,
+   "termFrac": 0.477,
+   "persistence30": null,
+   "dualExpanded": 0.12
+  },
+  {
+   "patient": "Lung6",
+   "group": "Lung",
+   "response": null,
+   "nCells": 1217,
+   "stemFrac": 0.177,
+   "termFrac": 0.683,
+   "persistence30": null,
+   "dualExpanded": 0.217
+  }
+ ]
+}

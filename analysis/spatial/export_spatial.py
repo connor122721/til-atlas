@@ -79,7 +79,6 @@ def main(argv=None) -> int:
     ap.add_argument("--target", default="Tumor")
     ap.add_argument("--max-cells", type=int, default=25000, help="cells per sample kept for the map")
     ap.add_argument("--min-cells", type=int, default=200, help="skip samples smaller than this")
-    ap.add_argument("--synthetic", action="store_true")
     ap.add_argument("--out", type=Path, default=ROOT / "site" / "data" / "spatial")
     ap.add_argument("--seed", type=int, default=1)
     a = ap.parse_args(argv)
@@ -135,7 +134,7 @@ def main(argv=None) -> int:
         print(f"  {sid}: {len(g)} cells, {area:.3f} mm²", file=sys.stderr)
 
     meta = {"dataset": a.dataset_id, "label": a.label, "platform": a.platform, "study": a.study, "therapy": a.therapy,
-            "synthetic": a.synthetic, "cellTypes": types, "radiusUm": a.radius, "perms": a.perms,
+            "cellTypes": types, "radiusUm": a.radius, "perms": a.perms,
             "focal": a.focal, "target": a.target, "units": "µm", "source": Path(a.table).name}
     (out / "samples.json").write_text(json.dumps({"meta": meta, "samples": samples}, indent=1))
     (out / "nhood.json").write_text(json.dumps({"meta": meta, "types": types, "z": nhood}, separators=(",", ":")))
@@ -143,7 +142,7 @@ def main(argv=None) -> int:
     idx_path = a.out / "index.json"
     index = json.loads(idx_path.read_text()) if idx_path.exists() else {"datasets": []}
     entry = {"id": a.dataset_id, "label": a.label, "platform": a.platform, "study": a.study, "therapy": a.therapy,
-             "synthetic": a.synthetic, "path": f"data/spatial/{a.dataset_id}/",
+             "path": f"data/spatial/{a.dataset_id}/",
              "samples": len(samples), "hasResponse": any(s["response"] for s in samples)}
     index["datasets"] = [d for d in index["datasets"] if d["id"] != a.dataset_id] + [entry]
     idx_path.write_text(json.dumps(index, indent=1))

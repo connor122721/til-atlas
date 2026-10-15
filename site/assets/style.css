@@ -232,3 +232,10 @@ footer .inner { max-width: 1240px; margin: 0 auto; padding-block: 18px 40px;
 .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 14px; }
 tbody tr.sel { background: color-mix(in srgb, var(--accent) 12%, var(--surface-1)); }
 td.mono { white-space: nowrap; }
+
+.empty { margin-top: 22px; padding: 28px 24px; border-style: dashed; max-width: 760px; }
+.empty h3 { margin-bottom: 8px; }
+.empty p { color: var(--text-secondary); margin: 0 0 .6em; }
+.pills { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.pill.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pill.on::before { background: #fff; }

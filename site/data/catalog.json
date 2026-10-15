@@ -1,7 +1,96 @@
 {
-  "_comment": "Curated public datasets. Only facts confirmed from the repository page or paper go in; anything unconfirmed says so in `status`/`notes`. `use` says which site tab the dataset feeds; `pipeline` points at the scripts that download and convert it.",
-  "updated": "2026-10-14",
+  "_comment": "Curated public datasets. Only facts confirmed from the repository page or paper. access: open / check (accession listed but release not confirmed) / unknown / none (no public data). onSite: shown on the site now.",
+  "updated": "2026-10-15",
   "datasets": [
+    {
+      "id": "wu2020",
+      "short": "Tumor, normal tissue and blood T cells",
+      "paper": "Wu et al., Nature 2020 — Peripheral T cell expansion predicts tumour infiltration and clinical response",
+      "cancer": "Lung, endometrial, colorectal, kidney",
+      "therapy": "Untreated (surgery)",
+      "modalities": [
+        "scRNA-seq",
+        "scTCR-seq"
+      ],
+      "samples": "141,623 T cells from 14 patients: tumor, normal adjacent tissue, and blood for 4 patients",
+      "access": "open",
+      "onSite": true,
+      "accessions": [
+        {
+          "label": "GEO GSE139555",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE139555"
+        },
+        {
+          "label": "Processed file (scirpy GitHub release)",
+          "url": "https://github.com/scverse/scirpy/releases/tag/d0.1.0"
+        }
+      ],
+      "status": "On the site: Single-cell tab and the simulator's starting repertoires",
+      "use": [
+        "lab",
+        "sim"
+      ],
+      "pipeline": "analysis/datasets/wu2020/prepare.py"
+    },
+    {
+      "id": "maynard2020",
+      "short": "Lung tumor B and T cell receptors",
+      "paper": "Maynard et al., Cell 2020 — Therapy-induced evolution of human lung cancer revealed by single-cell RNA sequencing",
+      "cancer": "Lung",
+      "therapy": "Targeted therapy (EGFR/ALK/BRAF/ROS1)",
+      "modalities": [
+        "scRNA-seq (Smart-seq2)",
+        "BCR (BraCeR)",
+        "TCR (TraCeR)"
+      ],
+      "samples": "1,506 B cell and 3,505 T cell receptors from biopsies before treatment, at residual disease and at progression",
+      "access": "open",
+      "onSite": true,
+      "accessions": [
+        {
+          "label": "SRA PRJNA591860",
+          "url": "https://www.ebi.ac.uk/ena/browser/view/PRJNA591860"
+        },
+        {
+          "label": "Processed file (scirpy GitHub release)",
+          "url": "https://github.com/scverse/scirpy/releases/tag/d0.1.0"
+        }
+      ],
+      "status": "On the site: B and T cell receptor panel",
+      "use": [
+        "lab"
+      ],
+      "pipeline": "analysis/datasets/maynard2020/prepare.py"
+    },
+    {
+      "id": "iatlas_ici",
+      "short": "Nine checkpoint trials, bulk RNA-seq",
+      "paper": "CRI iAtlas-harmonized immune checkpoint cohorts (Liu 2019, Gide 2019, Riaz 2017, Hugo 2016, IMvigor210, IMmotion150, Choueiri 2016, Anders 2022, PRINCE 2022)",
+      "cancer": "Melanoma, bladder, kidney, breast, pancreas",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "bulk RNA-seq",
+        "immune signatures"
+      ],
+      "samples": "918 patients with a pre-treatment biopsy and response labels",
+      "access": "open",
+      "onSite": true,
+      "accessions": [
+        {
+          "label": "cBioPortal datahub (ODbL)",
+          "url": "https://github.com/cBioPortal/datahub"
+        },
+        {
+          "label": "CRI iAtlas",
+          "url": "https://cri-iatlas.org/"
+        }
+      ],
+      "status": "On the site: Bulk RNA tab",
+      "use": [
+        "bulk"
+      ],
+      "pipeline": "analysis/bulk/fetch_iatlas.py"
+    },
     {
       "id": "chiffelle2024",
       "short": "Lausanne TIL-ACT clonotypes",
@@ -28,7 +117,8 @@
       "use": [
         "lab"
       ],
-      "pipeline": "analysis/datasets/chiffelle2024/"
+      "pipeline": "analysis/datasets/chiffelle2024/",
+      "onSite": false
     },
     {
       "id": "barras2024",
@@ -58,7 +148,8 @@
       "use": [
         "lab"
       ],
-      "pipeline": "analysis/datasets/chiffelle2024/"
+      "pipeline": "analysis/datasets/chiffelle2024/",
+      "onSite": false
     },
     {
       "id": "huang2022",
@@ -86,7 +177,8 @@
       "use": [
         "lab"
       ],
-      "pipeline": "analysis/datasets/huang2022/"
+      "pipeline": "analysis/datasets/huang2022/",
+      "onSite": false
     },
     {
       "id": "sadefeldman2018",
@@ -113,7 +205,8 @@
       "use": [
         "lab"
       ],
-      "pipeline": "analysis/datasets/sadefeldman2018/"
+      "pipeline": "analysis/datasets/sadefeldman2018/",
+      "onSite": false
     },
     {
       "id": "pozniak2024",
@@ -137,7 +230,8 @@
       "use": [
         "lab"
       ],
-      "pipeline": null
+      "pipeline": null,
+      "onSite": false
     },
     {
       "id": "krishna2020",
@@ -150,18 +244,19 @@
         "flow cytometry"
       ],
       "samples": "18,624 CD8+ TILs from 10 infusion products (scRNA-seq); flow on products from a larger cohort",
-      "access": "unknown",
+      "access": "none",
       "accessions": [
         {
           "label": "Paper (PMC8883579)",
           "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8883579"
         }
       ],
-      "status": "Data accession not confirmed; check the paper's data availability statement",
+      "status": "No public deposit: the data are not in GEO/dbGaP or the supplementary materials. Listed for reference.",
       "use": [
         "lab"
       ],
-      "pipeline": null
+      "pipeline": null,
+      "onSite": false
     },
     {
       "id": "xenium_melanoma",
@@ -188,7 +283,8 @@
       "use": [
         "spatial"
       ],
-      "pipeline": "analysis/spatial/README.md (Xenium)"
+      "pipeline": "analysis/spatial/README.md (Xenium)",
+      "onSite": false
     },
     {
       "id": "imc_melanoma_pd1",
@@ -211,7 +307,8 @@
       "use": [
         "spatial"
       ],
-      "pipeline": "analysis/spatial/README.md (IMC)"
+      "pipeline": "analysis/spatial/README.md (IMC)",
+      "onSite": false
     },
     {
       "id": "cscc_spatial_pd1",
@@ -234,7 +331,8 @@
       "use": [
         "spatial"
       ],
-      "pipeline": "analysis/spatial/README.md (cSCC)"
+      "pipeline": "analysis/spatial/README.md (cSCC)",
+      "onSite": false
     },
     {
       "id": "hnscc_cosmx_icb",
@@ -258,7 +356,8 @@
       "use": [
         "spatial"
       ],
-      "pipeline": "analysis/spatial/README.md (CosMx)"
+      "pipeline": "analysis/spatial/README.md (CosMx)",
+      "onSite": false
     },
     {
       "id": "moffitt_til_geomx",
@@ -278,6 +377,89 @@
       "status": "Data availability not confirmed — the closest TIL-specific spatial dataset if released",
       "use": [
         "spatial"
+      ],
+      "pipeline": null,
+      "onSite": false
+    },
+    {
+      "id": "lauss2017",
+      "short": "TIL therapy, pre-treatment RNA-seq",
+      "paper": "Lauss et al., Nat Commun 2017 — Mutational and putative neoantigen load predict clinical benefit of adoptive T cell therapy in melanoma",
+      "cancer": "Melanoma",
+      "therapy": "TIL-ACT",
+      "trial": "NCT00937625",
+      "modalities": [
+        "bulk RNA-seq",
+        "WES"
+      ],
+      "samples": "27 patients treated with TIL (5 CR, 7 PR, 10 SD, 5 PD); RNA-seq for 25",
+      "access": "open",
+      "onSite": false,
+      "accessions": [
+        {
+          "label": "GEO GSE100797",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE100797"
+        },
+        {
+          "label": "Paper (clinical table: Supplementary Data 4)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5701046"
+        }
+      ],
+      "status": "Public on GEO (not reachable from GitHub); score it with geo_cohort.py on your machine",
+      "use": [
+        "bulk"
+      ],
+      "pipeline": "analysis/bulk/geo_cohort.py"
+    },
+    {
+      "id": "yost2019",
+      "short": "Clonal replacement after PD-1 blockade",
+      "paper": "Yost et al., Nat Med 2019 — Clonal replacement of tumor-specific T cells following PD-1 blockade",
+      "cancer": "Basal cell carcinoma",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "scRNA-seq",
+        "scTCR-seq"
+      ],
+      "samples": "Site-matched tumor biopsies before and after anti-PD-1",
+      "access": "open",
+      "onSite": false,
+      "accessions": [
+        {
+          "label": "GEO GSE123813",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE123813"
+        }
+      ],
+      "status": "Public since May 2019; real before/after clone dynamics — the best next input for the simulator",
+      "use": [
+        "lab",
+        "sim"
+      ],
+      "pipeline": null
+    },
+    {
+      "id": "caushi2021",
+      "short": "Neoantigen-specific TILs, lung, neoadjuvant PD-1",
+      "paper": "Caushi et al., Nature 2021 — Transcriptional programs of neoantigen-specific TIL in anti-PD-1-treated lung cancers",
+      "cancer": "Lung",
+      "therapy": "Checkpoint blockade",
+      "modalities": [
+        "scRNA-seq",
+        "scTCR-seq",
+        "functional TCR specificity"
+      ],
+      "samples": "Tumor, normal lung and blood; GEO SuperSeries",
+      "access": "check",
+      "onSite": false,
+      "accessions": [
+        {
+          "label": "GEO GSE173351 (SuperSeries)",
+          "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE173351"
+        }
+      ],
+      "status": "SuperSeries released July 2021; check which SubSeries carry TCR and response",
+      "use": [
+        "lab"
       ],
       "pipeline": null
     }

@@ -55,20 +55,33 @@
   function simulate(opts = {}) {
     const o = { ...DEFAULTS, ...opts }, R = rng(o.seed), P = { ...PARAMS, ...(opts.params || {}) };
     // ---- build the infusion product
-    const w = Array.from({ length: o.nClones }, (_, k) => Math.pow(k + 1, -o.clonality));
-    const wsum = w.reduce((a, b) => a + b, 0);
-    const order = Array.from({ length: o.nClones }, (_, k) => k).sort(() => R() - 0.5); // which ranks are reactive
-    const nReactive = Math.round(o.reactiveFrac * o.nClones);
-    const clones = w.map((wi, k) => {
-      const n = Math.max(1, Math.round(o.productCells * wi / wsum));
-      const reactive = order.indexOf(k) < nReactive;
-      const a = reactive ? o.avidity * Math.exp(0.45 * normal(R)) : 0;
-      // stem share varies a little per clone around the product mean
-      const s = Math.min(0.95, Math.max(0, o.stemFrac * Math.exp(0.4 * normal(R))));
-      const S = Math.round(n * s), X = Math.round((n - S) * 0.55), E = n - S - X;
-      return { id: k + 1, reactive, avidity: a, cls: !reactive ? "bystander" : a >= o.avidity ? "high" : "low",
-        S, E, X, infused: n, stem0: s };
-    });
+    let clones;
+    if (o.repertoire) {
+      // REAL INPUT: clone sizes and S/E/X composition from a patient's tumor CD8 repertoire, scaled to the
+      // infused cell number. Avidity is not measured, so predicted-reactive clones draw it around o.avidity.
+      const tot = o.repertoire.reduce((a, c) => a + c.S + c.E + c.X, 0);
+      const k = o.productCells / tot;
+      clones = o.repertoire.map((c, i) => {
+        const S = Math.round(c.S * k), E = Math.round(c.E * k), X = Math.max(Math.round(c.X * k), S + E ? 0 : 1);
+        const a = c.reactive ? o.avidity * Math.exp(0.45 * normal(R)) : 0;
+        return { id: i + 1, label: c.id, reactive: c.reactive, avidity: a, cls: c.reactive ? "high" : "bystander",
+          S, E, X, infused: S + E + X, stem0: (c.S) / (c.S + c.E + c.X), inBlood: c.inBlood, inNAT: c.inNAT };
+      });
+    } else {
+      const w = Array.from({ length: o.nClones }, (_, k) => Math.pow(k + 1, -o.clonality));
+      const wsum = w.reduce((a, b) => a + b, 0);
+      const order = Array.from({ length: o.nClones }, (_, k) => k).sort(() => R() - 0.5); // which ranks are reactive
+      const nReactive = Math.round(o.reactiveFrac * o.nClones);
+      clones = w.map((wi, k) => {
+        const n = Math.max(1, Math.round(o.productCells * wi / wsum));
+        const reactive = order.indexOf(k) < nReactive;
+        const a = reactive ? o.avidity * Math.exp(0.45 * normal(R)) : 0;
+        const s = Math.min(0.95, Math.max(0, o.stemFrac * Math.exp(0.4 * normal(R))));
+        const S = Math.round(n * s), X = Math.round((n - S) * 0.55), E = n - S - X;
+        return { id: k + 1, reactive, avidity: a, cls: !reactive ? "bystander" : a >= o.avidity ? "high" : "low",
+          S, E, X, infused: n, stem0: s };
+      });
+    }
 
     // ---- integrate
     const steps = Math.round(o.days / o.dt), every = Math.round(1 / o.dt);

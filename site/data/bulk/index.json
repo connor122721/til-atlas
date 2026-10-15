@@ -1,0 +1,272 @@
+{
+ "cohorts": [
+  {
+   "id": "mel_iatlas_liu_2019",
+   "label": "Liu 2019",
+   "cancer": "Melanoma",
+   "therapy": "Pembrolizumab (71) / Nivolumab (51)",
+   "name": "Metastatic Melanoma (DFCI, Nat Med. 2019) - iAtlas Harmonized",
+   "citation": "Liu et al. Nature Medicine 2019",
+   "pmid": "31792460",
+   "n": 122,
+   "endpoints": {
+    "response": {
+     "R": 48,
+     "NR": 74
+    },
+    "benefit": {
+     "R": 66,
+     "NR": 56
+    }
+   }
+  },
+  {
+   "id": "mel_iatlas_gide_2019",
+   "label": "Gide 2019",
+   "cancer": "Melanoma",
+   "therapy": "Pembro (32) / Ipilimumab Pembrolizumab (25) / Nivolumab (9) / Ipilimumab Nivolumab (7)",
+   "name": "Metastatic Melanoma (Immunotherapy Trial, Cancer Cell 2019) - iAtlas Harmonized",
+   "citation": "Gide et al. Cancer Cell 2019",
+   "pmid": "30753825",
+   "n": 73,
+   "endpoints": {
+    "response": {
+     "R": 40,
+     "NR": 33
+    },
+    "benefit": {
+     "R": 51,
+     "NR": 22
+    }
+   }
+  },
+  {
+   "id": "mel_iatlas_riaz_nivolumab_2017",
+   "label": "Riaz 2017",
+   "cancer": "Melanoma",
+   "therapy": "Nivolumab (49)",
+   "name": "Melanoma (MSK, Cell 2017) - iAtlas Harmonized",
+   "citation": "Riaz et al. Cell 2017",
+   "pmid": "29033130",
+   "n": 49,
+   "endpoints": {
+    "response": {
+     "R": 10,
+     "NR": 39
+    },
+    "benefit": {
+     "R": 26,
+     "NR": 23
+    }
+   }
+  },
+  {
+   "id": "mel_iatlas_hugo_ucla_2016",
+   "label": "Hugo 2016",
+   "cancer": "Melanoma",
+   "therapy": "Pembrolizumab (26)",
+   "name": "Metastatic Melanoma (UCLA, Cell 2016) - iAtlas Harmonized",
+   "citation": "Hugo et al. Cell 2016",
+   "pmid": "26997480",
+   "n": 26,
+   "endpoints": {
+    "response": {
+     "R": 14,
+     "NR": 12
+    },
+    "benefit": {
+     "R": 14,
+     "NR": 12
+    }
+   }
+  },
+  {
+   "id": "blca_iatlas_imvigor210_2017",
+   "label": "IMvigor210",
+   "cancer": "Bladder",
+   "therapy": "Atezolizumab (298)",
+   "name": "Metastatic Bladder Urothelial Carcinoma (IMvigor210 Phase II Trial, ESMO Open. 2024) - iAtlas Harmonized",
+   "citation": "Rosenberg et al. ESMO Open 2024",
+   "pmid": "39642637",
+   "n": 298,
+   "endpoints": {
+    "response": {
+     "R": 68,
+     "NR": 230
+    },
+    "benefit": {
+     "R": 131,
+     "NR": 167
+    }
+   }
+  },
+  {
+   "id": "rcc_iatlas_immotion150_2018",
+   "label": "IMmotion150",
+   "cancer": "Kidney",
+   "therapy": "Atezolizumab (165) / none (82)",
+   "name": "Renal Cell Carcinoma (IMmotion150 Clinical Trial, Nat Med. 2018) - iAtlas Harmonized",
+   "citation": "McDermott et al. Nat Med 2018",
+   "pmid": "29867230",
+   "n": 247,
+   "endpoints": {
+    "response": {
+     "R": 72,
+     "NR": 175
+    },
+    "benefit": {
+     "R": 168,
+     "NR": 79
+    }
+   }
+  },
+  {
+   "id": "ccrcc_iatlas_choueiri_2016",
+   "label": "Choueiri 2016",
+   "cancer": "Kidney",
+   "therapy": "Nivolumab (16)",
+   "name": "Metastatic Renal Clear Cell Carcinoma (Phase 1 Biomarker Trial, Clin Cancer Res. 2016) - iAtlas Harmonized",
+   "citation": "Choueiri et al. Clin Cancer Res. 2016",
+   "pmid": "27169994",
+   "n": 16,
+   "endpoints": {
+    "response": {
+     "R": 3,
+     "NR": 13
+    },
+    "benefit": {
+     "R": 8,
+     "NR": 8
+    }
+   }
+  },
+  {
+   "id": "brca_iatlas_anders_2022",
+   "label": "Anders 2022",
+   "cancer": "Breast (TNBC)",
+   "therapy": "Pembrolizumab (31)",
+   "name": "Metastatic Triple Negative Breast Cancer (UNC Phase II Trial, J Immunother Cancer 2022) - iAtlas Harmonized",
+   "citation": "Anders et al. J Immunother Cancer 2022",
+   "pmid": "35121644",
+   "n": 31,
+   "endpoints": {
+    "response": {
+     "R": 7,
+     "NR": 24
+    },
+    "benefit": {
+     "R": 10,
+     "NR": 21
+    }
+   }
+  },
+  {
+   "id": "paad_iatlas_prince_2022",
+   "label": "PRINCE 2022",
+   "cancer": "Pancreas",
+   "therapy": "Nivolumab (40) / None Ici Rx (16)",
+   "name": "Metastatic Pancreatic Adenocarcinoma (PRINCE Trial, Nat Med. 2022) - iAtlas Harmonized",
+   "citation": "Padron et al. Nat Med. 2022",
+   "pmid": "35662283",
+   "n": 56,
+   "endpoints": {
+    "response": {
+     "R": 25,
+     "NR": 31
+    },
+    "benefit": {
+     "R": 44,
+     "NR": 12
+    }
+   }
+  }
+ ],
+ "signatures": {
+  "cd8": "CD8 T cells",
+  "cyt": "Cytolytic activity",
+  "ifng6": "IFN-\u03b3 6-gene",
+  "stem": "Stem-like / progenitor T cell",
+  "react": "Tumor-reactive / exhausted CD8",
+  "tls12": "TLS 12-chemokine",
+  "bcell": "B cells",
+  "plasma": "Plasma cells / IgG",
+  "ia_Bindea_CD8_TCells": "CD8 T cells (Bindea 2013)",
+  "ia_Bindea_TFH": "T follicular helper (Bindea 2013)",
+  "ia_Bindea_BCells": "B cells (Bindea 2013)",
+  "ia_Vincent_Plasma_Cells": "Plasma cells (Vincent)",
+  "ia_Fan_IGG": "IgG (Fan)",
+  "ia_GO_TCR_Signaling": "TCR signaling (GO)",
+  "ia_GO_BCR_Signaling": "BCR signaling (GO)",
+  "ia_Module3_IFN_Score": "IFN module 3",
+  "ia_MHC_Class_I": "MHC class I",
+  "ia_TGFB_Score": "TGF-\u03b2 response"
+ },
+ "signatureSources": {
+  "cd8": "marker genes",
+  "cyt": "Rooney et al., Cell 2015",
+  "ifng6": "Ayers et al., J Clin Invest 2017",
+  "stem": "starter panel (also marks naive T and some B cells in bulk)",
+  "react": "starter panel from markers reported for tumor-reactive TILs",
+  "tls12": "12-chemokine TLS signature (Coppola/Messina)",
+  "bcell": "marker genes",
+  "plasma": "marker genes",
+  "ia_Bindea_CD8_TCells": "precomputed by CRI iAtlas",
+  "ia_Bindea_TFH": "precomputed by CRI iAtlas",
+  "ia_Bindea_BCells": "precomputed by CRI iAtlas",
+  "ia_Vincent_Plasma_Cells": "precomputed by CRI iAtlas",
+  "ia_Fan_IGG": "precomputed by CRI iAtlas",
+  "ia_GO_TCR_Signaling": "precomputed by CRI iAtlas",
+  "ia_GO_BCR_Signaling": "precomputed by CRI iAtlas",
+  "ia_Module3_IFN_Score": "precomputed by CRI iAtlas",
+  "ia_MHC_Class_I": "precomputed by CRI iAtlas",
+  "ia_TGFB_Score": "precomputed by CRI iAtlas"
+ },
+ "endpoints": {
+  "response": "Objective response (CR/PR vs SD/PD)",
+  "benefit": "Clinical benefit (as defined by iAtlas for the cohort)"
+ },
+ "panel": [
+  "CD8A",
+  "CD4",
+  "FOXP3",
+  "TCF7",
+  "SELL",
+  "IL7R",
+  "CCR7",
+  "GZMB",
+  "GZMK",
+  "PRF1",
+  "IFNG",
+  "PDCD1",
+  "CD274",
+  "CTLA4",
+  "LAG3",
+  "HAVCR2",
+  "TIGIT",
+  "TOX",
+  "ENTPD1",
+  "ITGAE",
+  "CXCL13",
+  "TNFRSF9",
+  "LAYN",
+  "CXCL9",
+  "CXCL10",
+  "MS4A1",
+  "CD79A",
+  "CR2",
+  "JCHAIN",
+  "MZB1",
+  "IGKC",
+  "IGHG1",
+  "IGHM",
+  "CD68",
+  "CD163",
+  "B2M",
+  "HLA-A",
+  "HLA-DRA",
+  "TRBC1",
+  "TRBC2",
+  "TRAC"
+ ],
+ "license": "ODbL 1.0 (cBioPortal datahub, CRI iAtlas)"
+}

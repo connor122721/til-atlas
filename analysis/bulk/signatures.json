@@ -1,0 +1,26 @@
+{
+  "_comment": "Gene sets scored on bulk RNA-seq. Score = mean of within-cohort z-scored log2(TPM+1) over the genes present. Starter panels are canonical markers, not a published signature, unless a source is given.",
+  "computed": {
+    "cd8": { "label": "CD8 T cells", "genes": ["CD8A", "CD8B"], "source": "marker genes" },
+    "cyt": { "label": "Cytolytic activity", "genes": ["GZMA", "PRF1"], "source": "Rooney et al., Cell 2015" },
+    "ifng6": { "label": "IFN-γ 6-gene", "genes": ["IDO1", "CXCL10", "CXCL9", "HLA-DRA", "STAT1", "IFNG"], "source": "Ayers et al., J Clin Invest 2017" },
+    "stem": { "label": "Stem-like / progenitor T cell", "genes": ["TCF7", "SELL", "IL7R", "CCR7", "LEF1"], "source": "starter panel (also marks naive T and some B cells in bulk)" },
+    "react": { "label": "Tumor-reactive / exhausted CD8", "genes": ["CXCL13", "ENTPD1", "HAVCR2", "LAYN", "PDCD1", "TOX", "TNFRSF9", "ITGAE"], "source": "starter panel from markers reported for tumor-reactive TILs" },
+    "tls12": { "label": "TLS 12-chemokine", "genes": ["CCL2", "CCL3", "CCL4", "CCL5", "CCL8", "CCL18", "CCL19", "CCL21", "CXCL9", "CXCL10", "CXCL11", "CXCL13"], "source": "12-chemokine TLS signature (Coppola/Messina)" },
+    "bcell": { "label": "B cells", "genes": ["MS4A1", "CD79A", "CD19", "CR2", "BANK1"], "source": "marker genes" },
+    "plasma": { "label": "Plasma cells / IgG", "genes": ["JCHAIN", "MZB1", "IGKC", "IGHG1", "TNFRSF17"], "source": "marker genes" }
+  },
+  "iatlas": {
+    "Bindea_CD8_TCells": "CD8 T cells (Bindea 2013)",
+    "Bindea_TFH": "T follicular helper (Bindea 2013)",
+    "Bindea_BCells": "B cells (Bindea 2013)",
+    "Vincent_Plasma_Cells": "Plasma cells (Vincent)",
+    "Fan_IGG": "IgG (Fan)",
+    "GO_TCR_Signaling": "TCR signaling (GO)",
+    "GO_BCR_Signaling": "BCR signaling (GO)",
+    "Module3_IFN_Score": "IFN module 3",
+    "MHC_Class_I": "MHC class I",
+    "TGFB_Score": "TGF-β response"
+  },
+  "panel": ["CD8A", "CD4", "FOXP3", "TCF7", "SELL", "IL7R", "CCR7", "GZMB", "GZMK", "PRF1", "IFNG", "PDCD1", "CD274", "CTLA4", "LAG3", "HAVCR2", "TIGIT", "TOX", "ENTPD1", "ITGAE", "CXCL13", "TNFRSF9", "LAYN", "CXCL9", "CXCL10", "MS4A1", "CD79A", "CR2", "JCHAIN", "MZB1", "IGKC", "IGHG1", "IGHM", "CD68", "CD163", "B2M", "HLA-A", "HLA-DRA", "TRBC1", "TRBC2", "TRAC"]
+}

@@ -15,9 +15,10 @@
 
   <section class="card" style="margin-top:20px">
     <h3>Where the data come from</h3>
-    <p class="small" style="margin:6px 0 0">The <a href="datasets.html">Datasets</a> page lists every public cohort wired into this site — TIL-ACT single-cell
-      (Lausanne, cervical), checkpoint single-cell (Sade-Feldman, Pozniak), and spatial (Xenium melanoma, melanoma IMC, cSCC and HNSCC CosMx) — with
-      accessions, access status and the script that loads each one. A weekly GEO watch adds candidates as they're released.</p>
+    <p class="small" style="margin:6px 0 0">Everything plotted on this site is real, published data. Three sources are already loaded because they're
+      published on GitHub: Wu et al. 2020 (single-cell RNA + TCR of tumor, normal tissue and blood T cells), Maynard et al. 2020 (tumor B and T cell
+      receptors) and nine iAtlas-harmonized checkpoint trials (bulk RNA-seq, 918 patients). The <a href="datasets.html">Datasets</a> page lists the rest —
+      TIL-therapy cohorts (Lausanne, cervical, Lauss 2017), checkpoint single-cell cohorts, and spatial cohorts — with accessions and the script that loads each.</p>
   </section>
 
   <div class="prose">
@@ -31,7 +32,7 @@
       <li><b>Keep history as diffs.</b> Each run compares against last week's snapshot and appends to <code>changelog.json</code>; git itself is the archive.</li>
     </ul>
     <pre>python scraper/fetch_trials.py --dry-run          # fetch + count by status, write nothing
-python -m unittest discover -s scraper/tests       # offline tests against a synthetic fixture</pre>
+python -m unittest discover -s scraper/tests       # offline tests on a small test fixture</pre>
     <p><b>Exercise.</b> Add a third topic to <code>scraper/config.json</code> for CAR-T in solid tumors and a tag group for target antigen
       (GD2, mesothelin, HER2, Claudin18.2). Push, run the workflow, and filter the tracker by your new tags.</p>
 
@@ -44,8 +45,9 @@ python -m unittest discover -s scraper/tests       # offline tests against a syn
     </ul>
     <p>Dropout makes single markers unreliable: <i>ENTPD1</i> (CD39) and <i>TCF7</i> are often zero in cells that express the protein. That's why signatures, or CITE-seq
       antibodies for CD39/CD69 when you have them, beat single genes.</p>
-    <p><b>Exercise.</b> Replace the starter panels in <code>analysis/signatures/</code> with the DN/DP genes from the Krishna supplement, re-run
-      <code>01_score_signatures.R</code>, and check whether the stem-like share still separates responders in the lab's strip plot.</p>
+    <p><b>Exercise.</b> The stem-like and terminal panels in <code>analysis/signatures/</code> are starter lists. Swap in a published signature
+      (for example the TCF7⁺ CD8 signature of Sade-Feldman et al. 2018), re-run <code>python analysis/datasets/wu2020/prepare.py</code>, and check on the
+      <a href="lab.html">Single-cell</a> tab whether the authors' clusters line up better with the scores.</p>
 
     <h2>3 · Counting clones</h2>
     <p>A clonotype is usually defined by the CDR3β amino-acid sequence (plus V gene), or by the paired α/β chains when you have single-cell data. The metrics used in ACT papers:</p>
@@ -56,8 +58,17 @@ Morisita–Horn   C = 2 Σ x_i y_i / ((Σx_i² / X² + Σy_i² / Y²) · X · Y)
     <p>Sampling depth bounds everything: a clone at frequency <i>f</i> appears in <i>n</i> reads with probability 1 − (1 − <i>f</i>)ⁿ. At 20,000 reads a clone at
       10⁻⁵ is caught about 18% of the time, so “not detected” is not “gone”. The simulator's blood table shows this directly: compare
       <i>persistence</i> (what you'd sequence) with <i>true infused share</i>.</p>
-    <p><b>Exercise.</b> In the simulator, pick the stem-poor preset and watch the number of detected clones fall faster than the true infused share.
-      Then compute Morisita–Horn between product and day-30 blood in <code>02_clonotypes.R</code> for each Barras/Chiffelle patient.</p>
+    <p><b>Exercise.</b> On the <a href="lab.html">Single-cell</a> tab, compare the expansion bars of the kidney patients (blood available) with the lung
+      patients: how much of each tumor is made of clones also expanded in normal tissue? Then in the simulator, infuse a real repertoire and watch the
+      number of detected clones in blood fall faster than the true infused share.</p>
+
+    <h2>3b · Signatures in bulk RNA-seq</h2>
+    <p>Bulk RNA-seq can't see single cells, but immune signatures still carry signal. The <a href="bulk.html">Bulk RNA</a> tab scores each pre-treatment
+      tumor and reports one AUC per cohort, which is easy to compare across studies because it doesn't depend on the scale of the score. Two cautions:
+      in bulk tissue, “stem-like” genes such as <i>TCF7</i>, <i>SELL</i> and <i>CCR7</i> also mark naive T cells and B cells, and cohorts differ in platform,
+      biopsy site and response definition, which is why the tab never pools patients across cohorts.</p>
+    <p><b>Exercise.</b> Load the TIL-therapy cohort of Lauss et al. 2017 (GEO GSE100797) with <code>analysis/bulk/geo_cohort.py</code> and see where it
+      falls in the forest plot next to the checkpoint trials.</p>
 
     <h2>4 · Spatial data</h2>
     <p>Spatial platforms differ mainly in what one measurement unit is:</p>
@@ -79,6 +90,9 @@ Morisita–Horn   C = 2 Σ x_i y_i / ((Σx_i² / X² + Σy_i² / Y²) · X · Y)
       <li>Draw parameters from priors (say, log-uniform for each rate), simulate, and compute the same statistics.</li>
       <li>Keep draws whose statistics land within a tolerance of the observed ones. The kept parameters approximate the posterior.</li>
     </ol>
+    <p>The simulator already starts from measured repertoires. The next step is to calibrate what happens after infusion against measured clone
+      trajectories: Yost et al. 2019 (GSE123813) tracks clones before and after PD-1 blockade, and Chiffelle et al. 2024 tracks TIL-product clones in blood
+      after infusion.</p>
     <p>Because <code>site/assets/sim-model.js</code> runs in Node unchanged (<code>require("./sim-model.js").simulate({...})</code>), you can run 10⁵ simulations
       on the cluster without touching the website code.</p>
   </div>
@@ -93,6 +107,12 @@ Morisita–Horn   C = 2 Σ x_i y_i / ((Σx_i² / X² + Σy_i² / Y²) · X · Y)
       <li>A spatial multi-omic framework identifies gliomas permissive to TIL expansion. Preprint (2025). <a href="https://scholars.duke.edu/publication/1674684">Record</a></li>
       <li>Longitudinal profiling of tumor-reactive T cells during TIL therapy in metastatic melanoma. <a href="https://www.biorxiv.org/content/10.1101/2025.09.23.678066">bioRxiv (2025)</a></li>
       <li>Tumor reactivity assessment using clonal expression (TRACE). <a href="https://www.biorxiv.org/content/10.64898/2026.02.25.707942">bioRxiv (2026)</a></li>
+      <li>Wu T.D. et al. Peripheral T cell expansion predicts tumour infiltration and clinical response. <i>Nature</i> (2020). GEO GSE139555.</li>
+      <li>Maynard A. et al. Therapy-induced evolution of human lung cancer revealed by single-cell RNA sequencing. <i>Cell</i> (2020). PRJNA591860.</li>
+      <li>Lauss M. et al. Mutational and putative neoantigen load predict clinical benefit of adoptive T cell therapy in melanoma. <i>Nat Commun</i> (2017). GEO GSE100797.</li>
+      <li>Yost K.E. et al. Clonal replacement of tumor-specific T cells following PD-1 blockade. <i>Nat Med</i> (2019). GEO GSE123813.</li>
+      <li>Rohaan M.W. et al. Tumor-infiltrating lymphocyte therapy or ipilimumab in advanced melanoma. <i>N Engl J Med</i> (2022).</li>
+      <li>CRI iAtlas immune checkpoint cohorts, via the cBioPortal datahub (ODbL 1.0): <a href="https://github.com/cBioPortal/datahub">github.com/cBioPortal/datahub</a></li>
       <li>ClinicalTrials.gov API documentation: <a href="https://clinicaltrials.gov/data-api/api">clinicaltrials.gov/data-api/api</a></li>
     </ul>
   </section>

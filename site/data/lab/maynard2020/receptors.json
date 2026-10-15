@@ -1,0 +1,1287 @@
+{
+ "meta": {
+  "dataset": "maynard2020",
+  "study": "Maynard et al., Cell 2020",
+  "therapy": "targeted therapy (EGFR/ALK/BRAF/ROS1 inhibitors)",
+  "source": "PRJNA591860 via scirpy GitHub release d0.1.0 (maynard2020.h5ad)",
+  "stages": {
+   "naive": "Before treatment (TN)",
+   "grouped_pr": "Residual disease on therapy (RD)",
+   "grouped_pd": "Progression (PD)"
+  },
+  "cloneRule": "same V gene + CDR3 amino acids of IGH or TRB, within a biopsy",
+  "nBCR": 1506,
+  "nTCR": 3505
+ },
+ "pooled": {
+  "naive": {
+   "n": 435,
+   "isotype": {
+    "IgA": 122,
+    "IgG": 229,
+    "IgM/IgD": 84
+   }
+  },
+  "grouped_pr": {
+   "n": 357,
+   "isotype": {
+    "IgA": 123,
+    "IgG": 175,
+    "IgM/IgD": 59
+   }
+  },
+  "grouped_pd": {
+   "n": 680,
+   "isotype": {
+    "IgA": 242,
+    "IgG": 334,
+    "IgM/IgD": 104
+   }
+  }
+ },
+ "topIGHV": [
+  [
+   "IGHV1-18",
+   103
+  ],
+  [
+   "IGHV3-23D,IGHV3-23",
+   85
+  ],
+  [
+   "IGHV4-39",
+   74
+  ],
+  [
+   "IGHV2-5",
+   59
+  ],
+  [
+   "IGHV5-51",
+   58
+  ],
+  [
+   "IGHV4-59,IGHV4-4",
+   55
+  ],
+  [
+   "IGHV3-74",
+   54
+  ],
+  [
+   "IGHV3-9",
+   52
+  ],
+  [
+   "IGHV4-34",
+   45
+  ],
+  [
+   "IGHV3-7",
+   44
+  ],
+  [
+   "IGHV3-48",
+   42
+  ],
+  [
+   "IGHV3-30,IGHV3-30-5,IGHV3-33,IGHV3-30-3",
+   38
+  ],
+  [
+   "IGHV3-15",
+   37
+  ],
+  [
+   "IGHV4-4",
+   35
+  ],
+  [
+   "IGHV3-21",
+   34
+  ]
+ ],
+ "samples": [
+  {
+   "sample": "LT_S01",
+   "patient": "TH158",
+   "stage": "grouped_pr",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 44,
+   "bcr": {
+    "n": 1,
+    "clones": 1,
+    "expandedShare": 0.0,
+    "topClone": 1.0,
+    "isotype": {
+     "IgG": 1.0,
+     "IgA": 0.0,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgG": 1
+    }
+   },
+   "tcr": {
+    "n": 0
+   }
+  },
+  {
+   "sample": "LT_S02",
+   "patient": "TH157",
+   "stage": "grouped_pr",
+   "tissue": "LN",
+   "response": "PR",
+   "cells": 27,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 0
+   }
+  },
+  {
+   "sample": "LT_S03",
+   "patient": "TH156",
+   "stage": "grouped_pd",
+   "tissue": "Pleura",
+   "response": "PD",
+   "cells": 199,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 1,
+    "clones": 1,
+    "expandedShare": 0.0,
+    "topClone": 1.0
+   }
+  },
+  {
+   "sample": "LT_S05",
+   "patient": "TH103",
+   "stage": "grouped_pd",
+   "tissue": "Pleura",
+   "response": "PD",
+   "cells": 13,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 0
+   }
+  },
+  {
+   "sample": "LT_S07",
+   "patient": "TH103",
+   "stage": "grouped_pd",
+   "tissue": "Pleura",
+   "response": "PD",
+   "cells": 142,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 1,
+    "clones": 1,
+    "expandedShare": 0.0,
+    "topClone": 1.0
+   }
+  },
+  {
+   "sample": "LT_S08",
+   "patient": "TH103",
+   "stage": "grouped_pd",
+   "tissue": "Pleura",
+   "response": "PD",
+   "cells": 67,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 0
+   }
+  },
+  {
+   "sample": "LT_S11",
+   "patient": "TH169",
+   "stage": "grouped_pr",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 216,
+   "bcr": {
+    "n": 10,
+    "clones": 10,
+    "expandedShare": 0.0,
+    "topClone": 0.1,
+    "isotype": {
+     "IgG": 0.1,
+     "IgA": 0.9,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgA": 9,
+     "IgG": 1
+    }
+   },
+   "tcr": {
+    "n": 10,
+    "clones": 10,
+    "expandedShare": 0.0,
+    "topClone": 0.1
+   }
+  },
+  {
+   "sample": "LT_S13",
+   "patient": "TH169",
+   "stage": "grouped_pr",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 16,
+   "bcr": {
+    "n": 1,
+    "clones": 1,
+    "expandedShare": 0.0,
+    "topClone": 1.0,
+    "isotype": {
+     "IgG": 0.0,
+     "IgA": 1.0,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgA": 1
+    }
+   },
+   "tcr": {
+    "n": 8,
+    "clones": 7,
+    "expandedShare": 0.25,
+    "topClone": 0.25
+   }
+  },
+  {
+   "sample": "LT_S14",
+   "patient": "TH153",
+   "stage": "grouped_pd",
+   "tissue": "Liver",
+   "response": "PR",
+   "cells": 57,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 46,
+    "clones": 42,
+    "expandedShare": 0.174,
+    "topClone": 0.043
+   }
+  },
+  {
+   "sample": "LT_S16",
+   "patient": "TH146",
+   "stage": "grouped_pd",
+   "tissue": "LN",
+   "response": "PR",
+   "cells": 118,
+   "bcr": {
+    "n": 2,
+    "clones": 2,
+    "expandedShare": 0.0,
+    "topClone": 0.5,
+    "isotype": {
+     "IgG": 1.0,
+     "IgA": 0.0,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgG": 2
+    }
+   },
+   "tcr": {
+    "n": 91,
+    "clones": 89,
+    "expandedShare": 0.033,
+    "topClone": 0.033
+   }
+  },
+  {
+   "sample": "LT_S21",
+   "patient": "TH185",
+   "stage": "grouped_pd",
+   "tissue": "Pleura",
+   "response": "PD",
+   "cells": 1503,
+   "bcr": {
+    "n": 10,
+    "clones": 10,
+    "expandedShare": 0.0,
+    "topClone": 0.1,
+    "isotype": {
+     "IgG": 0.2,
+     "IgA": 0.1,
+     "IgM/IgD": 0.7
+    },
+    "isotypeN": {
+     "IgM/IgD": 7,
+     "IgG": 2,
+     "IgA": 1
+    }
+   },
+   "tcr": {
+    "n": 175,
+    "clones": 152,
+    "expandedShare": 0.189,
+    "topClone": 0.063
+   }
+  },
+  {
+   "sample": "LT_S23",
+   "patient": "TH185",
+   "stage": "grouped_pd",
+   "tissue": "Pleura",
+   "response": "PD",
+   "cells": 387,
+   "bcr": {
+    "n": 14,
+    "clones": 14,
+    "expandedShare": 0.0,
+    "topClone": 0.071,
+    "isotype": {
+     "IgG": 0.154,
+     "IgA": 0.077,
+     "IgM/IgD": 0.769
+    },
+    "isotypeN": {
+     "IgM/IgD": 10,
+     "IgG": 2,
+     "IgA": 1
+    }
+   },
+   "tcr": {
+    "n": 274,
+    "clones": 257,
+    "expandedShare": 0.091,
+    "topClone": 0.036
+   }
+  },
+  {
+   "sample": "LT_S28",
+   "patient": "TH185",
+   "stage": "grouped_pd",
+   "tissue": "Pleura",
+   "response": "PD",
+   "cells": 379,
+   "bcr": {
+    "n": 9,
+    "clones": 9,
+    "expandedShare": 0.0,
+    "topClone": 0.111,
+    "isotype": {
+     "IgG": 0.111,
+     "IgA": 0.333,
+     "IgM/IgD": 0.556
+    },
+    "isotypeN": {
+     "IgM/IgD": 5,
+     "IgA": 3,
+     "IgG": 1
+    }
+   },
+   "tcr": {
+    "n": 314,
+    "clones": 310,
+    "expandedShare": 0.019,
+    "topClone": 0.013
+   }
+  },
+  {
+   "sample": "LT_S34",
+   "patient": "TH205",
+   "stage": "naive",
+   "tissue": "Pleura",
+   "response": "PR",
+   "cells": 610,
+   "bcr": {
+    "n": 13,
+    "clones": 13,
+    "expandedShare": 0.0,
+    "topClone": 0.077,
+    "isotype": {
+     "IgG": 0.692,
+     "IgA": 0.308,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgG": 9,
+     "IgA": 4
+    }
+   },
+   "tcr": {
+    "n": 7,
+    "clones": 7,
+    "expandedShare": 0.0,
+    "topClone": 0.143
+   }
+  },
+  {
+   "sample": "LT_S41",
+   "patient": "TH210",
+   "stage": "grouped_pr",
+   "tissue": "Adrenal",
+   "response": "PR",
+   "cells": 62,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 11,
+    "clones": 9,
+    "expandedShare": 0.364,
+    "topClone": 0.182
+   }
+  },
+  {
+   "sample": "LT_S42",
+   "patient": "TH158",
+   "stage": "grouped_pr",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 93,
+   "bcr": {
+    "n": 9,
+    "clones": 9,
+    "expandedShare": 0.0,
+    "topClone": 0.111,
+    "isotype": {
+     "IgG": 0.222,
+     "IgA": 0.333,
+     "IgM/IgD": 0.444
+    },
+    "isotypeN": {
+     "IgA": 3,
+     "IgM/IgD": 4,
+     "IgG": 2
+    }
+   },
+   "tcr": {
+    "n": 56,
+    "clones": 53,
+    "expandedShare": 0.107,
+    "topClone": 0.036
+   }
+  },
+  {
+   "sample": "LT_S43",
+   "patient": "TH217",
+   "stage": "naive",
+   "tissue": "LN",
+   "response": "PR",
+   "cells": 37,
+   "bcr": {
+    "n": 7,
+    "clones": 3,
+    "expandedShare": 0.714,
+    "topClone": 0.714,
+    "isotype": {
+     "IgG": 0.714,
+     "IgA": 0.0,
+     "IgM/IgD": 0.286
+    },
+    "isotypeN": {
+     "IgG": 5,
+     "IgM/IgD": 2
+    }
+   },
+   "tcr": {
+    "n": 0
+   }
+  },
+  {
+   "sample": "LT_S45",
+   "patient": "TH218",
+   "stage": "naive",
+   "tissue": "Adrenal",
+   "response": "SD",
+   "cells": 115,
+   "bcr": {
+    "n": 4,
+    "clones": 4,
+    "expandedShare": 0.0,
+    "topClone": 0.25,
+    "isotype": {
+     "IgG": 0.5,
+     "IgA": 0.25,
+     "IgM/IgD": 0.25
+    },
+    "isotypeN": {
+     "IgG": 2,
+     "IgM/IgD": 1,
+     "IgA": 1
+    }
+   },
+   "tcr": {
+    "n": 39,
+    "clones": 35,
+    "expandedShare": 0.154,
+    "topClone": 0.103
+   }
+  },
+  {
+   "sample": "LT_S47",
+   "patient": "TH220",
+   "stage": "grouped_pd",
+   "tissue": "Liver",
+   "response": "PD",
+   "cells": 728,
+   "bcr": {
+    "n": 3,
+    "clones": 3,
+    "expandedShare": 0.0,
+    "topClone": 0.333,
+    "isotype": {
+     "IgG": 0.0,
+     "IgA": 0.0,
+     "IgM/IgD": 1.0
+    },
+    "isotypeN": {
+     "IgM/IgD": 3
+    }
+   },
+   "tcr": {
+    "n": 84,
+    "clones": 78,
+    "expandedShare": 0.143,
+    "topClone": 0.024
+   }
+  },
+  {
+   "sample": "LT_S48",
+   "patient": "TH155",
+   "stage": "grouped_pd",
+   "tissue": "Brain",
+   "response": "PR",
+   "cells": 75,
+   "bcr": {
+    "n": 0
+   },
+   "tcr": {
+    "n": 1,
+    "clones": 1,
+    "expandedShare": 0.0,
+    "topClone": 1.0
+   }
+  },
+  {
+   "sample": "LT_S49",
+   "patient": "TH223",
+   "stage": "naive",
+   "tissue": "LN",
+   "response": null,
+   "cells": 399,
+   "bcr": {
+    "n": 31,
+    "clones": 27,
+    "expandedShare": 0.226,
+    "topClone": 0.097,
+    "isotype": {
+     "IgG": 0.2,
+     "IgA": 0.3,
+     "IgM/IgD": 0.5
+    },
+    "isotypeN": {
+     "IgA": 9,
+     "IgM/IgD": 15,
+     "IgG": 6
+    }
+   },
+   "tcr": {
+    "n": 26,
+    "clones": 25,
+    "expandedShare": 0.077,
+    "topClone": 0.077
+   }
+  },
+  {
+   "sample": "LT_S50",
+   "patient": "TH225",
+   "stage": "naive",
+   "tissue": "LN",
+   "response": null,
+   "cells": 354,
+   "bcr": {
+    "n": 8,
+    "clones": 8,
+    "expandedShare": 0.0,
+    "topClone": 0.125,
+    "isotype": {
+     "IgG": 0.375,
+     "IgA": 0.375,
+     "IgM/IgD": 0.25
+    },
+    "isotypeN": {
+     "IgG": 3,
+     "IgA": 3,
+     "IgM/IgD": 2
+    }
+   },
+   "tcr": {
+    "n": 8,
+    "clones": 8,
+    "expandedShare": 0.0,
+    "topClone": 0.125
+   }
+  },
+  {
+   "sample": "LT_S51",
+   "patient": "TH227",
+   "stage": "naive",
+   "tissue": "LN",
+   "response": "PR",
+   "cells": 213,
+   "bcr": {
+    "n": 7,
+    "clones": 4,
+    "expandedShare": 0.571,
+    "topClone": 0.571,
+    "isotype": {
+     "IgG": 1.0,
+     "IgA": 0.0,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgG": 6
+    }
+   },
+   "tcr": {
+    "n": 1,
+    "clones": 1,
+    "expandedShare": 0.0,
+    "topClone": 1.0
+   }
+  },
+  {
+   "sample": "LT_S52",
+   "patient": "TH226",
+   "stage": "naive",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 246,
+   "bcr": {
+    "n": 31,
+    "clones": 27,
+    "expandedShare": 0.194,
+    "topClone": 0.097,
+    "isotype": {
+     "IgG": 0.419,
+     "IgA": 0.355,
+     "IgM/IgD": 0.226
+    },
+    "isotypeN": {
+     "IgA": 11,
+     "IgM/IgD": 7,
+     "IgG": 13
+    }
+   },
+   "tcr": {
+    "n": 5,
+    "clones": 5,
+    "expandedShare": 0.0,
+    "topClone": 0.2
+   }
+  },
+  {
+   "sample": "LT_S53",
+   "patient": "TH067",
+   "stage": "grouped_pd",
+   "tissue": "Liver",
+   "response": "PD",
+   "cells": 557,
+   "bcr": {
+    "n": 6,
+    "clones": 5,
+    "expandedShare": 0.333,
+    "topClone": 0.333,
+    "isotype": {
+     "IgG": 0.6,
+     "IgA": 0.4,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgG": 3,
+     "IgA": 2
+    }
+   },
+   "tcr": {
+    "n": 65,
+    "clones": 26,
+    "expandedShare": 0.769,
+    "topClone": 0.385
+   }
+  },
+  {
+   "sample": "LT_S54",
+   "patient": "TH222",
+   "stage": "grouped_pd",
+   "tissue": "LN",
+   "response": "CR",
+   "cells": 189,
+   "bcr": {
+    "n": 4,
+    "clones": 4,
+    "expandedShare": 0.0,
+    "topClone": 0.25,
+    "isotype": {
+     "IgG": 0.75,
+     "IgA": 0.25,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgG": 3,
+     "IgA": 1
+    }
+   },
+   "tcr": {
+    "n": 1,
+    "clones": 1,
+    "expandedShare": 0.0,
+    "topClone": 1.0
+   }
+  },
+  {
+   "sample": "LT_S55",
+   "patient": "TH218",
+   "stage": "grouped_pr",
+   "tissue": "Adrenal",
+   "response": "SD",
+   "cells": 597,
+   "bcr": {
+    "n": 127,
+    "clones": 125,
+    "expandedShare": 0.031,
+    "topClone": 0.016,
+    "isotype": {
+     "IgG": 0.484,
+     "IgA": 0.254,
+     "IgM/IgD": 0.262
+    },
+    "isotypeN": {
+     "IgM/IgD": 32,
+     "IgG": 59,
+     "IgA": 31
+    }
+   },
+   "tcr": {
+    "n": 103,
+    "clones": 87,
+    "expandedShare": 0.214,
+    "topClone": 0.058
+   }
+  },
+  {
+   "sample": "LT_S56",
+   "patient": "TH231",
+   "stage": "naive",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 592,
+   "bcr": {
+    "n": 3,
+    "clones": 3,
+    "expandedShare": 0.0,
+    "topClone": 0.333,
+    "isotype": {
+     "IgG": 0.333,
+     "IgA": 0.667,
+     "IgM/IgD": 0.0
+    },
+    "isotypeN": {
+     "IgA": 2,
+     "IgG": 1
+    }
+   },
+   "tcr": {
+    "n": 4,
+    "clones": 4,
+    "expandedShare": 0.0,
+    "topClone": 0.25
+   }
+  },
+  {
+   "sample": "LT_S57",
+   "patient": "TH226",
+   "stage": "grouped_pr",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 1497,
+   "bcr": {
+    "n": 86,
+    "clones": 30,
+    "expandedShare": 0.733,
+    "topClone": 0.221,
+    "isotype": {
+     "IgG": 0.651,
+     "IgA": 0.325,
+     "IgM/IgD": 0.024
+    },
+    "isotypeN": {
+     "IgA": 27,
+     "IgG": 54,
+     "IgM/IgD": 2
+    }
+   },
+   "tcr": {
+    "n": 122,
+    "clones": 115,
+    "expandedShare": 0.09,
+    "topClone": 0.033
+   }
+  },
+  {
+   "sample": "LT_S58",
+   "patient": "TH179",
+   "stage": "grouped_pd",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 774,
+   "bcr": {
+    "n": 46,
+    "clones": 45,
+    "expandedShare": 0.043,
+    "topClone": 0.043,
+    "isotype": {
+     "IgG": 0.196,
+     "IgA": 0.674,
+     "IgM/IgD": 0.13
+    },
+    "isotypeN": {
+     "IgA": 31,
+     "IgG": 9,
+     "IgM/IgD": 6
+    }
+   },
+   "tcr": {
+    "n": 154,
+    "clones": 138,
+    "expandedShare": 0.175,
+    "topClone": 0.039
+   }
+  },
+  {
+   "sample": "LT_S63",
+   "patient": "TH171",
+   "stage": "grouped_pd",
+   "tissue": "LN",
+   "response": "PR",
+   "cells": 1287,
+   "bcr": {
+    "n": 136,
+    "clones": 96,
+    "expandedShare": 0.346,
+    "topClone": 0.125,
+    "isotype": {
+     "IgG": 0.879,
+     "IgA": 0.076,
+     "IgM/IgD": 0.045
+    },
+    "isotypeN": {
+     "IgG": 116,
+     "IgA": 10,
+     "IgM/IgD": 6
+    }
+   },
+   "tcr": {
+    "n": 111,
+    "clones": 90,
+    "expandedShare": 0.297,
+    "topClone": 0.045
+   }
+  },
+  {
+   "sample": "LT_S65",
+   "patient": "TH238",
+   "stage": "naive",
+   "tissue": "normal adjacent",
+   "response": null,
+   "cells": 603,
+   "bcr": {
+    "n": 21,
+    "clones": 21,
+    "expandedShare": 0.0,
+    "topClone": 0.048,
+    "isotype": {
+     "IgG": 0.19,
+     "IgA": 0.619,
+     "IgM/IgD": 0.19
+    },
+    "isotypeN": {
+     "IgG": 4,
+     "IgA": 13,
+     "IgM/IgD": 4
+    }
+   },
+   "tcr": {
+    "n": 97,
+    "clones": 84,
+    "expandedShare": 0.227,
+    "topClone": 0.041
+   }
+  },
+  {
+   "sample": "LT_S66",
+   "patient": "TH238",
+   "stage": "naive",
+   "tissue": "Lung",
+   "response": null,
+   "cells": 1327,
+   "bcr": {
+    "n": 35,
+    "clones": 32,
+    "expandedShare": 0.143,
+    "topClone": 0.086,
+    "isotype": {
+     "IgG": 0.333,
+     "IgA": 0.485,
+     "IgM/IgD": 0.182
+    },
+    "isotypeN": {
+     "IgA": 16,
+     "IgG": 11,
+     "IgM/IgD": 6
+    }
+   },
+   "tcr": {
+    "n": 272,
+    "clones": 242,
+    "expandedShare": 0.188,
+    "topClone": 0.018
+   }
+  },
+  {
+   "sample": "LT_S67",
+   "patient": "TH231",
+   "stage": "naive",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 95,
+   "bcr": {
+    "n": 12,
+    "clones": 2,
+    "expandedShare": 0.917,
+    "topClone": 0.917,
+    "isotype": {
+     "IgG": 0.091,
+     "IgA": 0.0,
+     "IgM/IgD": 0.909
+    },
+    "isotypeN": {
+     "IgG": 1,
+     "IgM/IgD": 10
+    }
+   },
+   "tcr": {
+    "n": 0
+   }
+  },
+  {
+   "sample": "LT_S69",
+   "patient": "TH248",
+   "stage": "naive",
+   "tissue": "LN",
+   "response": "PR",
+   "cells": 732,
+   "bcr": {
+    "n": 94,
+    "clones": 81,
+    "expandedShare": 0.149,
+    "topClone": 0.149,
+    "isotype": {
+     "IgG": 0.356,
+     "IgA": 0.378,
+     "IgM/IgD": 0.267
+    },
+    "isotypeN": {
+     "IgA": 34,
+     "IgG": 32,
+     "IgM/IgD": 24
+    }
+   },
+   "tcr": {
+    "n": 96,
+    "clones": 94,
+    "expandedShare": 0.042,
+    "topClone": 0.021
+   }
+  },
+  {
+   "sample": "LT_S71",
+   "patient": "TH236",
+   "stage": "grouped_pr",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 1098,
+   "bcr": {
+    "n": 112,
+    "clones": 104,
+    "expandedShare": 0.125,
+    "topClone": 0.027,
+    "isotype": {
+     "IgG": 0.436,
+     "IgA": 0.4,
+     "IgM/IgD": 0.164
+    },
+    "isotypeN": {
+     "IgG": 48,
+     "IgA": 44,
+     "IgM/IgD": 18
+    }
+   },
+   "tcr": {
+    "n": 135,
+    "clones": 125,
+    "expandedShare": 0.111,
+    "topClone": 0.044
+   }
+  },
+  {
+   "sample": "LT_S72",
+   "patient": "TH222",
+   "stage": "grouped_pd",
+   "tissue": "LN",
+   "response": "CR",
+   "cells": 798,
+   "bcr": {
+    "n": 38,
+    "clones": 37,
+    "expandedShare": 0.053,
+    "topClone": 0.053,
+    "isotype": {
+     "IgG": 0.459,
+     "IgA": 0.486,
+     "IgM/IgD": 0.054
+    },
+    "isotypeN": {
+     "IgG": 17,
+     "IgA": 18,
+     "IgM/IgD": 2
+    }
+   },
+   "tcr": {
+    "n": 63,
+    "clones": 62,
+    "expandedShare": 0.032,
+    "topClone": 0.032
+   }
+  },
+  {
+   "sample": "LT_S74",
+   "patient": "TH248",
+   "stage": "naive",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 745,
+   "bcr": {
+    "n": 159,
+    "clones": 130,
+    "expandedShare": 0.264,
+    "topClone": 0.088,
+    "isotype": {
+     "IgG": 0.75,
+     "IgA": 0.179,
+     "IgM/IgD": 0.071
+    },
+    "isotypeN": {
+     "IgA": 28,
+     "IgG": 117,
+     "IgM/IgD": 11
+    }
+   },
+   "tcr": {
+    "n": 130,
+    "clones": 121,
+    "expandedShare": 0.108,
+    "topClone": 0.038
+   }
+  },
+  {
+   "sample": "LT_S75",
+   "patient": "TH266",
+   "stage": "naive",
+   "tissue": "Liver",
+   "response": "PR",
+   "cells": 687,
+   "bcr": {
+    "n": 22,
+    "clones": 12,
+    "expandedShare": 0.5,
+    "topClone": 0.5,
+    "isotype": {
+     "IgG": 0.864,
+     "IgA": 0.045,
+     "IgM/IgD": 0.091
+    },
+    "isotypeN": {
+     "IgM/IgD": 2,
+     "IgG": 19,
+     "IgA": 1
+    }
+   },
+   "tcr": {
+    "n": 37,
+    "clones": 35,
+    "expandedShare": 0.108,
+    "topClone": 0.054
+   }
+  },
+  {
+   "sample": "LT_S78",
+   "patient": "TH179",
+   "stage": "grouped_pd",
+   "tissue": "normal adjacent",
+   "response": "PR",
+   "cells": 426,
+   "bcr": {
+    "n": 22,
+    "clones": 15,
+    "expandedShare": 0.409,
+    "topClone": 0.227,
+    "isotype": {
+     "IgG": 0.667,
+     "IgA": 0.286,
+     "IgM/IgD": 0.048
+    },
+    "isotypeN": {
+     "IgG": 14,
+     "IgM/IgD": 1,
+     "IgA": 6
+    }
+   },
+   "tcr": {
+    "n": 41,
+    "clones": 37,
+    "expandedShare": 0.195,
+    "topClone": 0.049
+   }
+  },
+  {
+   "sample": "LT_S79",
+   "patient": "TH179",
+   "stage": "grouped_pd",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 736,
+   "bcr": {
+    "n": 80,
+    "clones": 78,
+    "expandedShare": 0.05,
+    "topClone": 0.025,
+    "isotype": {
+     "IgG": 0.338,
+     "IgA": 0.575,
+     "IgM/IgD": 0.087
+    },
+    "isotypeN": {
+     "IgG": 27,
+     "IgA": 46,
+     "IgM/IgD": 7
+    }
+   },
+   "tcr": {
+    "n": 279,
+    "clones": 243,
+    "expandedShare": 0.183,
+    "topClone": 0.065
+   }
+  },
+  {
+   "sample": "LT_S80",
+   "patient": "TH179",
+   "stage": "grouped_pd",
+   "tissue": "LN",
+   "response": "PR",
+   "cells": 1035,
+   "bcr": {
+    "n": 302,
+    "clones": 277,
+    "expandedShare": 0.139,
+    "topClone": 0.02,
+    "isotype": {
+     "IgG": 0.43,
+     "IgA": 0.383,
+     "IgM/IgD": 0.187
+    },
+    "isotypeN": {
+     "IgA": 115,
+     "IgG": 129,
+     "IgM/IgD": 56
+    }
+   },
+   "tcr": {
+    "n": 264,
+    "clones": 253,
+    "expandedShare": 0.076,
+    "topClone": 0.011
+   }
+  },
+  {
+   "sample": "LT_S81",
+   "patient": "TH266",
+   "stage": "grouped_pr",
+   "tissue": "Liver",
+   "response": "PR",
+   "cells": 696,
+   "bcr": {
+    "n": 21,
+    "clones": 20,
+    "expandedShare": 0.095,
+    "topClone": 0.095,
+    "isotype": {
+     "IgG": 0.476,
+     "IgA": 0.381,
+     "IgM/IgD": 0.143
+    },
+    "isotypeN": {
+     "IgG": 10,
+     "IgA": 8,
+     "IgM/IgD": 3
+    }
+   },
+   "tcr": {
+    "n": 223,
+    "clones": 164,
+    "expandedShare": 0.363,
+    "topClone": 0.072
+   }
+  },
+  {
+   "sample": "LT_S82",
+   "patient": "TH226",
+   "stage": "grouped_pd",
+   "tissue": "Lung",
+   "response": "PR",
+   "cells": 833,
+   "bcr": {
+    "n": 20,
+    "clones": 16,
+    "expandedShare": 0.35,
+    "topClone": 0.15,
+    "isotype": {
+     "IgG": 0.5,
+     "IgA": 0.444,
+     "IgM/IgD": 0.056
+    },
+    "isotypeN": {
+     "IgG": 9,
+     "IgM/IgD": 1,
+     "IgA": 8
+    }
+   },
+   "tcr": {
+    "n": 150,
+    "clones": 135,
+    "expandedShare": 0.173,
+    "topClone": 0.027
+   }
+  }
+ ]
+}

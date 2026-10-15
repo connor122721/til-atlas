@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Bulk RNA · TIL Atlas</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main id="main">
+  <h1>Bulk RNA-seq</h1>
+  <p class="lede">Does the T and B cell content of a tumor before treatment predict who responds? Real pre-treatment RNA-seq from
+    immune checkpoint trials, harmonized by CRI iAtlas and published in cBioPortal's datahub. One AUC per cohort: 0.5 is a coin flip;
+    above 0.5 means responders had higher scores.</p>
+  <p class="small muted" id="meta"></p>
+
+  <div class="filters" role="group" aria-label="Choose what to compare">
+    <select id="sig" aria-label="Signature"></select>
+    <select id="ep" aria-label="Endpoint"></select>
+  </div>
+
+  <section class="grid g3" style="margin-top:4px">
+    <div class="card span2">
+      <h3 id="forestTitle">Signature vs response, by cohort</h3>
+      <div class="sub" id="forestSub">AUC with 95% bootstrap interval; dot size = patients. Click a cohort to see its patients.</div>
+      <div class="chart" id="forest"></div>
+    </div>
+    <div class="card">
+      <h3 id="cohortTitle">Cohort</h3>
+      <div class="sub" id="cohortSub"></div>
+      <select id="gene" aria-label="Show a single gene instead" style="width:100%;margin-bottom:6px"></select>
+      <div class="chart" id="strip"></div>
+      <p class="small muted" id="stripStats" style="margin-top:8px"></p>
+    </div>
+  </section>
+
+  <section class="grid g2">
+    <div class="card">
+      <h3>Overall survival by signature</h3>
+      <div class="sub" id="kmSub">Patients split at the cohort median of the selected score</div>
+      <div class="legend" id="kmLegend"></div>
+      <div class="chart" id="km"></div>
+      <p class="small muted" id="kmStats" style="margin-top:6px"></p>
+    </div>
+    <div class="card">
+      <h3>Every signature, every cohort</h3>
+      <div class="sub">AUC for the selected endpoint; blue = higher in responders, red = higher in non-responders. Click a cell.</div>
+      <div class="legend" id="hmLegend"></div>
+      <div class="chart" id="heat"></div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>What's being measured</h2>
+    <p>For each cohort, one pre-treatment biopsy per patient. Expression is log2(TPM+1), z-scored gene by gene within the cohort, and a signature
+      score is the mean over its genes (the gene lists are in <code>analysis/bulk/signatures.json</code>). Rows marked “iAtlas” are scores CRI iAtlas
+      computed and ships with the data. AUC is the probability that a randomly chosen responder scores higher than a randomly chosen non-responder;
+      its interval comes from 1,000 bootstrap resamples within each group.</p>
+    <p>These are checkpoint-inhibitor cohorts, not TIL therapy: they ask whether the T and B cells already in a tumor predict response to releasing
+      them. The closest TIL-therapy bulk cohort with response labels, Lauss et al. 2017 (GEO GSE100797, 25 patients), is listed on the
+      <a href="datasets.html">Datasets</a> page; <code>analysis/bulk/geo_cohort.py</code> scores it the same way.</p>
+    <p class="small muted">Data: cBioPortal datahub (iAtlas-harmonized studies), ODbL 1.0. Derived scores on this page are shared under the same licence.
+      Regenerate with <code>python analysis/bulk/fetch_iatlas.py</code>.</p>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/stats.js"></script>
+<script src="assets/bulk.js"></script>
+</body>
+</html>

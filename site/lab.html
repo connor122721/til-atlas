@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="claude:viewport-fit-sides" content="cover">
-<title>Replication Lab · TIL Atlas</title>
+<title>Single-cell TILs · TIL Atlas</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <main id="main">
-  <h1>Replication lab</h1>
-  <p class="lede">Re-deriving the central result of Krishna et al. (<em>Science</em> 2020) — stem-like CD39⁻CD69⁻ CD8⁺ cells in the infusion product
-    track with response — and following clones from tumor to product to blood, as in Chiffelle et al. (<em>Immunity</em> 2024).
-    The pages read small JSON files exported by the scripts in <code>analysis/</code>; raw data stays on your cluster.</p>
+  <h1>Single-cell TILs</h1>
+  <p class="lede">Tumor-infiltrating T and B cells, one cell at a time, with their receptors. Which clones expand in the tumor, whether they also
+    expand in nearby normal tissue or blood, and whether they look stem-like or exhausted — the questions behind Krishna et al. 2020 and every
+    TIL product. Every value on this page comes from published data.</p>
 
   <div class="card" style="margin-top:18px">
     <div class="filters" style="margin:0">
@@ -22,18 +22,17 @@
     </div>
     <div id="queued" class="small" style="margin-top:10px"></div>
   </div>
-  <div id="dsBanner" style="margin-top:14px"></div>
 
-  <section class="grid g3" style="margin-top:20px">
+  <section class="grid g3" style="margin-top:14px">
     <div class="card span2">
       <h3 id="umapTitle">CD8⁺ T cells</h3>
-      <div class="sub" id="umapSub">UMAP of single cells; hover a point</div>
+      <div class="sub" id="umapSub"></div>
       <div class="filters" style="margin:0 0 8px">
         <select id="colorBy" aria-label="Color cells by">
-          <option value="stem">Color: stem-like signature score</option>
-          <option value="term">Color: terminal (CD39⁺) signature score</option>
-          <option value="response">Color: patient response</option>
-          <option value="cluster">Color: highlight one cluster</option>
+          <option value="stem">Color: stem-like score</option>
+          <option value="term">Color: terminal / exhausted score</option>
+          <option value="compartment">Color: tissue</option>
+          <option value="cluster">Color: highlight one of the authors' clusters</option>
         </select>
         <select id="clusterPick" aria-label="Cluster to highlight" hidden></select>
       </div>
@@ -41,29 +40,30 @@
       <div class="chart" id="umap" style="aspect-ratio:1.45"></div>
     </div>
     <div class="card">
-      <h3>The Krishna comparison</h3>
-      <div class="sub">One dot per patient's product</div>
+      <h3 id="cmpTitle">Patients compared</h3>
+      <div class="sub" id="cmpSub">One dot per patient, tumor CD8⁺ T cells</div>
       <select id="metric" aria-label="Metric" style="width:100%;margin-bottom:8px">
-        <option value="stemFrac">Stem-like share of CD8⁺ cells</option>
-        <option value="termFrac">Terminal-exhausted share of CD8⁺ cells</option>
-        <option value="persistence30">Persistence in blood, day 30</option>
+        <option value="stemFrac">Stem-like share of tumor CD8⁺ cells</option>
+        <option value="termFrac">Terminal / exhausted share of tumor CD8⁺ cells</option>
+        <option value="dualExpanded">Tumor CD8⁺ cells in clones also expanded in normal tissue</option>
       </select>
       <div class="chart" id="strip"></div>
       <p class="small muted" id="stats" style="margin-top:8px"></p>
     </div>
   </section>
 
-  <section class="card">
-    <h3>Across datasets</h3>
-    <div class="sub">Every loaded dataset side by side, same metric. Each study is tested on its own: pooling patients across studies without
-      stratifying mixes batch, platform and therapy into the comparison.</div>
-    <div class="chart" id="pooled"></div>
-    <p class="small muted" id="pooledStats" style="margin-top:8px"></p>
+  <section class="card" id="expCard">
+    <h3>Where are tumor clones expanded?</h3>
+    <div class="sub">In many patients, clones expanded in the tumor were also expanded in the adjacent normal tissue — a sign that tumors are restocked
+      with T cells from outside. Wu et al.'s headline result is that this kind of peripheral expansion associates with tumor infiltration and with response
+      to immunotherapy. Recomputed from their data: each bar is one patient's tumor CD8⁺ T cells with a TCR.</div>
+    <div class="legend" id="expLegend"></div>
+    <div class="chart" id="expansion"></div>
   </section>
 
   <section class="card" id="cloneCard">
     <h3>Follow the clones</h3>
-    <div class="sub">Top 25 TCRβ clonotypes for one patient across four samples (log₁₀ frequency). Points at the floor were not detected.</div>
+    <div class="sub" id="cloneSub">The 25 largest tumor CD8⁺ clones of one patient and their frequency in each tissue (log scale). Points in the floor band were not detected.</div>
     <div class="filters" style="margin:0 0 8px">
       <select id="patient" aria-label="Patient"></select>
       <span class="small muted" id="patientNote"></span>
@@ -72,26 +72,43 @@
     <div class="chart" id="slope"></div>
   </section>
 
+  <section class="card" id="bcrCard">
+    <h3>B and T cell receptors in lung tumors</h3>
+    <div class="sub" id="bcrSub"></div>
+    <div class="grid g2" style="margin-top:6px">
+      <div>
+        <div class="small muted" style="margin-bottom:4px">Antibody class of tumor B cells, all biopsies pooled</div>
+        <div class="legend" id="isoLegend"></div>
+        <div class="chart" id="iso"></div>
+      </div>
+      <div>
+        <select id="bcrMetric" aria-label="Per-biopsy metric" style="width:100%;margin-bottom:6px">
+          <option value="igg">Share of B cells that are IgG</option>
+          <option value="bexp">Share of B cells in expanded clones</option>
+          <option value="texp">Share of T cells in expanded clones</option>
+        </select>
+        <div class="chart" id="bcrStrip"></div>
+        <p class="small muted" id="bcrStats" style="margin-top:6px"></p>
+      </div>
+    </div>
+  </section>
+
   <section class="prose">
-    <h2>Load more datasets</h2>
-    <p>Each dataset gets its own folder under <code>analysis/datasets/</code> with a <code>run.sh</code> that downloads, prepares and exports it;
-      the export registers itself in <code>site/data/lab/index.json</code>, so it appears in the dataset picker after you commit.</p>
-    <div class="step"><div class="n">1</div><div><b>Melanoma checkpoint, ready to run.</b> <code>bash analysis/datasets/sadefeldman2018/run.sh</code>
-      (GSE120575, ~64 GB RAM). Patient and response come with the GEO files, so nothing to fill in. Same question as Krishna in a different therapy:
-      baseline tumors, not infusion products.</div></div>
-    <div class="step"><div class="n">2</div><div><b>Lausanne TIL-ACT and cervical TIL, one sample sheet each.</b>
-      <code>bash analysis/datasets/chiffelle2024/run.sh</code> and <code>…/huang2022/run.sh</code> download the GEO files, find every 10x sample,
-      and write <code>data/processed/&lt;id&gt;/samples.csv</code>. Fill in patient, compartment and response from the GEO sample titles and the
-      papers' tables, then run the script again.</div></div>
-    <div class="step"><div class="n">3</div><div><b>Use the real signatures.</b> Replace the starter marker panels in <code>analysis/signatures/</code> with the
-      CD39⁻CD69⁻ / CD39⁺CD69⁺ genes from the Krishna supplement before you call it a replication.</div></div>
-    <div class="step"><div class="n">4</div><div><b>Publish.</b> <code>git add site/data/lab &amp;&amp; git commit &amp;&amp; git push</code>. Real exports set
-      <code>meta.synthetic = false</code>, and the page opens on the first real dataset.</div></div>
+    <h2>About the data</h2>
+    <p><b>Wu et al., Nature 2020</b> (GEO GSE139555): 141,623 T cells from tumor, adjacent normal tissue and, for four patients, blood; 14 patients with
+      lung, endometrial, colorectal or kidney cancer, untreated at surgery. Cell clusters and clonotypes are the authors'. Stem-like and terminal scores
+      use the gene lists in <code>analysis/signatures/</code>; a clone is “predicted tumor-reactive” when its cells strongly express CXCL13, ENTPD1 (CD39),
+      ITGAE (CD103), PDCD1, TNFRSF9 (4-1BB), HAVCR2, LAYN and TOX — a transcriptional prediction, not a functional assay.</p>
+    <p><b>Maynard et al., Cell 2020</b> (PRJNA591860): Smart-seq2 of lung cancer biopsies before targeted therapy, at residual disease and at progression,
+      with B and T cell receptors reconstructed by BraCeR and TraCeR. Biopsies with at least 10 receptors are plotted.</p>
+    <p>Both arrive as processed files from the scirpy project's GitHub releases; <code>analysis/datasets/wu2020/prepare.py</code> and
+      <code>analysis/datasets/maynard2020/prepare.py</code> rebuild everything here. Krishna et al. 2020 did not deposit their single-cell data, so
+      the infusion-product comparison waits for a public cohort with products and outcomes (see <a href="datasets.html">Datasets</a>).</p>
   </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="assets/common.js"></script>
-<script src="assets/charts.js"></script>
+<script src="assets/stats.js"></script>
 <script src="assets/lab.js"></script>
 </body>
 </html>

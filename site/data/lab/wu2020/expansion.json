@@ -1,0 +1,235 @@
+{
+ "meta": {
+  "synthetic": false,
+  "dataset": "wu2020",
+  "study": "Wu et al. 2020",
+  "therapy": "untreated (surgical resection)",
+  "sample": "tumor, normal adjacent tissue and blood",
+  "clusters": [
+   "8.1-Teff",
+   "8.2-Tem",
+   "8.3a-Trm",
+   "8.3b-Trm",
+   "8.3c-Trm",
+   "8.4-Chrom",
+   "8.5-Mitosis",
+   "8.6-KLRB1"
+  ],
+  "groupBy": "cancer",
+  "source": "GSE139555 via scirpy GitHub release d0.1.0 (wu2020.h5ad)",
+  "signatures": {
+   "stem": [
+    "TCF7",
+    "LEF1",
+    "SELL",
+    "IL7R",
+    "CCR7",
+    "CD27",
+    "CD28",
+    "GPR183",
+    "MYB",
+    "BACH2"
+   ],
+   "term": [
+    "ENTPD1",
+    "CD69",
+    "HAVCR2",
+    "LAG3",
+    "PDCD1",
+    "TOX",
+    "TIGIT",
+    "CTLA4",
+    "CXCL13",
+    "LAYN",
+    "GZMB",
+    "PRF1"
+   ],
+   "react": [
+    "CXCL13",
+    "ENTPD1",
+    "ITGAE",
+    "PDCD1",
+    "TNFRSF9",
+    "HAVCR2",
+    "LAYN",
+    "TOX"
+   ]
+  },
+  "scoreNote": "mean z-scored log-normalized expression across CD8 T cells",
+  "compartmentsOfCells": [
+   "Tumor",
+   "NAT",
+   "Blood"
+  ]
+ },
+ "patients": [
+  {
+   "patient": "Colon1",
+   "group": "Colorectal",
+   "tumorCells": 669,
+   "categories": {
+    "Tumor singleton": 0.453,
+    "Expanded in tumor only": 0.327,
+    "Expanded in tumor and NAT": 0.22
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Colon2",
+   "group": "Colorectal",
+   "tumorCells": 147,
+   "categories": {
+    "Tumor singleton": 0.51,
+    "Expanded in tumor only": 0.49,
+    "Expanded in tumor and NAT": 0.0
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Endo1",
+   "group": "Endometrial",
+   "tumorCells": 3045,
+   "categories": {
+    "Tumor singleton": 0.314,
+    "Expanded in tumor only": 0.379,
+    "Expanded in tumor and NAT": 0.307
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Endo2",
+   "group": "Endometrial",
+   "tumorCells": 2011,
+   "categories": {
+    "Tumor singleton": 0.244,
+    "Expanded in tumor only": 0.63,
+    "Expanded in tumor and NAT": 0.126
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Endo3",
+   "group": "Endometrial",
+   "tumorCells": 1916,
+   "categories": {
+    "Tumor singleton": 0.361,
+    "Expanded in tumor only": 0.586,
+    "Expanded in tumor and NAT": 0.054
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Renal1",
+   "group": "Kidney",
+   "tumorCells": 1283,
+   "categories": {
+    "Tumor singleton": 0.162,
+    "Expanded in tumor only": 0.24,
+    "Expanded in tumor and NAT": 0.598
+   },
+   "sharedWithBlood": 0.743,
+   "hasBlood": true
+  },
+  {
+   "patient": "Renal2",
+   "group": "Kidney",
+   "tumorCells": 1643,
+   "categories": {
+    "Tumor singleton": 0.154,
+    "Expanded in tumor only": 0.097,
+    "Expanded in tumor and NAT": 0.749
+   },
+   "sharedWithBlood": 0.775,
+   "hasBlood": true
+  },
+  {
+   "patient": "Renal3",
+   "group": "Kidney",
+   "tumorCells": 308,
+   "categories": {
+    "Tumor singleton": 0.399,
+    "Expanded in tumor only": 0.218,
+    "Expanded in tumor and NAT": 0.383
+   },
+   "sharedWithBlood": 0.526,
+   "hasBlood": true
+  },
+  {
+   "patient": "Lung1",
+   "group": "Lung",
+   "tumorCells": 1944,
+   "categories": {
+    "Tumor singleton": 0.252,
+    "Expanded in tumor only": 0.469,
+    "Expanded in tumor and NAT": 0.279
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Lung2",
+   "group": "Lung",
+   "tumorCells": 3394,
+   "categories": {
+    "Tumor singleton": 0.239,
+    "Expanded in tumor only": 0.309,
+    "Expanded in tumor and NAT": 0.452
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Lung3",
+   "group": "Lung",
+   "tumorCells": 1967,
+   "categories": {
+    "Tumor singleton": 0.268,
+    "Expanded in tumor only": 0.648,
+    "Expanded in tumor and NAT": 0.084
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Lung4",
+   "group": "Lung",
+   "tumorCells": 1934,
+   "categories": {
+    "Tumor singleton": 0.351,
+    "Expanded in tumor only": 0.342,
+    "Expanded in tumor and NAT": 0.308
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Lung5",
+   "group": "Lung",
+   "tumorCells": 815,
+   "categories": {
+    "Tumor singleton": 0.497,
+    "Expanded in tumor only": 0.383,
+    "Expanded in tumor and NAT": 0.12
+   },
+   "sharedWithBlood": null,
+   "hasBlood": false
+  },
+  {
+   "patient": "Lung6",
+   "group": "Lung",
+   "tumorCells": 1114,
+   "categories": {
+    "Tumor singleton": 0.654,
+    "Expanded in tumor only": 0.129,
+    "Expanded in tumor and NAT": 0.217
+   },
+   "sharedWithBlood": 0.057,
+   "hasBlood": true
+  }
+ ]
+}

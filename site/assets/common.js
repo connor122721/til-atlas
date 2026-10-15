@@ -4,7 +4,8 @@
     ["index.html", "Home"],
     ["trials.html", "Trial tracker"],
     ["simulator.html", "Clone simulator"],
-    ["lab.html", "Replication lab"],
+    ["lab.html", "Single-cell"],
+    ["bulk.html", "Bulk RNA"],
     ["spatial.html", "Spatial"],
     ["datasets.html", "Datasets"],
     ["learn.html", "Learn"],
@@ -75,6 +76,12 @@
       el.insertAdjacentHTML("afterbegin", `<div class="banner" role="note">
         <svg class="icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 2 1 18h18L10 2zm0 5 .1 6h-.2L10 7zm0 9.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
         <div><b>${title}</b> ${body}</div></div>`);
+    },
+    /** Replace everything after the page lede with a designed empty state. */
+    emptyState(main, title, body) {
+      const lede = main.querySelector(".lede");
+      [...main.children].forEach((el) => { if (el !== lede && el.tagName !== "H1") el.remove(); });
+      main.insertAdjacentHTML("beforeend", `<div class="card empty"><h3>${title}</h3><p>${body}</p></div>`);
     },
     /** Make a <table> sortable by clicking headers; numeric when th.num. */
     sortable(table, onSort) {

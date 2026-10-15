@@ -12,17 +12,18 @@
 <main id="main">
   <div class="hero">
     <div>
-      <p class="small" style="color:var(--accent-ink);font-weight:650;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Tumor-infiltrating lymphocyte therapy, in data</p>
+      <p class="small" style="color:var(--accent-ink);font-weight:650;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Tumor-infiltrating lymphocytes, in public data</p>
       <h1>Which T cells actually cure cancer?</h1>
       <p class="lede">TIL therapy takes T cells out of a tumor, grows billions of them, and puts them back. Some patients are cured; most aren't.
-        This site follows the field from several angles: a tracker that re-reads ClinicalTrials.gov every week, a simulator for the clones you infuse,
-        a lab that re-derives published single-cell results, and spatial maps of where T cells sit in tumors.</p>
+        This site follows the question through public data: every TIL trial on ClinicalTrials.gov, single-cell T and B cell receptors from tumors,
+        bulk RNA-seq from immunotherapy trials, and a model of what happens to each clone after infusion, seeded with real repertoires.</p>
       <div class="grid g3" id="heroStats" style="margin-top:18px"></div>
     </div>
-    <div class="card" style="padding:12px">
-      <div class="chart hero-art" id="heroArt" role="img" aria-label="Simulated clone sizes in a responding patient over six months"></div>
-      <p class="small muted" style="margin:6px 4px 0">One simulated patient, first six months: band width is each infused clone's size (square-root scale). Blue and green clones are tumor-reactive; orange are bystanders.
-        <a href="simulator.html">Make your own →</a></p>
+    <div class="card" style="padding:14px 14px 10px">
+      <h3 style="margin:0 0 2px">CD8⁺ T cells before treatment vs response</h3>
+      <div class="sub" style="margin-bottom:6px">AUC per immunotherapy cohort (dot) with 95% interval; dot size = patients</div>
+      <div class="chart" id="heroArt" role="img" aria-label="CD8 T cell signal versus response across immunotherapy cohorts"></div>
+      <p class="small muted" style="margin:6px 2px 0">Real pre-treatment tumor RNA-seq (CRI iAtlas via cBioPortal). <a href="bulk.html">Explore every signature →</a></p>
     </div>
   </div>
 
@@ -30,32 +31,32 @@
     <a class="card feature" href="trials.html">
       <div class="kicker">Updated weekly</div>
       <h3>Trial tracker</h3>
-      <p class="small muted">Every TIL and TCR-T trial, auto-tagged by indication, combination and engineering, with a weekly changelog of new trials and status flips.</p>
-    </a>
-    <a class="card feature" href="simulator.html">
-      <div class="kicker">Interactive model</div>
-      <h3>Clone simulator</h3>
-      <p class="small muted">Stochastic birth–death model of stem-like, effector and exhausted cells per clone. Run a 40-patient virtual trial in a second.</p>
+      <p class="small muted">Every TIL and TCR-T trial on ClinicalTrials.gov, tagged by indication, combination and engineering, with a weekly changelog.</p>
     </a>
     <a class="card feature" href="lab.html">
-      <div class="kicker">Replication</div>
-      <h3>Replication lab</h3>
-      <p class="small muted">Krishna 2020's stem-like CD39⁻CD69⁻ signature, scored per product, compared by response, and followed clone by clone.</p>
+      <div class="kicker">TCR and BCR</div>
+      <h3>Single-cell TILs</h3>
+      <p class="small muted">Tumor T cells from 14 patients with their receptors: which clones expand, where else they expand, and what state they're in. Plus tumor B cells.</p>
+    </a>
+    <a class="card feature" href="bulk.html">
+      <div class="kicker">918 patients</div>
+      <h3>Bulk RNA-seq</h3>
+      <p class="small muted">CD8, stem-like, tumor-reactive, B cell, plasma cell and TLS signatures against response in nine immunotherapy trials.</p>
+    </a>
+    <a class="card feature" href="simulator.html">
+      <div class="kicker">Model on real input</div>
+      <h3>Clone simulator</h3>
+      <p class="small muted">Infuse a real patient's tumor repertoire into a stochastic model of expansion, exhaustion and tumor control.</p>
     </a>
     <a class="card feature" href="spatial.html">
       <div class="kicker">Tissue maps</div>
       <h3>Spatial</h3>
-      <p class="small muted">Single cells in tissue: where CD8⁺ cells sit relative to tumor and myeloid cells, and which neighborhoods differ by response.</p>
+      <p class="small muted">Where CD8⁺ cells sit relative to tumor and myeloid cells. Pipeline ready; public cohorts load from your cluster.</p>
     </a>
     <a class="card feature" href="datasets.html">
       <div class="kicker">Public data</div>
       <h3>Datasets</h3>
-      <p class="small muted">Every public cohort the site can load, with accessions and scripts, plus a weekly watch for new GEO series.</p>
-    </a>
-    <a class="card feature" href="learn.html">
-      <div class="kicker">Learning path</div>
-      <h3>Learn the methods</h3>
-      <p class="small muted">Public datasets, what each one can answer, and exercises from API scraping to spatial neighborhoods and model fitting.</p>
+      <p class="small muted">Every public cohort the site can use, with accessions, access status and the script that loads it, plus a weekly GEO watch.</p>
     </a>
   </section>
 
@@ -67,7 +68,6 @@
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="assets/common.js"></script>
-<script src="assets/sim-model.js"></script>
 <script src="assets/home.js"></script>
 </body>
 </html>

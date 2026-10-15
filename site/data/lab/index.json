@@ -1,24 +1,16 @@
 {
  "datasets": [
   {
-   "id": "demo-products",
-   "label": "Demo A \u00b7 infusion products",
-   "study": "Synthetic demo",
-   "therapy": "\u2014",
-   "sample": "infusion product",
-   "synthetic": true,
-   "path": "data/lab/demo-products/",
-   "hasClones": true
-  },
-  {
-   "id": "demo-tumors",
-   "label": "Demo B \u00b7 tumor biopsies",
-   "study": "Synthetic demo",
-   "therapy": "\u2014",
-   "sample": "tumor biopsy",
-   "synthetic": true,
-   "path": "data/lab/demo-tumors/",
-   "hasClones": false
+   "id": "wu2020",
+   "label": "Wu 2020 \u00b7 tumor, NAT and blood T cells",
+   "study": "Wu et al., Nature 2020",
+   "therapy": "untreated",
+   "sample": "tumor CD8 T cells",
+   "synthetic": false,
+   "path": "data/lab/wu2020/",
+   "hasClones": true,
+   "hasExpansion": true,
+   "groupBy": "cancer"
   }
  ]
 }

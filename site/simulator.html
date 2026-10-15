@@ -10,22 +10,32 @@
 <body>
 <main id="main">
   <h1>Clone simulator</h1>
-  <p class="lede">Build an infusion product, give it to a virtual patient, and watch every clone expand, differentiate, exhaust, or vanish over a year.
-    The question it lets you poke at is the one from Krishna et al.: <em>why do stem-like CD39⁻CD69⁻ cells predict durable response?</em></p>
+  <p class="lede">Take a real patient's tumor T cell repertoire — every clone's size and how many of its cells are stem-like, effector or exhausted, measured
+    by single-cell RNA and TCR sequencing — infuse it into a virtual patient, and watch each clone over a year. The question is Krishna et al.'s:
+    <em>why do stem-like CD39⁻CD69⁻ cells predict durable response?</em> The starting product is real data; what happens after infusion is a model.</p>
 
   <div class="sim">
     <aside class="card controls" aria-label="Simulation controls">
       <div class="group">
-        <div class="gl">Presets</div>
-        <div class="chips" id="presets"></div>
-      </div>
-      <div class="group">
         <div class="gl">Infusion product</div>
+        <label for="source" class="small muted">Starting repertoire</label>
+        <select id="source" style="width:100%;margin:4px 0 8px"></select>
+        <div id="realOpts">
+          <label for="reactDef" class="small muted">Which clones count as tumor-reactive</label>
+          <select id="reactDef" style="width:100%;margin:4px 0 8px">
+            <option value="enriched">Tumor-enriched vs normal tissue (TCR only)</option>
+            <option value="reactive">CXCL13⁺ CD39⁺ program (expression)</option>
+          </select>
+          <p class="small" id="productNote" style="margin:0 0 10px"></p>
+        </div>
+        <div id="customOpts" hidden>
+          <div class="chips" id="presets" style="margin-bottom:8px"></div>
+          <div class="slider"><label for="stem">Stem-like (CD39⁻CD69⁻) share <output id="stem-o"></output></label><input id="stem" type="range" min="0" max="0.6" step="0.01" value="0.2"></div>
+          <div class="slider"><label for="reactive">Tumor-reactive clones <output id="reactive-o"></output></label><input id="reactive" type="range" min="0" max="0.7" step="0.01" value="0.25"></div>
+          <div class="slider"><label for="clonality">Product clonality (Zipf α) <output id="clonality-o"></output></label><input id="clonality" type="range" min="0.3" max="2" step="0.05" value="1.1"></div>
+        </div>
         <div class="slider"><label for="cells">Cells infused <output id="cells-o"></output></label><input id="cells" type="range" min="9" max="11.3" step="0.1" value="10.5"></div>
-        <div class="slider"><label for="stem">Stem-like (CD39⁻CD69⁻) share <output id="stem-o"></output></label><input id="stem" type="range" min="0" max="0.6" step="0.01" value="0.2"></div>
-        <div class="slider"><label for="reactive">Tumor-reactive clones <output id="reactive-o"></output></label><input id="reactive" type="range" min="0" max="0.7" step="0.01" value="0.25"></div>
         <div class="slider"><label for="avidity">Mean functional avidity <output id="avidity-o"></output></label><input id="avidity" type="range" min="0.2" max="2" step="0.05" value="1"></div>
-        <div class="slider"><label for="clonality">Product clonality (Zipf α) <output id="clonality-o"></output></label><input id="clonality" type="range" min="0.3" max="2" step="0.05" value="1.1"></div>
       </div>
       <div class="group">
         <div class="gl">Patient</div>
@@ -35,8 +45,8 @@
         <div class="slider"><label for="resist">Tumor resistance <output id="resist-o"></output></label><input id="resist" type="range" min="0.3" max="4" step="0.1" value="1"></div>
       </div>
       <div class="group" style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn" id="reseed" type="button" title="Same settings, new random draw">New random patient</button>
-        <button class="btn primary" id="cohort" type="button">Run a 40-patient trial</button>
+        <button class="btn" id="reseed" type="button" title="Same product, new random events">Re-run with new random events</button>
+        <button class="btn primary" id="cohort" type="button">Infuse all 14 real repertoires</button>
       </div>
       <p class="small muted" id="seedNote"></p>
     </aside>
@@ -74,25 +84,33 @@
       </div>
 
       <div class="card" id="cohortCard" style="margin-top:14px" hidden>
-        <h3>Virtual trial: best response per patient</h3>
+        <h3 id="cohortTitle">Virtual trial: best response per repertoire</h3>
         <div class="sub" id="cohortSub"></div>
         <div class="legend" id="cohortLegend"></div>
         <div class="chart" id="waterfall"></div>
-        <h3 style="margin-top:18px">Does product stemness predict response?</h3>
-        <div class="sub">Each patient's product varies around the sliders, like real manufacturing runs. This is the Krishna analysis, on virtual patients.</div>
+        <h3 style="margin-top:18px">Next to real TIL trials</h3>
+        <div class="sub">Response rates from the virtual trial beside published results. Loose comparison: these repertoires come from untreated lung, endometrial,
+          colorectal and kidney tumors, not from expanded melanoma TIL products.</div>
+        <div class="chart" id="bench"></div>
+        <h3 style="margin-top:18px" id="scatterTitle">Does stemness of the tumor-reactive clones predict response?</h3>
+        <div class="sub" id="scatterSub">x: share of stem-like cells among the clones flagged tumor-reactive, measured in each real tumor. This is the Krishna analysis with real repertoires as input.</div>
         <div class="chart" id="scatter"></div>
         <p class="small muted" id="scatterNote" style="margin-top:6px"></p>
-        <p class="small muted">Expect more responses here than in real TIL trials, which report objective responses in roughly a third to a half of patients:
-          the model has no HLA loss, no antigen-negative escape and no manufacturing failures. Adding one of those is a good first modification.</p>
       </div>
     </div>
   </div>
 
   <section class="prose">
-    <h2>What the model is (and isn't)</h2>
-    <p>Each of 80 infused clones has three compartments: <b>S</b> stem-like (TCF7⁺, the CD39⁻CD69⁻ “DN” cells),
-      <b>E</b> effector, and <b>X</b> terminally exhausted (CD39⁺CD69⁺ “DP”). Cells are counted in units of 10⁶ and every
-      event (division, death, differentiation) is a Poisson draw each quarter-day, so small clones can disappear by chance.</p>
+    <h2>What is measured and what is modeled</h2>
+    <p><b>Measured (Wu et al. 2020, real data):</b> for each of 14 patients, the 80 largest CD8⁺ T cell clones in the tumor, how many of each
+      clone's cells look stem-like (S), effector (E) or terminally exhausted (X) from their RNA, whether the clone is also found in adjacent normal
+      tissue or blood, and two independent flags for tumor reactivity: a TCR-only flag (expanded in the tumor and at least 4× more frequent there than
+      in normal tissue) and an expression flag (the CXCL13⁺ CD39⁺ program). Clone sizes are scaled so the product holds the chosen number of cells.</p>
+    <p><b>Modeled:</b> everything after infusion. Avidity is not measured, so flagged clones draw one at random around the slider value. A real
+      TIL product is grown from the tumor for weeks, which reshapes it; using the tumor repertoire as the product is the simplest honest stand-in until a
+      public cohort with sequenced infusion products is loaded.</p>
+    <p>Each clone has three compartments and every event (division, death, differentiation) is a Poisson draw each quarter-day, so small clones can
+      disappear by chance.</p>
     <pre>
 antigen drive  A_i = r_i · a_i · Tu / (Tu + K_T)
                r_i ∈ {0,1} tumor-reactive, a_i functional avidity
@@ -110,14 +128,17 @@ tumor   dTu/dt = g·Tu·(1 − Tu/Tmax) − k·Tu · K / (K + Kh·resistance)
     <p>The behavior that matters: effectors do the killing but die within weeks, so a product's <em>initial</em> effector mass buys a
       response, while its reactive stem-like pool decides whether new effectors keep coming once the infused ones are gone. Lower the
       stem-like share with everything else fixed and you'll usually see a partial response followed by relapse.</p>
-    <p class="muted">Parameters are illustrative, set by hand to reproduce qualitative patterns reported in the TIL literature; they are not fitted to patient
-      data. A good exercise: fit them to real clonotype trajectories (see the <a href="learn.html">Learn</a> page).</p>
+    <p class="muted">Rate parameters are set by hand to reproduce qualitative patterns from the TIL literature; they are not fitted to patient data.
+      A good exercise: fit them to real post-infusion clonotype trajectories once a cohort such as Chiffelle et al. 2024 is loaded (see <a href="learn.html">Learn</a>).</p>
+    <p class="small muted">Benchmarks: Rohaan et al., N Engl J Med 2022 (TIL vs ipilimumab, phase 3: objective response 49% vs 21%, complete response 20% vs 7%, 84 patients per arm);
+      pooled C-144-01 analysis of lifileucel, J Immunother Cancer 2022 (153 patients: 8 complete and 40 partial responses).</p>
   </section>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="assets/common.js"></script>
 <script src="assets/charts.js"></script>
 <script src="assets/sim-model.js"></script>
+<script src="assets/stats.js"></script>
 <script src="assets/simulator.js"></script>
 </body>
 </html>

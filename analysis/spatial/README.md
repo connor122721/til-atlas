@@ -74,12 +74,3 @@ Download links are on each repository page; very large files are best fetched on
 `--radius` is the contact distance. 15–20 µm ≈ touching neighbors (good for IMC and segmented mIF);
 30 µm (default) ≈ one cell apart (Xenium/CosMx, where segmentation is looser). Re-run with a different radius
 before trusting any single z-score; a real interaction holds up across a range.
-
-## Demo data
-
-`make_synthetic_tissue.py` writes 12 invented cores where the CD8 pattern is planted by hand. Regenerate with
-```bash
-python analysis/spatial/make_synthetic_tissue.py /tmp/syn.csv.gz
-python analysis/spatial/export_spatial.py /tmp/syn.csv.gz --dataset-id demo-cores --label "Demo · tissue cores" \
-  --platform synthetic --study "Synthetic demo" --synthetic
-```

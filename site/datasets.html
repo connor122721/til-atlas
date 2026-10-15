@@ -10,17 +10,18 @@
 <body>
 <main id="main">
   <h1>Public datasets</h1>
-  <p class="lede">Studies with downloadable data that can feed this site, each checked against its repository page. A weekly watch on NCBI GEO
-    lists new series that might belong here.</p>
+  <p class="lede">Public studies of tumor-infiltrating lymphocytes — single-cell, TCR/BCR, bulk RNA-seq and spatial — each checked against its
+    repository page. “On the site” means its real data are already in a tab; the rest have a script to load them on your machine. A weekly watch on
+    NCBI GEO lists new series that might belong here.</p>
   <p class="small muted" id="catMeta"></p>
 
   <div class="filters" role="group" aria-label="Filter datasets">
     <select id="fTherapy" aria-label="Therapy"><option value="">All therapies</option></select>
     <select id="fAccess" aria-label="Access">
-      <option value="">Any access</option><option value="open">Open</option><option value="check">Check release</option><option value="unknown">Not confirmed</option>
+      <option value="">Any access</option><option value="open">Open</option><option value="check">Check release</option><option value="unknown">Not confirmed</option><option value="none">No public data</option>
     </select>
     <select id="fUse" aria-label="Site tab">
-      <option value="">Any tab</option><option value="lab">Feeds the replication lab</option><option value="spatial">Feeds the spatial tab</option>
+      <option value="">Any tab</option><option value="lab">Single-cell</option><option value="bulk">Bulk RNA</option><option value="sim">Clone simulator</option><option value="spatial">Spatial</option>
     </select>
   </div>
   <div class="chips" id="fMod" role="group" aria-label="Data type" style="margin:-6px 0 18px"></div>

@@ -3,16 +3,11 @@
   const { fmt, esc, css } = TIL;
   const $ = (s) => document.querySelector(s);
 
-  // Real data first; fall back to the synthetic fixture so the page still works before the first Action run.
-  let { data, path } = await TIL.load("data/trials.json", "data/demo/trials.json");
-  const demo = path && path.includes("/demo/");
-  const log = (await TIL.load(demo ? "data/demo/changelog.json" : "data/changelog.json")).data || [];
-  if (!data) {
-    TIL.banner($("#main"), "No trial data yet.", "Run the <code>Scrape ClinicalTrials.gov</code> workflow once (Actions tab → Run workflow) and reload.");
-    $("#meta").textContent = ""; return;
-  }
-  if (demo) TIL.banner($("#main"), "Showing the synthetic demo fixture.",
-    "These are invented trials (IDs start with NCT9) so the page has something to draw. The first run of the weekly GitHub Action replaces them with real ClinicalTrials.gov data.");
+  const { data } = await TIL.load("data/trials.json");
+  const log = (await TIL.load("data/changelog.json")).data || [];
+  if (!data) { TIL.emptyState($("#main"), "The first weekly pull hasn't run yet",
+    `This page fills itself from the ClinicalTrials.gov API every Monday. To fill it now, open the repository's <b>Actions</b> tab,
+     choose <b>Scrape ClinicalTrials.gov</b>, and click <b>Run workflow</b>; the site redeploys about a minute later.`); return; }
 
   const trials = data.trials;
   $("#meta").textContent = `${fmt(trials.length)} trials · pulled ${data.meta.generated} from ${data.meta.source}`;

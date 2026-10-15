@@ -3,16 +3,16 @@
   const { esc, fmt } = TIL;
   const $ = (s) => document.querySelector(s);
   const cat = (await TIL.load("data/catalog.json")).data;
-  const watch = await TIL.load("data/geo_watch.json", "data/demo/geo_watch.json");
+  const watch = await TIL.load("data/geo_watch.json");
   if (!cat) { TIL.banner($("#main"), "Catalog missing.", "Expected <code>data/catalog.json</code>."); return; }
 
-  const ACCESS = { open: ["Open", "good"], check: ["Check release", "warning"], unknown: ["Not confirmed", "muted"] };
-  const USE = { lab: ["Replication lab", "lab.html"], spatial: ["Spatial tab", "spatial.html"] };
+  const ACCESS = { open: ["Open", "good"], check: ["Check release", "warning"], unknown: ["Not confirmed", "muted"], none: ["No public data", "critical"] };
+  const USE = { lab: ["Single-cell", "lab.html"], bulk: ["Bulk RNA", "bulk.html"], spatial: ["Spatial", "spatial.html"], sim: ["Clone simulator", "simulator.html"] };
   const modKey = (m) => (/spatial|xenium|cosmx|visium|imaging|geomx|multiplex/i.test(m) ? "Spatial / imaging"
-    : /tcr/i.test(m) ? "TCR repertoire" : /scrna|smart-seq/i.test(m) ? "Single-cell RNA" : /bulk/i.test(m) ? "Bulk RNA" : "Other");
+    : /tcr|bcr/i.test(m) ? "TCR / BCR repertoire" : /scrna|smart-seq/i.test(m) ? "Single-cell RNA" : /bulk/i.test(m) ? "Bulk RNA" : "Other");
   cat.datasets.forEach((d) => (d._mods = [...new Set(d.modalities.map(modKey))]));
 
-  $("#catMeta").textContent = `${cat.datasets.length} datasets · ${cat.datasets.filter((d) => d.access === "open").length} open · curated ${cat.updated}`;
+  $("#catMeta").textContent = `${cat.datasets.length} datasets · ${cat.datasets.filter((d) => d.onSite).length} on the site now · ${cat.datasets.filter((d) => d.access === "open").length} open · curated ${cat.updated}`;
   [...new Set(cat.datasets.map((d) => d.therapy))].sort().forEach((t) => $("#fTherapy").insertAdjacentHTML("beforeend", `<option>${esc(t)}</option>`));
   const mods = [...new Set(cat.datasets.flatMap((d) => d._mods))].sort();
   const picked = new Set();
@@ -24,13 +24,13 @@
   });
   ["#fTherapy", "#fAccess", "#fUse"].forEach((s) => $(s).addEventListener("change", draw));
 
-  const pill = (a) => `<span class="pill ${ACCESS[a][1]}">${ACCESS[a][0]}</span>`;
+  const pill = (a, on) => (on ? `<span class="pill on">On the site</span> ` : "") + `<span class="pill ${ACCESS[a][1]}">${ACCESS[a][0]}</span>`;
   function draw() {
     const th = $("#fTherapy").value, ac = $("#fAccess").value, us = $("#fUse").value;
     const rows = cat.datasets.filter((d) => (!th || d.therapy === th) && (!ac || d.access === ac) && (!us || d.use.includes(us)) &&
       (!picked.size || d._mods.some((m) => picked.has(m))));
     $("#cards").innerHTML = rows.map((d) => `<article class="card dataset">
-        <div class="ds-head"><h3>${esc(d.short)}</h3>${pill(d.access)}</div>
+        <div class="ds-head"><h3>${esc(d.short)}</h3><div class="pills">${pill(d.access, d.onSite)}</div></div>
         <p class="small muted">${esc(d.paper)}</p>
         <div class="chips"><span class="chip">${esc(d.cancer)}</span><span class="chip">${esc(d.therapy)}</span>
           ${d.trial ? `<span class="chip mono">${esc(d.trial)}</span>` : ""}${d.modalities.map((m) => `<span class="chip">${esc(m)}</span>`).join("")}</div>
@@ -45,9 +45,7 @@
 
   // ---------- GEO watch feed
   const w = watch.data;
-  if (!w) { $("#geoMeta").textContent = "The GEO watch hasn't run yet."; return; }
-  if (watch.path.includes("/demo/")) TIL.banner($("#geo"), "Synthetic GEO feed.",
-    "These records are invented (accessions start with GSE9000) to show the layout. The weekly Action replaces them with real GEO series.");
+  if (!w) { $("#geoMeta").textContent = "The weekly GEO search runs with the trial scraper; new series appear here after its first run."; return; }
   $("#geoMeta").innerHTML = `Human GEO series from the last ${w.meta.lookbackDays} days matching ${w.meta.queries.map((q) => `<i>${esc(q.label)}</i>`).join(", ")}. ` +
     `Last run ${w.meta.generated}: ${w.meta.newThisRun} new. Already-cataloged series are marked.`;
   const items = w.items;
