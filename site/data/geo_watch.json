@@ -1,0 +1,611 @@
+{
+ "meta": {
+  "generated": "2026-10-15",
+  "fixture": false,
+  "lookbackDays": 120,
+  "queries": [
+   {
+    "id": "til_sc",
+    "label": "TIL / adoptive transfer, single-cell or spatial"
+   },
+   {
+    "id": "mel_spatial",
+    "label": "Melanoma immunotherapy, spatial"
+   },
+   {
+    "id": "cd8_stem",
+    "label": "Stem-like CD8 T cells in tumors"
+   }
+  ],
+  "newThisRun": 27
+ },
+ "items": [
+  {
+   "accession": "GSE331345",
+   "title": "Cullin-5 RING E3 ligase limits CD8 T-cell persistence and effector responses during chronic antigen stimulation [RNA-seq]",
+   "summary": "T-cell exhaustion limits durable antitumor responses and remains a barrier to adoptive cell transfer (ACT) therapies in solid tumors. To identify regulators of T-cell persistence, we performed genome-wide CRISPR knockout screens in primary human CD8\u207a T cells expressing an NY-ESO-1-specific T-cell receptor and subjected them to repeated tumor cell rechallenge. These screens revealed enrichment of sgRNAs targeting components of Cullin\u2013RING E3 ligases, particularly Cullin-5 (CRL5) assemblies comprising CUL5, RNF7, and ARIH2. Disruption of CRL5 genes preserved cytotoxic activity and enhanced cytok",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 30,
+   "published": "2026-10-12",
+   "pubmed": [],
+   "modalities": [
+    "TCR",
+    "bulk RNA"
+   ],
+   "therapies": [
+    "TIL-ACT"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE331345",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE331343",
+   "title": "Cullin-5 RING E3 ligase limits CD8 T-cell persistence and effector responses during chronic antigen stimulation [CRISPR Screen]",
+   "summary": "T-cell exhaustion limits durable antitumor responses and remains a barrier to adoptive cell transfer (ACT) therapies in solid tumors. To identify regulators of T-cell persistence, we performed genome-wide CRISPR knockout screens in primary human CD8\u207a T cells expressing an NY-ESO-1-specific T-cell receptor and subjected them to repeated tumor cell rechallenge. These screens revealed enrichment of sgRNAs targeting components of Cullin\u2013RING E3 ligases, particularly Cullin-5 (CRL5) assemblies comprising CUL5, RNF7, and ARIH2. Disruption of CRL5 genes preserved cytotoxic activity and enhanced cytok",
+   "types": "Other",
+   "samples": 43,
+   "published": "2026-10-12",
+   "pubmed": [],
+   "modalities": [
+    "TCR"
+   ],
+   "therapies": [
+    "TIL-ACT"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE331343",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE308435",
+   "title": "Tumor-intrinsic and extrinsic immune mechanisms define resistance to immune checkpoint blockade in metastatic melanoma [tcr]",
+   "summary": "The interplay between variable genomic, transcriptional, and microenvironmental features driving resistance to immune checkpoint blockade (ICB) remains poorly understood. Here, we performed multi-omic profiling (single-nucleus RNA, T cell receptor, and whole-genome sequencing) of 42 sequential biopsies from 34 patients with metastatic melanoma. Using a Bayesian integrative model, we identify recurring features of ICB-sensitive and resistant clones, and uncouple gene dosage effects from transcriptional output, thereby defining genetic and non-genetic basis for plasticity. Joint characterization",
+   "types": "Expression profiling by high throughput sequencing; Other",
+   "samples": 42,
+   "published": "2026-09-28",
+   "pubmed": [],
+   "modalities": [
+    "TCR"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE308435",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE308434",
+   "title": "Tumor-intrinsic and extrinsic immune mechanisms define resistance to immune checkpoint blockade in metastatic melanoma [snRNA]",
+   "summary": "The interplay between variable genomic, transcriptional, and microenvironmental features driving resistance to immune checkpoint blockade (ICB) remains poorly understood. Here, we performed multi-omic profiling (single-nucleus RNA, T cell receptor, and whole-genome sequencing) of 42 sequential biopsies from 34 patients with metastatic melanoma. Using a Bayesian integrative model, we identify recurring features of ICB-sensitive and resistant clones, and uncouple gene dosage effects from transcriptional output, thereby defining genetic and non-genetic basis for plasticity. Joint characterization",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 42,
+   "published": "2026-09-28",
+   "pubmed": [],
+   "modalities": [
+    "TCR"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE308434",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE336068",
+   "title": "NR2F6 Functions as a Key Transcriptional Checkpoint Enforcing Dysfunction of Human CD3+ T cells and Limiting CAR-T Cell Potency [ATAC-Seq]",
+   "summary": "Although NR2F6 regulates lymphocyte activation in murine models, its function in human T cells remains incompletely defined. Here, we identify NR2F6 as a TCR inducible transcriptional checkpoint that limits effector potency in human CD3\u207a T cells, including chimeric antigen receptor (CAR) T cells. In an anti EGFR CAR T cell-A549 co culture model, enforced NR2F6 expression, mimicking its upregulation in tumor infiltrating lymphocytes, markedly impairs killing under repeated tumor challenge. In polyclonal T cells, NR2F6 overexpression and CRISPR/Cas9-mediated ablation produced directionally oppos",
+   "types": "Genome binding/occupancy profiling by high throughput sequencing",
+   "samples": 8,
+   "published": "2026-09-09",
+   "pubmed": [],
+   "modalities": [
+    "TCR"
+   ],
+   "therapies": [
+    "TIL-ACT",
+    "Checkpoint",
+    "CAR-T"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE336068",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE318203",
+   "title": "NR2F6 Functions as a Key Transcriptional Checkpoint Enforcing Dysfunction of Human CD3+ T cells and Limiting CAR-T Cell Potency",
+   "summary": "Although NR2F6 regulates lymphocyte activation in murine models, its function in human T cells remains incompletely defined. Here, we identify NR2F6 as a TCR inducible transcriptional checkpoint that limits effector potency in human CD3\u207a T cells, including chimeric antigen receptor (CAR) T cells. In an anti EGFR CAR T cell-A549 co culture model, enforced NR2F6 expression, mimicking its upregulation in tumor infiltrating lymphocytes, markedly impairs killing under repeated tumor challenge. In polyclonal T cells, NR2F6 overexpression and CRISPR/Cas9-mediated ablation produced directionally oppos",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 23,
+   "published": "2026-09-09",
+   "pubmed": [],
+   "modalities": [
+    "TCR"
+   ],
+   "therapies": [
+    "TIL-ACT",
+    "Checkpoint",
+    "CAR-T"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318203",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE328536",
+   "title": "Long-term confinement triggers RIPK3-independent necroptosis in amoeboid cancer cells to shape tumor evolution",
+   "summary": "The mesenchymal\u2013amoeboid transition (MAT) confers enhanced migratory capacity and therapy resistance to cancer cells. To disseminate, MAT cancer cells squeeze through compacted intra-tumor spaces, breach matrix barriers, and infiltrate into the vasculature\u2014a journey defined by sustained mechanical pressure. Yet how prolonged MAT under such pressure influences cell fate remains poorly understood. Here, we introduce the concept of \u201cLong-term MAT\u201d (L-MAT)\u2014referring to cells with sustained MAT status under pressure\u2014and demonstrate that L-MAT in non-adhesive three-dimensional microenvironments trig",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 9,
+   "published": "2026-09-05",
+   "pubmed": [],
+   "modalities": [
+    "spatial"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE328536",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE345464",
+   "title": "Compartment-specific PPAR\u03b4 activity controls the outcome of cancer \u2013 immune cell competition and immunotherapy efficacy",
+   "summary": "Most patients with solid tumors fail to sustain anti-tumor immunity, in part because immune cells cannot outcompete cancer cells inside the immunosuppressive tumor microenvironment. Here, we identify the lipid-sensing transcription factor PPAR\u03b4 as a compartment-specific determinant of cancer-immune fitness balance and immunotherapy efficacy. Activating PPAR\u03b4 in cancer cells promotes their growth and impairs anti-tumor immunity, whereas activating it in immune cells drives tumor suppression and overrides tumor-promoting effects of cancer-intrinsic activation.Mechanistically, PPAR\u03b4 enhances CD8+",
+   "types": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "samples": 58,
+   "published": "2026-08-31",
+   "pubmed": [],
+   "modalities": [],
+   "therapies": [
+    "Checkpoint",
+    "CAR-T"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE345464",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE248008",
+   "title": "A metabolic switch that boosts immune cell fitness against cancer",
+   "summary": "This SuperSeries is composed of the SubSeries listed below.",
+   "types": "Expression profiling by high throughput sequencing; Genome binding/occupancy profiling by high throughput sequencing",
+   "samples": 97,
+   "published": "2026-08-28",
+   "pubmed": [],
+   "modalities": [],
+   "therapies": [],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE248008",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE344166",
+   "title": "Integrated spatial and single cell analysis identifies CCL21+ lymphatic endothelial cells as a driver of a favorable immune environment in acral melanoma",
+   "summary": "Acral melanoma (AM) is a rare type of melanoma that responds poorly to immunotherapy. In the current study we undertook integrated single cell RNA-Seq, spatial transcriptomics and multiplexed immunofluorescence to identify potential regulators of the immune environment. Our analyses identified distinct immune habitats at the invasive front, intratumoral regions and areas of distant inflammation across the AM samples. Two distinct subclasses of endothelial cells were identified, one with an immune-regulating profile (CCL21, IGF1, IL-7, PDPN) that were characteristic of lymphatic endothelial cel",
+   "types": "Other",
+   "samples": 116,
+   "published": "2026-08-24",
+   "pubmed": [],
+   "modalities": [
+    "spatial",
+    "single-cell",
+    "bulk RNA"
+   ],
+   "therapies": [],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE344166",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE332987",
+   "title": "Neoadjuvant Pepinemab with Immune Checkpoint Blockade Remodels the Tumor Microenvironment in Metastatic Melanoma",
+   "summary": "Neoadjuvant immune checkpoint inhibitors (ICIs) improve event-free survival in metastatic melanoma, yet resistance and recurrence remain common. We evaluated pepinemab, a Semaphorin 4D (SEMA4D)\u2013blocking antibody, in combination with nivolumab and/or ipilimumab in a phase II neoadjuvant biomarker trial for patients with resectable metastatic melanoma. Patients received two neoadjuvant doses followed by curative-intent surgery and one year of adjuvant nivolumab. Pepinemab-containing regimens did not increase immune-related adverse events and did not delay or preclude curative-intent surgical res",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 37,
+   "published": "2026-08-20",
+   "pubmed": [],
+   "modalities": [
+    "TCR"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE332987",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE331322",
+   "title": "Antibodies derived from patient tumors augment response to immune checkpoint blockade in cancer",
+   "summary": "B-cells are associated with favorable response to immunotherapy, though the underlying mechanisms remain unclear. Here, we profiled tumor-infiltrating B-cells (TIL-Bs) and tertiary lymphoid structures (TLS) from \u03b1-PD-1 + \u03b1-CTLA-4 treated responders (R) and non-responders (NR) to identify immune signatures. TLS from responders exhibited upregulated inflammatory genes, and increased levels of cytotoxic immune cells.",
+   "types": "Other",
+   "samples": 16,
+   "published": "2026-08-20",
+   "pubmed": [],
+   "modalities": [],
+   "therapies": [
+    "TIL-ACT",
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE331322",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE337136",
+   "title": "Immunophenotyping of peripheral CD8+ T cells from classical Hodgkin Lymphoma patients treated with PD-1 blockade [TCR-seq]",
+   "summary": "The immune microenvironment of classical Hodgkin lymphoma (cHL) is characterized by rare Hodgkin\u2013Reed\u2013Sternberg cells surrounded by dysfunctional lymphocytes, with support from PD-1/PD-L1 interactions. Although PD-1 inhibitors (PD-1i) are effective in some relapsed cHL patients, the mechanisms of resistance remain unclear. We investigated T cell dynamics in cHL using whole-exome sequencing (WES) of plasma circulating tumor DNA and longitudinal single-cell RNA and T-cell receptor sequencing of peripheral blood lymphocytes from a relapsed patient before and after PD-1i therapy. Findings were val",
+   "types": "Other",
+   "samples": 5,
+   "published": "2026-08-20",
+   "pubmed": [],
+   "modalities": [
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "cd8_stem"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE337136",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE337135",
+   "title": "Immunophenotyping of peripheral CD8+ T cells from classical Hodgkin Lymphoma patients treated with PD-1 blockade",
+   "summary": "The immune microenvironment of classical Hodgkin lymphoma (cHL) is characterized by rare Hodgkin\u2013Reed\u2013Sternberg cells surrounded by dysfunctional lymphocytes, with support from PD-1/PD-L1 interactions. Although PD-1 inhibitors (PD-1i) are effective in some relapsed cHL patients, the mechanisms of resistance remain unclear. We investigated T cell dynamics in cHL using whole-exome sequencing (WES) of plasma circulating tumor DNA and longitudinal single-cell RNA and T-cell receptor sequencing of peripheral blood lymphocytes from a relapsed patient before and after PD-1i therapy. Findings were val",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 12,
+   "published": "2026-08-20",
+   "pubmed": [],
+   "modalities": [
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "cd8_stem"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE337135",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE318638",
+   "title": "Spatial biology reveals macrophage dysfunction in immunosuppressed non-melanoma skin cancer [scTCR-Seq]",
+   "summary": "The rising incidence of non-melanoma skin cancer (NMSC), including basal cell carcinoma (BCC) and cutaneous squamous cell carcinoma (cSCC), particularly among immunosuppressed individuals, underscores the need for a deeper understanding of the tumor microenvironment (TME) to develop effective and safe immunotherapies. This study employed single-cell multi-omic analyses to investigate the spatial distribution and transcriptional profiles of immune cells in NMSC from both immunocompetent (IC) and immunosuppressed (IS) patients. Our results challenge the prevailing notion that immunosuppression i",
+   "types": "Other",
+   "samples": 34,
+   "published": "2026-08-07",
+   "pubmed": [
+    "42556334"
+   ],
+   "modalities": [
+    "spatial",
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE318638",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE316922",
+   "title": "Spatial biology reveals macrophage dysfunction in immunosuppressed non-melanoma skin cancer",
+   "summary": "The rising incidence of non-melanoma skin cancer (NMSC), including basal cell carcinoma (BCC) and cutaneous squamous cell carcinoma (cSCC), particularly among immunosuppressed individuals, underscores the need for a deeper understanding of the tumor microenvironment (TME) to develop effective and safe immunotherapies. This study employed single-cell multi-omic analyses to investigate the spatial distribution and transcriptional profiles of immune cells in NMSC from both immunocompetent (IC) and immunosuppressed (IS) patients. Our results challenge the prevailing notion that immunosuppression i",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 36,
+   "published": "2026-08-07",
+   "pubmed": [
+    "42556334"
+   ],
+   "modalities": [
+    "spatial",
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE316922",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE308361",
+   "title": "Spatial biology reveals macrophage dysfunction in immunosuppressed non-melanoma skin cancer",
+   "summary": "The rising incidence of non-melanoma skin cancer (NMSC), including basal cell carcinoma (BCC) and cutaneous squamous cell carcinoma (cSCC), particularly among immunosuppressed individuals, underscores the need for a deeper understanding of the tumor microenvironment (TME) to develop effective and safe immunotherapies. This study employed single-cell multi-omic analyses to investigate the spatial distribution and transcriptional profiles of immune cells in NMSC from both immunocompetent and immunosuppressed patients. Our results challenge the prevailing notion that immunosuppression is primaril",
+   "types": "Genome binding/occupancy profiling by high throughput sequencing; Expression profiling by high throughput sequencing",
+   "samples": 16,
+   "published": "2026-08-07",
+   "pubmed": [
+    "42556334"
+   ],
+   "modalities": [
+    "spatial",
+    "single-cell"
+   ],
+   "therapies": [],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE308361",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE306130",
+   "title": "Spatial biology reveals macrophage dysfunction in immunosuppressed non-melanoma skin cancer [Xenium Spatial Transcriptomics]",
+   "summary": "The rising incidence of non-melanoma skin cancer (NMSC), including basal cell carcinoma (BCC) and cutaneous squamous cell carcinoma (cSCC), particularly among immunosuppressed individuals, underscores the need for a deeper understanding of the tumor microenvironment (TME) to develop effective and safe immunotherapies. This study employed single-cell multi-omic analyses to investigate the spatial distribution and transcriptional profiles of immune cells in NMSC from both immunocompetent and immunosuppressed patients. Our results challenge the prevailing notion that immunosuppression is primaril",
+   "types": "Other",
+   "samples": 14,
+   "published": "2026-08-07",
+   "pubmed": [
+    "42556334"
+   ],
+   "modalities": [
+    "spatial",
+    "single-cell"
+   ],
+   "therapies": [],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE306130",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE306129",
+   "title": "Spatial biology reveals macrophage dysfunction in immunosuppressed non-melanoma skin cancer [spatial_ATAC]",
+   "summary": "The rising incidence of non-melanoma skin cancer (NMSC), including basal cell carcinoma (BCC) and cutaneous squamous cell carcinoma (cSCC), particularly among immunosuppressed individuals, underscores the need for a deeper understanding of the tumor microenvironment (TME) to develop effective and safe immunotherapies. This study employed single-cell multi-omic analyses to investigate the spatial distribution and transcriptional profiles of immune cells in NMSC from both immunocompetent and immunosuppressed patients. Our results challenge the prevailing notion that immunosuppression is primaril",
+   "types": "Other",
+   "samples": 28,
+   "published": "2026-08-07",
+   "pubmed": [
+    "42556334"
+   ],
+   "modalities": [
+    "spatial",
+    "single-cell"
+   ],
+   "therapies": [],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE306129",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE328705",
+   "title": "Divergent Cytotoxic and Inflammatory Functions of Intratumoral Vd2+ gdT Cells in Renal Cell Carcinoma",
+   "summary": "We characterized Vd2+ gdT cell subsets in paired peripheral blood and tumor samples from three treatment-naive clear cell renal cell carcinoma (ccRCC) patients using flow cytometry and single-cell RNA sequencing. Two major subsets distinguished by CD16 expression exhibited divergent cytotoxic and inflammatory effector programs within the tumor microenvironment. Single-cell RNA sequencing identified four transcriptional clusters with a TOX+ progenitor-like cluster giving rise to divergent effector states.",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 3,
+   "published": "2026-08-06",
+   "pubmed": [
+    "42539629"
+   ],
+   "modalities": [
+    "single-cell"
+   ],
+   "therapies": [],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE328705",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE335480",
+   "title": "Single-cell tracking reveals tumor-reactive T cell plasticity during melanoma TIL therapy",
+   "summary": "Adoptive cell therapy (ACT) with tumor-infiltrating lymphocytes (TILs) can induce durable responses in metastatic melanoma, yet the clonal and transcriptional dynamics that govern tumor-reactive T cell fate during ex vivo expansion and after transfer remain poorly understood. Here, we performed longitudinal single-cell RNA and T cell receptor (TCR) sequencing across five timepoints, from baseline tumors through a two-phase ex vivo expansion to post-infusion peripheral blood and tumor biopsies, in seven melanoma patients, generating a high-resolution map of both CD8+ and CD4+ tumor-reactive T c",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 38,
+   "published": "2026-07-10",
+   "pubmed": [
+    "42743921"
+   ],
+   "modalities": [
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [
+    "TIL-ACT"
+   ],
+   "queries": [
+    "cd8_stem",
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE335480",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE300793",
+   "title": "Spatial tumour-immune ecosystems shape the efficacy of anti-PD1 immunotherapy in primary cutaneous melanoma [RNAseq]",
+   "summary": "Intra-tumoral heterogeneity in melanoma arises from dynamic cancer cell plasticity and underlies various mechanisms of immune escape. Here, we combined high-plex immunofluorescence imaging with spatially resolved transcriptomics to map the architecture of melanoma cell states and their interactions with the immune microenvironment in primary cutaneous tumours prior to adjuvant anti-PD1 immune checkpoint inhibitor (ICI) treatment. Computational analyses showed that melanoma cells organise into spatially restricted patches, with a preferential organisation of undifferentiated cells associated wi",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 57,
+   "published": "2026-06-23",
+   "pubmed": [],
+   "modalities": [
+    "spatial"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE300793",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE300446",
+   "title": "Spatial tumour-immune ecosystems shape the efficacy of anti-PD1 immunotherapy in primary cutaneous melanoma [snRNAseq]",
+   "summary": "Intra-tumoral heterogeneity in melanoma arises from dynamic cancer cell plasticity and underlies various mechanisms of immune escape. Here, we combined high-plex immunofluorescence imaging with spatially resolved transcriptomics to map the architecture of melanoma cell states and their interactions with the immune microenvironment in primary cutaneous tumours prior to adjuvant anti-PD1 immune checkpoint inhibitor (ICI) treatment. Computational analyses showed that melanoma cells organise into spatially restricted patches, with a preferential organisation of undifferentiated cells associated wi",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 2,
+   "published": "2026-06-23",
+   "pubmed": [],
+   "modalities": [
+    "spatial"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE300446",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE300445",
+   "title": "Spatial tumour-immune ecosystems shape the efficacy of anti-PD1 immunotherapy in primary cutaneous melanoma [Spatial Transcriptomics]",
+   "summary": "Intra-tumoral heterogeneity in melanoma arises from dynamic cancer cell plasticity and underlies various mechanisms of immune escape. Here, we combined high-plex immunofluorescence imaging with spatially resolved transcriptomics to map the architecture of melanoma cell states and their interactions with the immune microenvironment in primary cutaneous tumours prior to adjuvant anti-PD1 immune checkpoint inhibitor (ICI) treatment. Computational analyses showed that melanoma cells organise into spatially restricted patches, with a preferential organisation of undifferentiated cells associated wi",
+   "types": "Other",
+   "samples": 4,
+   "published": "2026-06-23",
+   "pubmed": [
+    "42315253"
+   ],
+   "modalities": [
+    "spatial"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE300445",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE282437",
+   "title": "PLA2G2D in tumour-draining lymph nodes regulates anti-tumour immunity",
+   "summary": "Current cancer immunotherapies can induce tumor regression, although responses are often not durable for reasons that are incompletely understood. Apart from activating pre-existing tumor-infiltrating T cells, recent studies have highlighted the importance of enforcing a systemic immune response from tumor-draining lymph nodes (TDLNs). However, mechanisms driving immune suppression in TDLNs remain poorly studied. We applied spatial proteogenomics on melanoma TDLNs and identified striking regional differences in immune cell composition in lymph nodes from patients with long-term (>5 years) dise",
+   "types": "Other",
+   "samples": 69,
+   "published": "2026-06-23",
+   "pubmed": [
+    "42717091"
+   ],
+   "modalities": [
+    "spatial"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE282437",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE335070",
+   "title": "Malignant epithelial states drive immune dysfunction in ampulla of Vater carcinoma",
+   "summary": "Background Ampulla of Vater (AoV) carcinoma is a rare malignancy arising at the junction of intestinal and pancreatobiliary epithelium. Its heterogeneous clinical behavior and histological diversity have hindered therapeutic advances, and the cellular basis of this heterogeneity remains unclear. We aimed to construct a single-cell transcriptomic atlas of AoV carcinoma, with a focus on identifying epithelial subtypes and their interactions with the tumor microenvironment (TME). Methods We performed single-cell RNA sequencing on eight primary AoV tumors and four matched normal tissues. Comprehen",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 75,
+   "published": "2026-06-21",
+   "pubmed": [
+    "42374559"
+   ],
+   "modalities": [
+    "spatial",
+    "single-cell",
+    "bulk RNA"
+   ],
+   "therapies": [],
+   "queries": [
+    "cd8_stem"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE335070",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE313389",
+   "title": "Single-cell transcriptomic analysis reveals tumor-immune determinants of lymph node colonization and progression in thyroid cancer",
+   "summary": "Lymph node (LN) metastases are a major driver of mortality across solid cancers, including thyroid carcinomas, which are known for high rates of nodal colonization. To elucidate the determinants of nodal spread, we isolated tumor-infiltrating leukocytes from primary thyroid tumors and matched metastatic LNs for single-cell RNA sequencing with validation by multiplex immunohistochemistry. Comparing the microenvironmental alterations between primary tumors and their LNs, we found that thyrocytes and tumor-associated macrophages downregulate the expression of multiple inflammatory cytokine recept",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 10,
+   "published": "2026-06-19",
+   "pubmed": [
+    "42397917"
+   ],
+   "modalities": [
+    "single-cell"
+   ],
+   "therapies": [
+    "TIL-ACT"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE313389",
+   "firstSeen": "2026-10-15",
+   "inCatalog": false
+  }
+ ]
+}
