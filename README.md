@@ -15,40 +15,6 @@ Nothing on the site is simulated data; the one model (the clone simulator) start
 
 No build step, no server, no framework: plain HTML + D3. Heavy lifting happens in `analysis/` and lands in `site/data/` as small JSON.
 
-## Put it on GitHub (first time)
-
-You need a GitHub account (yours: `connor122721`) and `git`. Two ways:
-
-**A. With the GitHub CLI** (fastest)
-
-```bash
-unzip til-atlas.zip && cd til-atlas
-gh auth login                                   # once per machine; choose GitHub.com → HTTPS → browser
-gh repo create til-atlas --public --source . --push
-```
-
-**B. With the website + git**
-
-1. Go to <https://github.com/new>, name it `til-atlas`, keep it **Public**, and **don't** add a README, .gitignore or licence (the repo already has them). Click *Create repository*.
-2. In a terminal:
-   ```bash
-   unzip til-atlas.zip && cd til-atlas
-   git remote add origin https://github.com/connor122721/til-atlas.git
-   git push -u origin main
-   ```
-   When asked for a password, paste a personal access token (github.com → Settings → Developer settings → Personal access tokens → Fine-grained, with *Contents: read and write* on this repo).
-
-**Then, either way:**
-
-3. Repo → **Settings → Pages** → *Source*: **GitHub Actions**.
-4. Repo → **Settings → Actions → General** → *Workflow permissions*: **Read and write** (lets the weekly job commit new trial data).
-5. Repo → **Actions** → **Scrape ClinicalTrials.gov** → **Run workflow**. About a minute later the site is live at `https://connor122721.github.io/til-atlas/`, with real trial data.
-6. Optional: Settings → Secrets and variables → Actions → add `NCBI_EMAIL` (and `NCBI_API_KEY`) so the weekly GEO search identifies you to NCBI.
-
-To move it into the lab's organisation later: repo → Settings → *Transfer ownership* → `SmithViralLabLouisville`.
-
-Preview locally any time: `python -m http.server -d site 8000` and open <http://localhost:8000>.
-
 ## Where the real data come from
 
 | Data | Source | How it gets into `site/data/` |
