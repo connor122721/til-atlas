@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-10-15",
+  "generated": "2026-10-19",
   "fixture": false,
   "lookbackDays": 120,
   "queries": [
@@ -17,9 +17,31 @@
     "label": "Stem-like CD8 T cells in tumors"
    }
   ],
-  "newThisRun": 27
+  "newThisRun": 1
  },
  "items": [
+  {
+   "accession": "GSE349791",
+   "title": "Single-cell RNA and TCR profiling of huCART19 T cells following intermittent antigen restimulation",
+   "summary": "Durable remission after CD19-directed CAR T (CAR19) therapy is linked to long-term persistence, yet the cellular states and drivers of persistence remain poorly defined. Here, we combined multimodal single-cell profiling with clonotype tracking to characterize rare, functional, persisting CAR19 cells in patients with chronic lymphocytic leukemia and large B-cell lymphoma. Across diseases and CAR architectures, persisting cells converge on a state distinct from endogenous T-cells, characterized by TCR coreceptor downregulation, upregulation of markers of antigen experience, stress adaptation pr",
+   "types": "Expression profiling by high throughput sequencing; Other",
+   "samples": 12,
+   "published": "2026-10-15",
+   "pubmed": [],
+   "modalities": [
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [
+    "CAR-T"
+   ],
+   "queries": [
+    "cd8_stem"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE349791",
+   "firstSeen": "2026-10-19",
+   "inCatalog": false
+  },
   {
    "accession": "GSE331345",
    "title": "Cullin-5 RING E3 ligase limits CD8 T-cell persistence and effector responses during chronic antigen stimulation [RNA-seq]",

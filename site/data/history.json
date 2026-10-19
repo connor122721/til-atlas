@@ -14,5 +14,21 @@
    "AVAILABLE": 2,
    "SUSPENDED": 1
   }
+ },
+ {
+  "date": "2026-10-19",
+  "total": 422,
+  "byStatus": {
+   "RECRUITING": 113,
+   "COMPLETED": 94,
+   "TERMINATED": 63,
+   "UNKNOWN": 60,
+   "ACTIVE_NOT_RECRUITING": 34,
+   "NOT_YET_RECRUITING": 31,
+   "WITHDRAWN": 20,
+   "ENROLLING_BY_INVITATION": 4,
+   "AVAILABLE": 2,
+   "SUSPENDED": 1
+  }
  }
 ]

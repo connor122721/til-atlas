@@ -1,5 +1,17 @@
 [
  {
+  "date": "2026-10-19",
+  "new": [],
+  "removed": [],
+  "statusChanges": [
+   {
+    "id": "NCT06566092",
+    "from": "ACTIVE_NOT_RECRUITING",
+    "to": "TERMINATED"
+   }
+  ]
+ },
+ {
   "date": "2026-10-15",
   "new": [],
   "removed": [],
