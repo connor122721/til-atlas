@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-10-19",
+  "generated": "2026-10-26",
   "fixture": false,
   "lookbackDays": 120,
   "queries": [
@@ -17,9 +17,52 @@
     "label": "Stem-like CD8 T cells in tumors"
    }
   ],
-  "newThisRun": 1
+  "newThisRun": 2
  },
  "items": [
+  {
+   "accession": "GSE317552",
+   "title": "Harnessing T-cell exhaustion-associated RNA splicing to enhance cancer immunotherapy",
+   "summary": "T-cell exhaustion limits anti-tumor CD8+ T-cell responses, and strategies to reinvigorate dysfunctional T-cells are limited. Here we discover and characterize RNA isoforms specifically expressed in human intratumoral exhausted CD8+ T-cells compared with peripheral CD8+ T-cell subsets. One such event is a previously unannotated isoform encoding the immune checkpoint LAG-3 which governs LAG-3 protein expression in exhausted CD8+ T-cells. We harnessed the physiologic regulation of LAG-3 splicing in CD8+ T-cells to generate a synthetic RNA for conditional expression of therapeutic payloads exclusi",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 10,
+   "published": "2026-10-22",
+   "pubmed": [],
+   "modalities": [
+    "TCR"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE317552",
+   "firstSeen": "2026-10-26",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE315856",
+   "title": "Immune and Cellular Determinants of Response to HMA-Venetoclax Regimens in Acute Myeloid Leukemia",
+   "summary": "Hypomethylating agents (HMAs) combined with Venetoclax have redefined the therapeutic landscape of acute myeloid leukemia (AML), yet the biological underpinnings of treatment response remain elusive. We integrated clinical and genomic profiling in 132 patients with newly diagnosed or relapsed/refractory AML treated with HMA-Venetoclax. Additionally, we performed single-cell RNA sequencing and T cell receptor (TCR) profiling at baseline and after one cycle in 10 newly diagnosed cases to dissect cell-intrinsic and immune determinants of response. Response rates and overall survival were consiste",
+   "types": "Expression profiling by high throughput sequencing; Other",
+   "samples": 40,
+   "published": "2026-10-19",
+   "pubmed": [
+    "42871763"
+   ],
+   "modalities": [
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [],
+   "queries": [
+    "cd8_stem"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE315856",
+   "firstSeen": "2026-10-26",
+   "inCatalog": false
+  },
   {
    "accession": "GSE349791",
    "title": "Single-cell RNA and TCR profiling of huCART19 T cells following intermittent antigen restimulation",
