@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-10-26",
+  "generated": "2026-11-02",
   "fixture": false,
   "lookbackDays": 120,
   "queries": [
@@ -20,6 +20,48 @@
   "newThisRun": 2
  },
  "items": [
+  {
+   "accession": "GSE347720",
+   "title": "Bulk transcriptomic profiling of HBV- and NY-ESO-1-specific TCR-T cells generated from wild-type and CD3zeta knockout T cells",
+   "summary": "We performed bulk RNA sequencing to evaluate the global transcriptomic profiles of HBV- and NY-ESO-1-specific TCR-T cells generated from wild-type (WT) T cells and CD3zeta knockout (KO) T cells. The TCR-T cells were analyzed before and after antigen stimulation to determine the impact of CD3zeta knockout on T cell activation and function.",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 24,
+   "published": "2026-11-01",
+   "pubmed": [],
+   "modalities": [
+    "TCR",
+    "bulk RNA"
+   ],
+   "therapies": [],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE347720",
+   "firstSeen": "2026-11-02",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE346656",
+   "title": "Single-cell RNA sequencing of tumor-infiltrating NY-ESO-1 TCR-T cells with WT or ITAM M3 CD3\u03b6",
+   "summary": "We performed single-cell RNA sequencing to characterize the transcriptional states of tumor-infiltrating NY-ESO-1-specific TCR-T cells expressing wild-type (WT) CD3\u03b6 or the ITAM M3 CD3\u03b6 variant. Human primary T cells were engineered to express the NY-ESO-1 TCR together with WT or ITAM M3 CD3\u03b6 and adoptively transferred into NSG mice bearing A375 human melanoma xenografts. Tumor-infiltrating lymphocytes (TILs) were isolated 10 days after TCR-T cell infusion. For each condition, TILs from three mice were pooled before single-cell RNA sequencing using the BD Rhapsody platform. The dataset was gen",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 3,
+   "published": "2026-11-01",
+   "pubmed": [],
+   "modalities": [
+    "single-cell",
+    "TCR"
+   ],
+   "therapies": [
+    "TIL-ACT"
+   ],
+   "queries": [
+    "til_sc"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE346656",
+   "firstSeen": "2026-11-02",
+   "inCatalog": false
+  },
   {
    "accession": "GSE317552",
    "title": "Harnessing T-cell exhaustion-associated RNA splicing to enhance cancer immunotherapy",
