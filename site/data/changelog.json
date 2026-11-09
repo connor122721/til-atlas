@@ -1,5 +1,19 @@
 [
  {
+  "date": "2026-11-09",
+  "new": [
+   "NCT07925333"
+  ],
+  "removed": [],
+  "statusChanges": [
+   {
+    "id": "NCT05430373",
+    "from": "RECRUITING",
+    "to": "ACTIVE_NOT_RECRUITING"
+   }
+  ]
+ },
+ {
   "date": "2026-11-02",
   "new": [
    "NCT07638371"
