@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated": "2026-11-16",
+  "generated": "2026-11-23",
   "fixture": false,
   "lookbackDays": 120,
   "queries": [
@@ -17,9 +17,51 @@
     "label": "Stem-like CD8 T cells in tumors"
    }
   ],
-  "newThisRun": 0
+  "newThisRun": 2
  },
  "items": [
+  {
+   "accession": "GSE355339",
+   "title": "Tumor state dynamics predict clinical progression and immune escape in melanoma",
+   "summary": "Melanoma patients with in-transit metastasis (ITM), a stage of disease where melanoma has metastasized to sites in between the primary lesion and draining lymph node, vary significantly in their clinical outcomes, but the biology driving differential outcomes in ITM is poorly understood. This variability offers a unique biological window to investigate the fundamental mechanisms driving progression from locoregional to systemic disease. To elucidate these dynamics, we integrated multimodal molecular profiling, comprising whole-exome sequencing, RNA-sequencing, cyclic immunofluorescence, and sp",
+   "types": "Other",
+   "samples": 38,
+   "published": "2026-11-22",
+   "pubmed": [],
+   "modalities": [
+    "spatial",
+    "bulk RNA"
+   ],
+   "therapies": [
+    "Checkpoint"
+   ],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE355339",
+   "firstSeen": "2026-11-23",
+   "inCatalog": false
+  },
+  {
+   "accession": "GSE352753",
+   "title": "Tumor state dynamics predict clinical progression and immune escape in melanoma",
+   "summary": "Melanoma patients with in-transit metastasis (ITM), a stage of disease where melanoma has metastasized to sites in between the primary lesion and draining lymph node, vary significantly in their clinical outcomes, but the biology driving differential outcomes in ITM is poorly understood. This variability offers a unique biological window to investigate the fundamental mechanisms driving progression from locoregional to systemic disease. To elucidate these dynamics, we integrated multimodal molecular profiling, comprising whole-exome sequencing, RNA-sequencing, cyclic immunofluorescence, and sp",
+   "types": "Expression profiling by high throughput sequencing",
+   "samples": 103,
+   "published": "2026-11-19",
+   "pubmed": [],
+   "modalities": [
+    "spatial",
+    "bulk RNA"
+   ],
+   "therapies": [],
+   "queries": [
+    "mel_spatial"
+   ],
+   "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE352753",
+   "firstSeen": "2026-11-23",
+   "inCatalog": false
+  },
   {
    "accession": "GSE347720",
    "title": "Bulk transcriptomic profiling of HBV- and NY-ESO-1-specific TCR-T cells generated from wild-type and CD3zeta knockout T cells",

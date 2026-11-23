@@ -1,5 +1,29 @@
 [
  {
+  "date": "2026-11-23",
+  "new": [
+   "NCT07947043"
+  ],
+  "removed": [],
+  "statusChanges": [
+   {
+    "id": "NCT03326921",
+    "from": "RECRUITING",
+    "to": "SUSPENDED"
+   },
+   {
+    "id": "NCT06431100",
+    "from": "RECRUITING",
+    "to": "UNKNOWN"
+   },
+   {
+    "id": "NCT07028008",
+    "from": "NOT_YET_RECRUITING",
+    "to": "RECRUITING"
+   }
+  ]
+ },
+ {
   "date": "2026-11-16",
   "new": [],
   "removed": [],
